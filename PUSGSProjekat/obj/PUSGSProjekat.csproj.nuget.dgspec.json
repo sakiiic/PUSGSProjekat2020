@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\PUSGSProjekat\\PUSGSProjekat\\PUSGSProjekat.csproj": {}
+    "C:\\Users\\User\\Documents\\GitHub\\PUSGSProjekat2020\\PUSGSProjekat\\PUSGSProjekat.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\PUSGSProjekat\\PUSGSProjekat\\PUSGSProjekat.csproj": {
+    "C:\\Users\\User\\Documents\\GitHub\\PUSGSProjekat2020\\PUSGSProjekat\\PUSGSProjekat.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\PUSGSProjekat\\PUSGSProjekat\\PUSGSProjekat.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\PUSGSProjekat2020\\PUSGSProjekat\\PUSGSProjekat.csproj",
         "projectName": "PUSGSProjekat",
-        "projectPath": "C:\\Users\\User\\Desktop\\PUSGSProjekat\\PUSGSProjekat\\PUSGSProjekat.csproj",
+        "projectPath": "C:\\Users\\User\\Documents\\GitHub\\PUSGSProjekat2020\\PUSGSProjekat\\PUSGSProjekat.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\PUSGSProjekat\\PUSGSProjekat\\obj\\",
+        "outputPath": "C:\\Users\\User\\Documents\\GitHub\\PUSGSProjekat2020\\PUSGSProjekat\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[2.1.0, )",
               "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.1.10, )"
             }
           },
           "imports": [
