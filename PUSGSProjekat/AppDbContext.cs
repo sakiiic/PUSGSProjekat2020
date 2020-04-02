@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
+using PUSGSProjekat.DTO;
 using PUSGSProjekat.Repositories;
 using System;
 using System.Threading;
@@ -21,6 +22,11 @@ namespace PUSGSProjekat
                     => true/*category == DbLoggerCategory.Database.Command.Name
                     && level == LogLevel.Information*/, true)
             });
+
+        public DbSet<Aviokompanija> Aviokompanije;
+        public DbSet<RentACar> RentACar;
+        public DbSet<Let> Letovi;
+        public DbSet<Vozilo> Vozila;
 
         public IConfiguration Configuration { get; }
 
