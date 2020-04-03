@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using PUSGSProjekat.Repositories;
+using PUSGSProjekat.Services;
 
 namespace PUSGSProjekat
 {
@@ -31,6 +33,8 @@ namespace PUSGSProjekat
             c.UseSqlServer(Configuration.GetConnectionString("Database")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddScoped<IRentACarService, RentACarService>();
 
             services.AddSwaggerGen(c =>
             {

@@ -7,10 +7,11 @@ namespace PUSGSProjekat.DTO
 {
     public class Aviokompanija
     {
+        public int Id { get; set; }
         public string Naziv { get; set; }
         public string Adresa { get; set; }
         public string Opis { get; set; }
         public float Ocjena { get; set; }
-        public List<string> Destinacije { get; set; }
+        public List<Destinacija> Destinacije { get; set; }
     }
 }

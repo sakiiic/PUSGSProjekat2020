@@ -12,7 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 namespace PUSGSProjekat
 {
-    public class AppDbContext : DbContext, IUnitOfWork
+    public class AppDbContext : DbContext
     {
         [Obsolete]
         public static readonly LoggerFactory LoggerFactory
@@ -23,10 +23,10 @@ namespace PUSGSProjekat
                     && level == LogLevel.Information*/, true)
             });
 
-        public DbSet<Aviokompanija> Aviokompanije;
-        public DbSet<RentACar> RentACar;
-        public DbSet<Let> Letovi;
-        public DbSet<Vozilo> Vozila;
+        public DbSet<Aviokompanija> Aviokompanije { get; set; }
+        public DbSet<RentACar> RentACar { get; set; }
+        public DbSet<Let> Letovi { get; set; }
+        public DbSet<Vozilo> Vozila { get; set; }
 
         public IConfiguration Configuration { get; }
 
