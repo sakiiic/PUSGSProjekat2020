@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RentACarService } from 'src/app/services/rent-a-car/rent-a-car.service';
 import { RentACarModel } from 'src/app/models/rentACar.model';
-import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-rent-acar',

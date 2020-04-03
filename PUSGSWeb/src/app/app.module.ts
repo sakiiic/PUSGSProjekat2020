@@ -26,7 +26,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations'
     AppRoutingModule,
     MatTableModule,
     HttpClientModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
