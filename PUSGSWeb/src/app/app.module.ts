@@ -10,7 +10,14 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations'
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './components/header/header.component';
+import { MatToolbarModule } from  '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { VozilaComponent } from './components/vozila/vozila.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +26,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations'
     RentACarComponent,
     HomePageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HeaderComponent,
+    VozilaComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +36,11 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations'
     MatTableModule,
     HttpClientModule,
     NoopAnimationsModule,
-    
+    MatCardModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
