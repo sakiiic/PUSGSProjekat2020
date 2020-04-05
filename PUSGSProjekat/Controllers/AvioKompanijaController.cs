@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PUSGSProjekat.DTO;
+using PUSGSProjekat.Repositories;
 
 namespace PUSGSProjekat.Controllers
 {
@@ -11,5 +13,20 @@ namespace PUSGSProjekat.Controllers
     [ApiController]
     public class AvioKompanijaController : ControllerBase
     {
+        private IAviokompanijaService _avioKompanijaService;
+
+        public AvioKompanijaController(IAviokompanijaService avioKompanijaService)
+        {
+            _avioKompanijaService = avioKompanijaService;
+        }
+        /// <summary>
+        /// Get all Aviokompanije
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetAviokompanija")]
+        public List<Aviokompanija> GetAllAviokompanije()
+        {
+            return _avioKompanijaService.getAllAviokompanije();
+        }
     }
 }
