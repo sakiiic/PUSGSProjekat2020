@@ -35,6 +35,7 @@ namespace PUSGSProjekat
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddScoped<IRentACarService, RentACarService>();
+            services.AddScoped<IAviokompanijaService, AviokompanijaService>();
 
             services.AddSwaggerGen(c =>
             {
