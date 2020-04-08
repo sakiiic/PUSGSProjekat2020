@@ -18,6 +18,7 @@ import { MatToolbarModule } from  '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { VozilaComponent } from './components/vozila/vozila.component';
+import { DetaljiRentacarComponent } from './components/detalji-rentacar/detalji-rentacar.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { VozilaComponent } from './components/vozila/vozila.component';
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    VozilaComponent
+    VozilaComponent,
+    DetaljiRentacarComponent
   ],
   imports: [
     BrowserModule,

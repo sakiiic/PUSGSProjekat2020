@@ -6,6 +6,7 @@ import { RentACarComponent } from './components/rent-acar/rent-acar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { VozilaComponent } from './components/vozila/vozila.component';
+import { DetaljiRentacarComponent } from './components/detalji-rentacar/detalji-rentacar.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,9 @@ const routes: Routes = [
   { path: 'rentacar', component: RentACarComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'rentacar/vozila', component: VozilaComponent}
+  { path: 'rentacar/rentacarinfo/vozila', component: VozilaComponent},
+  { path: 'rentacar/rentacarinfo/:id', component: DetaljiRentacarComponent}
+
 ];
 
 @NgModule({

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PUSGSProjekat.DTO
 {
-    public class Vozilo
+    public class VoziloDTO
     {
         public int Id { get; set; }
         public string Naziv { get; set; }

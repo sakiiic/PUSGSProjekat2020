@@ -9,5 +9,6 @@ namespace PUSGSProjekat.Repositories
     public interface IRentACarService
     {
         List<RentACar> getAllRentACars();
+        RentACar getRentACarInfo(int RentACarId);
     }
 }

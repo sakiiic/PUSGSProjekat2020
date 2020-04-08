@@ -28,5 +28,11 @@ namespace PUSGSProjekat.Controllers
         {
             return _rentACarService.getAllRentACars();
         }
+
+        [HttpGet("GetRentACarInfo/{rentACarId}")]
+        public RentACar GetRentACarInfo(int rentACarId)
+        {
+            return _rentACarService.getRentACarInfo(rentACarId);
+        }
     } 
 }

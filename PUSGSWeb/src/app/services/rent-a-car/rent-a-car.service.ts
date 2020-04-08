@@ -13,5 +13,9 @@ export class RentACarService {
 
   getRentACar() {
     return this.http.get(this.apiURI + 'api/RentACar/GetRentACar');
- }
+  }
+
+  getRentACarInfo(rentACarId){
+    return this.http.get(this.apiURI + 'api/RentACar/GetRentACarInfo/' + rentACarId);
+  }
 }

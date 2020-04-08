@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PUSGSProjekat;
 
 namespace PUSGSProjekat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200408205755_SecondMigration")]
+    partial class SecondMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,7 +48,7 @@ namespace PUSGSProjekat.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AviokompanijaId");
+                    b.Property<int?>("AviokompanijaId");
 
                     b.Property<int>("BrojPresjedanja");
 
@@ -106,7 +108,7 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("Naziv");
 
-                    b.Property<int>("RentACarId");
+                    b.Property<int?>("RentACarId");
 
                     b.Property<string>("TipVozila");
 
@@ -119,18 +121,16 @@ namespace PUSGSProjekat.Migrations
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Let", b =>
                 {
-                    b.HasOne("PUSGSProjekat.DTO.Aviokompanija", "Aviokompanija")
+                    b.HasOne("PUSGSProjekat.DTO.Aviokompanija")
                         .WithMany("Letovi")
-                        .HasForeignKey("AviokompanijaId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("AviokompanijaId");
                 });
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Vozilo", b =>
                 {
-                    b.HasOne("PUSGSProjekat.DTO.RentACar", "RentACar")
+                    b.HasOne("PUSGSProjekat.DTO.RentACar")
                         .WithMany("Vozila")
-                        .HasForeignKey("RentACarId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("RentACarId");
                 });
 #pragma warning restore 612, 618
         }

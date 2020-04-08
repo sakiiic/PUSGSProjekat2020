@@ -41,5 +41,42 @@ namespace PUSGSProjekat.Services
                 return null;
             }
         }
+
+        public RentACar getRentACarInfo(int RentACarId)
+        {
+            try
+            {
+                var rentACar = new RentACar();
+                var rentACars = _dbContext.RentACar.Where(x => x.Id == RentACarId).FirstOrDefault();
+
+                var car = _dbContext.Vozila.Where(x => x.RentACarId == RentACarId)
+                    .Select(cars => new Vozilo()
+                    {
+                        Id = cars.Id,
+                        Marka = cars.Marka,
+                        Model = cars.Model,
+                        Naziv = cars.Naziv,
+                        GodinaProizvodnje = cars.GodinaProizvodnje,
+                        BrojSjedista = cars.BrojSjedista,
+                        TipVozila = cars.TipVozila
+                    }).ToList();
+
+                rentACar.Id = rentACars.Id;
+                rentACar.Adresa = rentACars.Adresa;
+                rentACar.Lokacije = rentACars.Lokacije;
+                rentACar.Naziv = rentACars.Naziv;
+                rentACar.Ocjena = rentACars.Ocjena;
+                rentACar.Opis = rentACars.Opis;
+                rentACar.Vozila = car;
+                
+                return rentACar;
+            }
+            catch (Exception e)
+            {
+                var message = e.Message;
+                Console.WriteLine(message);
+                return null;
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,7 +14,11 @@ namespace PUSGSProjekat.DTO
         public DateTime VrijemePutovanja { get; set; }
         public string DuzinaPutovanja { get; set; }
         public int BrojPresjedanja { get; set; }
-        public List<LokacijePresjedanja> LokacijePresjedanja { get; set; }
+        public string LokacijePresjedanja { get; set; }
         public float CijenaKarte { get; set; }
+
+        [ForeignKey("Aviokompanija")]
+        public int AviokompanijaId { get; set; }
+        public virtual Aviokompanija Aviokompanija { get; set; }
     }
 }
