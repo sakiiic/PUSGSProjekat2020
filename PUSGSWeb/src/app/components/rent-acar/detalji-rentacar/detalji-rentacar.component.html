@@ -1,5 +1,5 @@
 <div class="text-center mb-3">
-    <img src="../../../assets/images/cars.jpg">
+    <img src="../../../../assets/images/cars.jpg">
 
     <div style="text-align:center">     
         <table mat-table [dataSource]="dataSource.vozila" class="mat-elevation-z8">
@@ -32,11 +32,11 @@
            <ng-container matColumnDef="tipVozila">
             <th mat-header-cell *matHeaderCellDef style="text-align:center"> Tip vozila </th>
             <td mat-cell *matCellDef="let element"> {{element.tipVozila}} </td>
-         </ng-container>
+           </ng-container>
      
            <ng-container matColumnDef="detalji">
               <th mat-header-cell *matHeaderCellDef style="text-align:center"> Detalji </th>
-              <td mat-cell *matCellDef="let element" [routerLink]="['/rentacar/rentacarinfo/vozila']">
+              <td mat-cell *matCellDef="let element" [routerLink]="['/rentacar/rentacarinfo/', element.id, 'vozila']">
                 <mat-icon>directions_car</mat-icon>  
               </td>
            </ng-container>

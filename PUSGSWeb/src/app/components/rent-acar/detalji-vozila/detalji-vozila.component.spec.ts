@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VozilaComponent } from './vozila.component';
+import { DetaljiVozilaComponent } from './detalji-vozila.component';
 
-describe('VozilaComponent', () => {
-  let component: VozilaComponent;
-  let fixture: ComponentFixture<VozilaComponent>;
+describe('DetaljiVozilaComponent', () => {
+  let component: DetaljiVozilaComponent;
+  let fixture: ComponentFixture<DetaljiVozilaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VozilaComponent ]
+      declarations: [ DetaljiVozilaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VozilaComponent);
+    fixture = TestBed.createComponent(DetaljiVozilaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

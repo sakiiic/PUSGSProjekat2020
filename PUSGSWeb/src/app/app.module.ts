@@ -17,8 +17,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { MatToolbarModule } from  '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { VozilaComponent } from './components/vozila/vozila.component';
-import { DetaljiRentacarComponent } from './components/detalji-rentacar/detalji-rentacar.component';
+import { DetaljiRentacarComponent } from './components/rent-acar/detalji-rentacar/detalji-rentacar.component';
+import { DetaljiAviokompanijaComponent } from './components/aviokompanija/detalji-aviokompanija/detalji-aviokompanija.component';
+import { DetaljiLetaComponent } from './components/aviokompanija/detalji-leta/detalji-leta.component';
+import { DetaljiVozilaComponent } from './components/rent-acar/detalji-vozila/detalji-vozila.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +31,10 @@ import { DetaljiRentacarComponent } from './components/detalji-rentacar/detalji-
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    VozilaComponent,
-    DetaljiRentacarComponent
+    DetaljiRentacarComponent,
+    DetaljiAviokompanijaComponent,
+    DetaljiLetaComponent,
+    DetaljiVozilaComponent
   ],
   imports: [
     BrowserModule,

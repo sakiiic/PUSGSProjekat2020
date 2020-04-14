@@ -14,4 +14,8 @@ export class AviokompanijaService {
   getAviokompanija() {
     return this.http.get(this.apiURI + 'api/AvioKompanija/GetAviokompanija');
  }
+
+  getAviokompanijaInfo(aviokompanijaId){
+    return this.http.get(this.apiURI + 'api/Aviokompanija/GetAviokompanijaInfo/' + aviokompanijaId);
+  }
 }

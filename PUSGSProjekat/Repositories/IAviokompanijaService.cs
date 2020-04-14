@@ -9,5 +9,6 @@ namespace PUSGSProjekat.Repositories
     public interface IAviokompanijaService
     {
         List<Aviokompanija> getAllAviokompanije();
+        Aviokompanija getAviokompanijaInfo(int AviokompanijaId);
     }
 }

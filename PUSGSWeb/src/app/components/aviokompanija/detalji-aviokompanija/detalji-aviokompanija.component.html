@@ -1,0 +1,54 @@
+<div class="text-center mb-3">
+    <img src="../../../../assets/images/airplane.jpg">
+
+    <div style="text-align:center">     
+        <table mat-table [dataSource]="dataSource.letovi" class="mat-elevation-z8">
+     
+           <ng-container matColumnDef="datumVrijemePolaska">
+              <th mat-header-cell *matHeaderCellDef style="text-align:center"> Vrijeme polaska </th>
+              <td mat-cell *matCellDef="let element"> {{element.datumVrijemePolaska}} </td>
+           </ng-container>
+     
+           <ng-container matColumnDef="datumVrijemeDolaska">
+              <th mat-header-cell *matHeaderCellDef style="text-align:center"> vrijeme dolaska </th>
+              <td mat-cell *matCellDef="let element"> {{element.datumVrijemeDolaska}} </td>
+           </ng-container>
+     
+           <ng-container matColumnDef="vrijemePutovanja">
+              <th mat-header-cell *matHeaderCellDef style="text-align:center"> Vrijeme putovanja </th>
+              <td mat-cell *matCellDef="let element"> {{element.vrijemePutovanja}} </td>
+           </ng-container>
+     
+           <ng-container matColumnDef="duzinaPutovanja">
+              <th mat-header-cell *matHeaderCellDef style="text-align:center"> Duzina putovanja </th>
+              <td mat-cell *matCellDef="let element"> {{element.duzinaPutovanja}} </td>
+           </ng-container>
+     
+           <ng-container matColumnDef="brojPresjedanja">
+              <th mat-header-cell *matHeaderCellDef style="text-align:center"> Broj presjedanja </th>
+              <td mat-cell *matCellDef="let element"> {{element.brojPresjedanja}} </td>
+           </ng-container>
+
+           <ng-container matColumnDef="lokacijePresjedanja">
+            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Lokacije presjedanja </th>
+            <td mat-cell *matCellDef="let element"> {{element.lokacijePresjedanja}} </td>
+           </ng-container>
+
+           <ng-container matColumnDef="cijenaKarte">
+            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Cijena karte </th>
+            <td mat-cell *matCellDef="let element"> {{element.cijenaKarte}} </td>
+           </ng-container>
+     
+           <ng-container matColumnDef="detalji">
+              <th mat-header-cell *matHeaderCellDef style="text-align:center"> Detalji </th>
+              <td mat-cell *matCellDef="let element" [routerLink]="['/aviokompanija/aviokompanijainfo/', element.id, 'letovi']">
+                <mat-icon>flight_takeoff</mat-icon>  
+              </td>
+           </ng-container>
+     
+           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+           <tr mat-row *matRowDef="let row; columns: displayedColumns;"> </tr>
+     
+        </table>
+     </div>
+</div>

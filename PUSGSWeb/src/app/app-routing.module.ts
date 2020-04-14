@@ -5,8 +5,10 @@ import { AviokompanijaComponent } from './components/aviokompanija/aviokompanija
 import { RentACarComponent } from './components/rent-acar/rent-acar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { VozilaComponent } from './components/vozila/vozila.component';
-import { DetaljiRentacarComponent } from './components/detalji-rentacar/detalji-rentacar.component';
+import { DetaljiRentacarComponent } from './components/rent-acar/detalji-rentacar/detalji-rentacar.component';
+import { DetaljiAviokompanijaComponent } from './components/aviokompanija/detalji-aviokompanija/detalji-aviokompanija.component';
+import { DetaljiVozilaComponent } from './components/rent-acar/detalji-vozila/detalji-vozila.component';
+import { DetaljiLetaComponent } from './components/aviokompanija/detalji-leta/detalji-leta.component';
 
 
 const routes: Routes = [
@@ -16,9 +18,10 @@ const routes: Routes = [
   { path: 'rentacar', component: RentACarComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'rentacar/rentacarinfo/vozila', component: VozilaComponent},
-  { path: 'rentacar/rentacarinfo/:id', component: DetaljiRentacarComponent}
-
+  { path: 'rentacar/rentacarinfo/:id/vozila', component: DetaljiVozilaComponent},
+  { path: 'rentacar/rentacarinfo/:id', component: DetaljiRentacarComponent},
+  { path: 'aviokompanija/aviokompanijainfo/:id', component: DetaljiAviokompanijaComponent},
+  { path: 'aviokompanija/aviokompanijainfo/:id/letovi', component: DetaljiLetaComponent}
 ];
 
 @NgModule({

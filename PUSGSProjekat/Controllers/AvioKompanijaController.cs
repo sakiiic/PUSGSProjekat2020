@@ -28,5 +28,11 @@ namespace PUSGSProjekat.Controllers
         {
             return _avioKompanijaService.getAllAviokompanije();
         }
+
+        [HttpGet("GetAviokompanijaInfo/{aviokompanijaId}")]
+        public Aviokompanija GetAviokompanijaInfo(int aviokompanijaId)
+        {
+            return _avioKompanijaService.getAviokompanijaInfo(aviokompanijaId);
+        }
     }
 }

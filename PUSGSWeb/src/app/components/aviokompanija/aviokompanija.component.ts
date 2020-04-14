@@ -10,7 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class AviokompanijaComponent implements OnInit {
 
-  displayedColumns = ['naziv', 'adresa', 'opis', 'ocjena', 'destinacije'];
+  displayedColumns = ['naziv', 'adresa', 'opis', 'ocjena', 'destinacije', 'detalji'];
   dataSource: any;
 
   constructor(public service: AviokompanijaService) { 
