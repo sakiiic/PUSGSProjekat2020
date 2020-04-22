@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -6,13 +8,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using PUSGSProjekat.DTO;
+using PUSGSProjekat.Entities;
 using PUSGSProjekat.Repositories;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 namespace PUSGSProjekat
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<Korisnik, Role, int, IdentityUserClaim<int>,
+        UserRole, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
         [Obsolete]
         public static readonly LoggerFactory LoggerFactory
@@ -27,6 +31,8 @@ namespace PUSGSProjekat
         public DbSet<RentACar> RentACar { get; set; }
         public DbSet<Let> Letovi { get; set; }
         public DbSet<Vozilo> Vozila { get; set; }
+        public DbSet<Korisnik> Korisnici { get; set; }
+        public DbSet<Address> Addresses { get; set; }
 
         public IConfiguration Configuration { get; }
 
@@ -57,6 +63,7 @@ namespace PUSGSProjekat
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             var internalBuilder = modelBuilder.GetInfrastructure<InternalModelBuilder>();
 
             foreach (var entity in modelBuilder.Model.GetEntityTypes())
@@ -66,6 +73,21 @@ namespace PUSGSProjekat
                     .Relational(ConfigurationSource.Convention)
                     .ToTable(entity.ClrType.Name);
             }
+
+            modelBuilder.Entity<UserRole>(userRole =>
+            {
+                userRole.HasKey(ur => new { ur.UserId, ur.RoleId });
+
+                userRole.HasOne(ur => ur.Role)
+                    .WithMany(r => r.UserRoles)
+                    .HasForeignKey(ur => ur.RoleId)
+                    .IsRequired();
+
+                userRole.HasOne(ur => ur.Korisnik)
+                    .WithMany(r => r.UserRoles)
+                    .HasForeignKey(ur => ur.UserId)
+                    .IsRequired();
+            });
         }
         public void Commit()
         {

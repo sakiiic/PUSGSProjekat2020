@@ -16,8 +16,6 @@ const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'aviokompanije', component: AviokompanijaComponent },
   { path: 'rentacar', component: RentACarComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
   { path: 'rentacar/rentacarinfo/:id/vozila', component: DetaljiVozilaComponent},
   { path: 'rentacar/rentacarinfo/:id', component: DetaljiRentacarComponent},
   { path: 'aviokompanija/aviokompanijainfo/:id', component: DetaljiAviokompanijaComponent},

@@ -21,6 +21,11 @@ import { DetaljiRentacarComponent } from './components/rent-acar/detalji-rentaca
 import { DetaljiAviokompanijaComponent } from './components/aviokompanija/detalji-aviokompanija/detalji-aviokompanija.component';
 import { DetaljiLetaComponent } from './components/aviokompanija/detalji-leta/detalji-leta.component';
 import { DetaljiVozilaComponent } from './components/rent-acar/detalji-vozila/detalji-vozila.component';
+import { AuthService } from './services/authentication/authentication.service';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlertifyService } from './services/alertify/alertify.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -46,9 +51,12 @@ import { DetaljiVozilaComponent } from './components/rent-acar/detalji-vozila/de
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    BsDatepickerModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService, AlertifyService, BsModalRef, BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

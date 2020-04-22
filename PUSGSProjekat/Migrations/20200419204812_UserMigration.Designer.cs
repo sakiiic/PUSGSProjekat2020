@@ -10,8 +10,8 @@ using PUSGSProjekat;
 namespace PUSGSProjekat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200406104520_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20200419204812_UserMigration")]
+    partial class UserMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,6 +29,8 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("Adresa");
 
+                    b.Property<string>("Destinacije");
+
                     b.Property<string>("Naziv");
 
                     b.Property<float>("Ocjena");
@@ -40,21 +42,27 @@ namespace PUSGSProjekat.Migrations
                     b.ToTable("Aviokompanija");
                 });
 
-            modelBuilder.Entity("PUSGSProjekat.DTO.Destinacija", b =>
+            modelBuilder.Entity("PUSGSProjekat.DTO.Korisnik", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AviokompanijaId");
+                    b.Property<string>("Adresa");
 
-                    b.Property<string>("DestinacijaVozila");
+                    b.Property<DateTime>("DatumRodjenja");
+
+                    b.Property<string>("Ime");
+
+                    b.Property<string>("Lozinka");
+
+                    b.Property<string>("Prezime");
+
+                    b.Property<string>("TipKorisnika");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AviokompanijaId");
-
-                    b.ToTable("Destinacija");
+                    b.ToTable("Korisnik");
                 });
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Let", b =>
@@ -62,6 +70,8 @@ namespace PUSGSProjekat.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AviokompanijaId");
 
                     b.Property<int>("BrojPresjedanja");
 
@@ -73,45 +83,15 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("DuzinaPutovanja");
 
+                    b.Property<string>("LokacijePresjedanja");
+
                     b.Property<DateTime>("VrijemePutovanja");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AviokompanijaId");
+
                     b.ToTable("Let");
-                });
-
-            modelBuilder.Entity("PUSGSProjekat.DTO.Lokacija", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("LokacijaVozila");
-
-                    b.Property<int?>("RentACarId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RentACarId");
-
-                    b.ToTable("Lokacija");
-                });
-
-            modelBuilder.Entity("PUSGSProjekat.DTO.LokacijePresjedanja", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("LetId");
-
-                    b.Property<string>("Lokacija");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LetId");
-
-                    b.ToTable("LokacijePresjedanja");
                 });
 
             modelBuilder.Entity("PUSGSProjekat.DTO.RentACar", b =>
@@ -121,6 +101,8 @@ namespace PUSGSProjekat.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Adresa");
+
+                    b.Property<string>("Lokacije");
 
                     b.Property<string>("Naziv");
 
@@ -149,7 +131,7 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("Naziv");
 
-                    b.Property<int?>("RentACarId");
+                    b.Property<int>("RentACarId");
 
                     b.Property<string>("TipVozila");
 
@@ -160,32 +142,20 @@ namespace PUSGSProjekat.Migrations
                     b.ToTable("Vozilo");
                 });
 
-            modelBuilder.Entity("PUSGSProjekat.DTO.Destinacija", b =>
+            modelBuilder.Entity("PUSGSProjekat.DTO.Let", b =>
                 {
-                    b.HasOne("PUSGSProjekat.DTO.Aviokompanija")
-                        .WithMany("Destinacije")
-                        .HasForeignKey("AviokompanijaId");
-                });
-
-            modelBuilder.Entity("PUSGSProjekat.DTO.Lokacija", b =>
-                {
-                    b.HasOne("PUSGSProjekat.DTO.RentACar")
-                        .WithMany("Lokacije")
-                        .HasForeignKey("RentACarId");
-                });
-
-            modelBuilder.Entity("PUSGSProjekat.DTO.LokacijePresjedanja", b =>
-                {
-                    b.HasOne("PUSGSProjekat.DTO.Let")
-                        .WithMany("LokacijePresjedanja")
-                        .HasForeignKey("LetId");
+                    b.HasOne("PUSGSProjekat.DTO.Aviokompanija", "Aviokompanija")
+                        .WithMany("Letovi")
+                        .HasForeignKey("AviokompanijaId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Vozilo", b =>
                 {
-                    b.HasOne("PUSGSProjekat.DTO.RentACar")
+                    b.HasOne("PUSGSProjekat.DTO.RentACar", "RentACar")
                         .WithMany("Vozila")
-                        .HasForeignKey("RentACarId");
+                        .HasForeignKey("RentACarId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
