@@ -1,3 +1,4 @@
+import { MbscModule } from '@mobiscroll/angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -9,7 +10,6 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MatTableModule } from '@angular/material/table';
-import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +26,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertifyService } from './services/alertify/alertify.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { LetRezervacijaComponent } from './components/let-rezervacija/let-rezervacija.component';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,13 +41,16 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     DetaljiRentacarComponent,
     DetaljiAviokompanijaComponent,
     DetaljiLetaComponent,
-    DetaljiVozilaComponent
+    DetaljiVozilaComponent,
+    LetRezervacijaComponent
   ],
-  imports: [
+  imports: [ 
+    MbscModule, 
     BrowserModule,
     AppRoutingModule,
     MatTableModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     NoopAnimationsModule,
     MatCardModule,
     BrowserAnimationsModule,

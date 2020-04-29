@@ -1,0 +1,33 @@
+<mbsc-form class="md-flight-booking">
+    <mbsc-segmented-group [(ngModel)]="segmented">
+        <mbsc-segmented value="round" class="md-flight-type">Round trip</mbsc-segmented>
+        <mbsc-segmented value="oneway" class="md-flight-type">One way</mbsc-segmented>
+    </mbsc-segmented-group>
+    <mbsc-form-group>
+        <mbsc-select [(ngModel)]="origin" [options]="selectSettings">Origin</mbsc-select>
+        <mbsc-select [(ngModel)]="destination" [options]="selectSettings" placeholder="Please select a city">Destination</mbsc-select>
+        <mbsc-range [(ngModel)]="range" [options]="rangeSettings">
+            <mbsc-range-start>Leaving</mbsc-range-start>
+            <mbsc-range-end [disabled]="segmented == 'oneway'">Returning</mbsc-range-end>
+        </mbsc-range>
+    </mbsc-form-group>
+    <mbsc-form-group>
+        <mbsc-stepper [(ngModel)]="adults" min="1" max="15" val="left">Adults
+            <span class="mbsc-desc">From 14 years</span>
+        </mbsc-stepper>
+        <mbsc-stepper [(ngModel)]="children" max="15" val="left">Children
+            <span class="mbsc-desc">2-14 years</span>
+        </mbsc-stepper>
+        <mbsc-stepper [(ngModel)]="infant" max="10" val="left">Infant
+            <span class="mbsc-desc">0-2 years</span>
+        </mbsc-stepper>
+        <mbsc-segmented-group [(ngModel)]="segmented2">
+            <mbsc-segmented value="economy" class="md-flight-type">Economy</mbsc-segmented>
+            <mbsc-segmented value="comfort" class="md-flight-type">Comfort</mbsc-segmented>
+            <mbsc-segmented value="business" class="md-flight-type">Business</mbsc-segmented>
+        </mbsc-segmented-group>
+    </mbsc-form-group>
+    <div class="mbsc-btn-group-block">
+        <mbsc-button>Find Flights</mbsc-button>
+    </div>
+</mbsc-form>
