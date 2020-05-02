@@ -54,7 +54,7 @@ export function getToken() {
     LetRezervacijaComponent
   ],
   imports: [ 
-    MbscModule, 
+    MbscModule,  
     BrowserModule,
     AppRoutingModule,
     JwtModule.forRoot({
