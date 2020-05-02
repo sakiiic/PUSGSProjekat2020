@@ -1,0 +1,27 @@
+/* range inputs */
+
+.md-flight-booking .md-time-range {
+    overflow: hidden;
+    width: 99%;
+}
+
+.mbsc-ios .md-time-range {
+    background: #fff;
+}
+
+.md-time-range .mbsc-input {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.mbsc-ios .md-time-range .mbsc-input {
+    display: block;
+}
+
+.mbsc-ios .md-time-range .mbsc-input .mbsc-label {
+    font-size: 14px;
+    padding-left: 1.14285em;
+    padding-top: 0.75em;
+    line-height: 22px;
+}
