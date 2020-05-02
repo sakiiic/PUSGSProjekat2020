@@ -11,7 +11,7 @@ import { DetaljiVozilaComponent } from './components/rent-acar/detalji-vozila/de
 import { DetaljiLetaComponent } from './components/aviokompanija/detalji-leta/detalji-leta.component';
 
 
-const routes: Routes = [
+export const routes: Routes = [
   //children: [ { path: 'vozila', component: VozilaComponent } ] 
   { path: '', component: HomePageComponent },
   { path: 'aviokompanije', component: AviokompanijaComponent },
