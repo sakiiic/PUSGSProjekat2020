@@ -4,13 +4,14 @@ import { mobiscroll, MbscRangeOptions, MbscSelectOptions } from '@mobiscroll/ang
 mobiscroll.settings = {
   theme: 'windows',
   themeVariant: 'dark',
-  lang: 'sr'
+  lang: 'en'
 };
 
 const now = new Date();
 const oneWay = false;
 let departureDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 3);
 let returnDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7);
+const week = [now, new Date(now.getFullYear(), now.getMonth(), now.getDate() + 6, 23, 59)];
 
 @Component({
   selector: 'app-let-rezervacija',
@@ -20,7 +21,7 @@ let returnDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7);
 
 export class LetRezervacijaComponent implements OnInit {
 
-  origin = 'LTN';
+    origin = 'LTN';
     segmented = 'round';
     segmented2 = 'economy';
 
@@ -51,37 +52,23 @@ export class LetRezervacijaComponent implements OnInit {
         placeholder: 'Please select'
     };
 
-    range = [departureDate, returnDate];
+    range: Array < Date > ;
+    date: Array < Date > ;
+    nonForm: Array < Date > ;
+    external = week;
 
-    rangeSettings: MbscRangeOptions = {
-        display: 'bottom',
-        startInput: '.md-leaving-date',
-        endInput: '.md-return-date',
-        min: now,
-        showSelector: false,
-        onSetDate: (event, inst) => {
-            if (oneWay && event.control === 'calendar' && event.active === 'start') {
-                inst._isVisible = false;
-                inst.setActiveDate('start');
-                inst._isVisible = true;
-            }
-            if (inst._markup) {
-                inst._isValid = true;
-                inst._markup.find('.mbsc-fr-btn-s .mbsc-fr-btn').removeClass('mbsc-fr-btn-d' + (oneWay ? ' mbsc-disabled' : ''));
-            }
-        },
-        onBeforeClose: () => {
-            if (oneWay) {
-                return true;
-            }
-        },
-        onSet: (event, inst) => {
-            const values = inst.getVal();
-            departureDate = values[0];
-            if (!oneWay) {
-                returnDate = values[1];
-            }
-        }
+    dateSettings: MbscRangeOptions = {
+        controls: ['date']
+    };
+
+    nonFormSettings: MbscRangeOptions = {
+        showSelector: false
+    };
+
+    externalSettings: MbscRangeOptions = {
+        showOnTap: false,
+        showOnFocus: false,
+        showSelector: false
     };
 
   constructor() { }

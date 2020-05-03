@@ -6,9 +6,9 @@
     <mbsc-form-group>
         <mbsc-select [(ngModel)]="origin" [options]="selectSettings">Origin</mbsc-select>
         <mbsc-select [(ngModel)]="destination" [options]="selectSettings" placeholder="Please select a city">Destination</mbsc-select>
-        <mbsc-range [(ngModel)]="range" [options]="rangeSettings">
-            <mbsc-range-start>Leaving</mbsc-range-start>
-            <mbsc-range-end [disabled]="segmented == 'oneway'">Returning</mbsc-range-end>
+        <mbsc-range [(ngModel)]="range">
+            <mbsc-range-start placeholder="Please Select...">From</mbsc-range-start>
+            <mbsc-range-end placeholder="Please Select...">Until</mbsc-range-end>
         </mbsc-range>
     </mbsc-form-group>
     <mbsc-form-group>
