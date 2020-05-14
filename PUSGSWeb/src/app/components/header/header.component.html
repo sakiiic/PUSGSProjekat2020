@@ -1,9 +1,117 @@
-<div class="text-center">
-    <mat-toolbar color="primary">
-        <mat-toolbar-row>
-            <span><img src="../../../assets/images/logo1.png" routerLink="/" style="width:50px;"></span>
-            <a mat-button routerLink="/aviokompanije" routerLinkActive="active">Aviokompanije</a>
-            <a mat-button routerLink="/rentacar">Rent a car</a>
-        </mat-toolbar-row>
-    </mat-toolbar>
-</div>
+<nav [ngClass]="{'navbar navbar-expand-md navbar-light p-0': isAdmin() || isRentacarAdmin() || isAviocompanyAdmin()}">
+
+    <div class="">
+        <div [ngClass]="{'container-fluid':isAdmin() || isRentacarAdmin() || isAviocompanyAdmin()}">
+            <div [ngClass]="{'row': isAdmin() || isRentacarAdmin() || isAviocompanyAdmin()}">
+                <!-- SIDEBAR -->
+                <div *ngIf="isAdmin() || isRentacarAdmin() || isAviocompanyAdmin()"
+                    class="col-xl-2 col-lg-3 col-md-4 sidebar fixed-top">
+                    <div class="row bottom-border pb-3 pt-3">
+                        <div class="col-3" *ngIf="isAdmin()">
+                            <img src="../../../assets/images/3018548-512.png" alt="Admin image" width="70"
+                                height="60" />
+                        </div>
+                        <div class="col-3" *ngIf="isRentacarAdmin()">
+                            <img src="../../../assets/images/3018587-512.png" alt="Admin image" width="70"
+                                height="60" />
+                        </div>
+                        <div class="col-3" *ngIf="isAviocompanyAdmin()">
+                            <img src="../../../assets/images/3018587-513.png" alt="Admin image" width="70"
+                                height="60" />
+                        </div>
+                        <div class="col-9 text-center justify-content-center" style="font-size: 16px" *ngIf="isAdmin()">
+                            <p class="text-white" style="float: right"><strong>Administrator</strong></p>
+                        </div>
+                        <div class="col-9 text-center" style="font-size: 16px" *ngIf="isRentacarAdmin()">
+                            <p class="text-white" style="float: right"><strong>Rent a car admin</strong></p>
+                        </div>
+                        <div class="col-9 text-center" style="font-size: 16px" *ngIf="isAviocompanyAdmin()">
+                            <p class="text-white" style="float: right"><strong>Aviocompany admin</strong></p>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav flex-column mt-4" style="font-size: 14px;">
+                        <li class="nav-item" *ngIf="isRentacarAdmin()">
+                            <a [routerLink]="['/rentacar']" routerLinkActive="router-link-active"
+                                class="nav-link text-white p-0 pt-3 pb-3 pl-1 mb-2 sidebar-link">
+                                <i class="fa fa-user text-light fa-lg mr-3"></i>
+                                Neki link za rentacar admina</a>
+                        </li>
+                        <li class="nav-item" *ngIf="isRentacarAdmin()">
+                            <a href="../../../assets/103337-512.png" [routerLink]="['/rentacar']"
+                                routerLinkActive="router-link-active"
+                                class="nav-link text-white p-0 pt-3 pb-3 pl-1 mb-2 sidebar-link">
+                                <i class="fa fa-check-square text-light fa-lg mr-3"></i>
+                                Rentacar Verification</a>
+                        </li>
+                        <li class="nav-item" *ngIf="isAviocompanyAdmin()">
+                            <a [routerLink]="['/aviokompanije']" routerLinkActive="router-link-active"
+                                class="nav-link text-white p-0 pt-3 pb-3 pl-1 mb-2 sidebar-link">
+                                <i class="fa fa-user text-light fa-lg mr-3"></i>
+                                Neki link za aviocomp admina</a>
+                        </li>
+                        <li class="nav-item" *ngIf="isAviocompanyAdmin()">
+                            <a [routerLink]="['/aviokompanije']" routerLinkActive="router-link-active"
+                                class="nav-link text-white p-0 pt-3 pb-3 pl-1 mb-2 sidebar-link">
+                                <i class="fa fa-check-square text-light fa-lg mr-3"></i>
+                                Aviocomp verification</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END OF SIDEBAR -->
+
+                <div [ngClass]="{'row':isAdmin() || isRentacarAdmin() || isAviocompanyAdmin()}">
+                    <div
+                        [ngClass]="{'col-xl-10 col-lg-9 col-md-8 ml-auto p-0':isAdmin()|| isRentacarAdmin() || isAviocompanyAdmin()}">
+
+
+                        <div class="row jumbotron-fluid m-0 moiClassOrangeDiv">
+                            <!--jumbotron-->
+                            <img src="../../../assets/images/aa.jpg" *ngIf="!loggedIn()"
+                                class="img-fluid moiClassHomeImg" alt="Responsive image">
+                            <div class="col-md-12 text-center p-0" [ngStyle]="{'margin-top': !loggedIn() ? 5 : (loggedIn() ? 0 : null), 
+                              'margin-bottom': !loggedIn() ? 5 : (loggedIn() ? 0 : null) }"
+                                [ngClass]="{'moiClassCapture': !loggedIn(), 'moiClassCaptureLogin': loggedIn()}">
+                                <h1 style="color: white">Aplikacija za rezervaciju letova</h1>
+                                <h4 style="color: white">i rent a car automobila</h4>
+                                <div *ngIf="!loggedIn()" class="">
+                                    <!--hidden-->
+                                    <button (click)="openModalLogin()"
+                                        class="btn btn-default moiClassButton">&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                    <button (click)="openModalRegister()"
+                                        class="btn btn-default moiClassButton">Registration</button>
+                                </div>
+                                <div *ngIf="loggedIn()" class="">
+                                    <button (click)="logout()"
+                                        class="btn btn-default moiClassButton moiClassButtonLogout">Logout</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row moiClassWhiteDiv m-0 justify-content-center"
+                            *ngIf="!isAdmin() && !isRentacarAdmin() && !isAviocompanyAdmin() && !isPassenger()">
+                            <div [routerLink]="['/aviokompanije']" routerLinkActive="router-link-active"
+                                class="text-center moiClassIconMenu">
+                                <img class="moiClassButtonMenu" src="../../../assets/images/images.png" alt="TimeTable">
+                                <p style="color: orange">Aviokompanije</p>
+                            </div>
+                            <div [routerLink]="['/rentacar']" routerLinkActive="router-link-active"
+                                class="text-center moiClassIconMenu">
+                                <img class="moiClassButtonMenu" src="../../../assets/images/download.png" alt="Map">
+                                <p style="color: orange">Rent a car</p>
+                            </div>
+                        </div>
+                        <div class="row moiClassWhiteDiv m-0 justify-content-center"
+                            *ngIf="!isAdmin() && !isRentacarAdmin() && !isAviocompanyAdmin() && isPassenger()">
+                            <h4>Passenger page</h4>
+                        </div>
+                        <div class="mt-3">
+                            <button type="button" class="btn btn-dark btn-lg btn-block" routerLink="/rezervisiLet">
+                                <mat-icon>airplanemode_active</mat-icon> Rezerviši let</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- END OF NAVBAR -->

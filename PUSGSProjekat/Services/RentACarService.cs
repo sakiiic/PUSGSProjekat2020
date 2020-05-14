@@ -55,10 +55,14 @@ namespace PUSGSProjekat.Services
                         Id = cars.Id,
                         Marka = cars.Marka,
                         Model = cars.Model,
-                        Naziv = cars.Naziv,
                         GodinaProizvodnje = cars.GodinaProizvodnje,
                         BrojSjedista = cars.BrojSjedista,
-                        TipVozila = cars.TipVozila
+                        TipVozila = cars.TipVozila,
+                        Cijena = cars.Cijena,
+                        Image = cars.Image,
+                        Slobodno = cars.Slobodno,
+                        TipGoriva = cars.TipGoriva,
+                        Transmisija = cars.Transmisija
                     }).ToList();
 
                 rentACar.Id = rentACars.Id;

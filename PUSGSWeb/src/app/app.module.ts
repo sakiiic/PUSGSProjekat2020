@@ -26,8 +26,18 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertifyService } from './services/alertify/alertify.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { JwtModule } from '@auth0/angular-jwt';
+import { RouterModule } from '@angular/router';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { routes } from './app-routing.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { LetRezervacijaComponent } from './components/let-rezervacija/let-rezervacija.component';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import { LetoviComponent } from './components/letovi/letovi.component';
+
+export function getToken() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -42,16 +52,26 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
     DetaljiAviokompanijaComponent,
     DetaljiLetaComponent,
     DetaljiVozilaComponent,
-    LetRezervacijaComponent
+    LetRezervacijaComponent,
+    LetoviComponent
   ],
   imports: [ 
-    MbscModule, 
+    MbscModule,  
     BrowserModule,
     AppRoutingModule,
+    JwtModule.forRoot({
+      config: {
+         tokenGetter: getToken,
+         whitelistedDomains: ['localhost:5000'],
+         blacklistedRoutes: ['localhost:5000/api/authorization']
+      }
+    }),
     MatTableModule,
     HttpClientModule,
     HttpClientJsonpModule,
     NoopAnimationsModule,
+    ModalModule.forRoot(),
+    RouterModule.forRoot(routes),
     MatCardModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -59,7 +79,8 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
     MatIconModule,
     BsDatepickerModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [AuthService, AlertifyService, BsModalRef, BsModalService],
   bootstrap: [AppComponent]

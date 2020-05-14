@@ -232,17 +232,25 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<int>("BrojSjedista");
 
+                    b.Property<float>("Cijena");
+
                     b.Property<int>("GodinaProizvodnje");
+
+                    b.Property<string>("Image");
 
                     b.Property<string>("Marka");
 
                     b.Property<string>("Model");
 
-                    b.Property<string>("Naziv");
-
                     b.Property<int>("RentACarId");
 
+                    b.Property<bool>("Slobodno");
+
+                    b.Property<string>("TipGoriva");
+
                     b.Property<string>("TipVozila");
+
+                    b.Property<string>("Transmisija");
 
                     b.HasKey("Id");
 
