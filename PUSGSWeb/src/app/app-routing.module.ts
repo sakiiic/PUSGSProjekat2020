@@ -10,12 +10,14 @@ import { DetaljiAviokompanijaComponent } from './components/aviokompanija/detalj
 import { DetaljiVozilaComponent } from './components/rent-acar/detalji-vozila/detalji-vozila.component';
 import { DetaljiLetaComponent } from './components/aviokompanija/detalji-leta/detalji-leta.component';
 import { LetRezervacijaComponent } from './components/let-rezervacija/let-rezervacija.component';
+import { LetoviComponent } from './components/letovi/letovi.component';
 
 export const routes: Routes = [
   //children: [ { path: 'vozila', component: VozilaComponent } ] 
   { path: '', component: HomePageComponent },
   { path: 'aviokompanije', component: AviokompanijaComponent },
   { path: 'rezervisiLet', component: LetRezervacijaComponent },
+  { path: 'letovi', component: LetoviComponent },
   { path: 'rentacar', component: RentACarComponent},
   { path: 'rentacar/rentacarinfo/:id/vozila', component: DetaljiVozilaComponent},
   { path: 'rentacar/rentacarinfo/:id', component: DetaljiRentacarComponent},

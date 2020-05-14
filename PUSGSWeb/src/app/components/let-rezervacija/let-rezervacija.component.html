@@ -1,33 +1,104 @@
-<mbsc-form class="md-flight-booking">
-    <mbsc-segmented-group [(ngModel)]="segmented">
-        <mbsc-segmented value="round" class="md-flight-type">Round trip</mbsc-segmented>
-        <mbsc-segmented value="oneway" class="md-flight-type">One way</mbsc-segmented>
-    </mbsc-segmented-group>
-    <mbsc-form-group>
-        <mbsc-select [(ngModel)]="origin" [options]="selectSettings">Origin</mbsc-select>
-        <mbsc-select [(ngModel)]="destination" [options]="selectSettings" placeholder="Please select a city">Destination</mbsc-select>
-        <mbsc-range [(ngModel)]="range" [options]="rangeSettings">
-            <mbsc-range-start>Leaving</mbsc-range-start>
-            <mbsc-range-end [disabled]="segmented == 'oneway'">Returning</mbsc-range-end>
-        </mbsc-range>
-    </mbsc-form-group>
-    <mbsc-form-group>
-        <mbsc-stepper [(ngModel)]="adults" min="1" max="15" val="left">Adults
-            <span class="mbsc-desc">From 14 years</span>
-        </mbsc-stepper>
-        <mbsc-stepper [(ngModel)]="children" max="15" val="left">Children
-            <span class="mbsc-desc">2-14 years</span>
-        </mbsc-stepper>
-        <mbsc-stepper [(ngModel)]="infant" max="10" val="left">Infant
-            <span class="mbsc-desc">0-2 years</span>
-        </mbsc-stepper>
-        <mbsc-segmented-group [(ngModel)]="segmented2">
-            <mbsc-segmented value="economy" class="md-flight-type">Economy</mbsc-segmented>
-            <mbsc-segmented value="comfort" class="md-flight-type">Comfort</mbsc-segmented>
-            <mbsc-segmented value="business" class="md-flight-type">Business</mbsc-segmented>
-        </mbsc-segmented-group>
-    </mbsc-form-group>
-    <div class="mbsc-btn-group-block">
-        <mbsc-button>Find Flights</mbsc-button>
-    </div>
-</mbsc-form>
+<div class="container moiClassRegisterBg">
+    <form (ngSubmit)="search()" [formGroup]="searchForm">
+      <div class="row">
+      <div class="col">
+
+          <div class="form-group">
+            <input  class="form-control"
+              placeholder="Polazak" formControlName="polazak">
+            <div class="invalid-feedback" *ngIf="registerForm.get('polazak').touched && registerForm.get('polazak').hasError('required')">Field is required</div> 
+          </div>
+
+          <div class="form-group">
+            <input  class="form-control"
+              placeholder="Destinacija" formControlName="destinacija">
+            <div class="invalid-feedback" *ngIf="registerForm.get('destinacija').touched && registerForm.get('destinacija').hasError('required')">Field is required</div> 
+          </div>
+            
+          <div class="form-group">
+              <input [ngClass]="{'is-invalid': registerForm.get('datum').errors && registerForm.get('datum').touched}" class="form-control"
+                placeholder="Datum od" formControlName="datum" type="text" bsDatepicker [bsConfig]="bsConfig">
+              <div class="invalid-feedback" *ngIf="registerForm.get('datum').touched && registerForm.get('datum').hasError('required')">Field is required</div>
+          </div>
+
+          <div class="form-group">
+            <input [ngClass]="{'is-invalid': registerForm.get('datum').errors && registerForm.get('datum').touched}" class="form-control"
+              placeholder="Datum do" formControlName="datum" type="text" bsDatepicker [bsConfig]="bsConfig">
+            <div class="invalid-feedback" *ngIf="registerForm.get('datum').touched && registerForm.get('datum').hasError('required')">Field is required</div>
+        </div>
+      </div>
+      </div>
+
+      <div class="row">
+      <div class="col">
+          <div class="form-group">
+              <input  class="form-control"
+                placeholder="Broj osoba" formControlName="number" [ngClass]="{'is-invalid': registerForm.get('number').errors && registerForm.get('number').touched}"> 
+              <div class="invalid-feedback" *ngIf="registerForm.get('number').touched && registerForm.get('number').hasError('required')">House Number is required</div> 
+            </div>
+      </div>
+      </div>
+      <div class="row">
+          <!-- <div class="form-group" style="color: white"> -->
+            <div class="col">
+                <div class="form-group" style="color: black">
+                <label class="radio-inline">
+                    <input class="mr-3" type="radio" value="round" formControlName="flightType">Round trip  
+                  </label>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="form-group" style="color: black">
+                <label class="radio-inline ml-3">
+                    <input class="mr-3" type="radio" value="one" formControlName="flightType">One way
+                  </label>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="form-group" style="color: black">
+                <label class="radio-inline ml-3">
+                    <input class="mr-3" type="radio" value="multi" formControlName="flightType">Multi city
+                  </label>
+                  </div>
+            </div>
+              
+              
+            <!-- </div> -->
+      </div>
+      <div class="row">
+      
+          
+          <div class="col">
+            <div class="form-group" style="color: black">
+            <label class="radio-inline">
+                <input class="mr-3" type="radio" value="round" formControlName="classType">Economy  
+              </label>
+              </div>
+        </div>
+        <div class="col">
+            <div class="form-group" style="color: black">
+            <label class="radio-inline ml-3">
+                <input class="mr-3" type="radio" value="one" formControlName="classType">Business
+              </label>
+              </div>
+        </div>
+        <div class="col">
+            <div class="form-group" style="color: black">
+            <label class="radio-inline ml-3">
+                <input class="mr-3" type="radio" value="multi" formControlName="classType">Comfort
+              </label>
+              </div>
+        </div>
+            
+      </div>
+    <br>
+      <div class="row">
+        <div class="col">   
+            <button type="button" class="btn btn-dark btn-lg btn-block" routerLink="/letovi">Find Flight</button>
+        </div>
+        <div class="col">
+            <button class="btn btn-dark btn-lg btn-block" (click)="modalRef.hide()">Cancel</button>
+        </div>        
+      </div>
+    </form>
+    
