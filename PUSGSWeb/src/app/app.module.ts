@@ -38,6 +38,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { LetoviComponent } from './components/letovi/letovi.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -58,6 +59,7 @@ export function getToken() {
     DetaljiLetaComponent,
     DetaljiVozilaComponent,
     LetRezervacijaComponent,
+    LetoviComponent
   ],
   imports: [ 
     MbscModule,  
