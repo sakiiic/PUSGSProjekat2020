@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from './services/authentication/authentication.service';
+import { AuthenticatService } from './services/authentication/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +7,7 @@ import { AuthService } from './services/authentication/authentication.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthenticatService) { }
   
   title = 'PUSGSWeb';
 

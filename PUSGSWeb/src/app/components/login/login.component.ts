@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/authentication/authentication.service';
+import { AuthenticatService } from 'src/app/services/authentication/authentication.service';
 import { AlertifyService } from 'src/app/services/alertify/alertify.service';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
@@ -12,7 +12,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 export class LoginComponent implements OnInit {
   model: any = {};
 
-  constructor(private authService: AuthService, private alertify: AlertifyService,
+  constructor(private authService: AuthenticatService, private alertify: AlertifyService,
               private router: Router, public modalRef: BsModalRef) { }
 
   ngOnInit() {

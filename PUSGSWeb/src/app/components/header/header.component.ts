@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
-import { AuthService } from 'src/app/services/authentication/authentication.service';
+import { AuthenticatService } from 'src/app/services/authentication/authentication.service';
 import { AlertifyService } from 'src/app/services/alertify/alertify.service';
 import { Router } from '@angular/router';
+import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 
 @Component({
   selector: 'app-header',
@@ -14,8 +15,10 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   modalRef: BsModalRef;
+  userData: any[] = [];
+  resultMessage: string;
 
-  constructor(private modalService: BsModalService, private authService: AuthService, private alertify: AlertifyService,
+  constructor(private modalService: BsModalService, private authenticatService: AuthenticatService, private alertify: AlertifyService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -30,35 +33,34 @@ export class HeaderComponent implements OnInit {
   }
 
   loggedIn() {
-    return this.authService.loggedIn();
+    return this.authenticatService.loggedIn();
     /* return true; */
   }
 
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    this.authService.decodedToken = null;
-    this.authService.currentUser = null;
-    this.authService.userRoles = null;
+    this.authenticatService.decodedToken = null;
+    this.authenticatService.currentUser = null;
+    this.authenticatService.userRoles = null;
     this.alertify.message('logged out');
     this.router.navigate(['/']);
   }
 
 
   isPassenger() {
-    return this.authService.isPassenger();
+    return this.authenticatService.isPassenger();
   }
 
   isAdmin() {
-    return this.authService.isAdmin();
+    return this.authenticatService.isAdmin();
   }
 
   isAviocompanyAdmin() {
-    return this.authService.isAviocompanyAdmin();
+    return this.authenticatService.isAviocompanyAdmin();
   }
 
   isRentacarAdmin() {
-    return this.authService.isRentacarAdmin();
+    return this.authenticatService.isRentacarAdmin();
   }
-
 }

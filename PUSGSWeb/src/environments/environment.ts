@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  api: 'https://localhost:44302/'
+  api: 'https://localhost:44302/',
+  //806876822742-rj9lm3eqfclogq9ps2e2f6m7ndj1lu2e.apps.googleusercontent.com - client id
+  //TW0dBmmchhAUu_xLQvaubf0z - client secret
 };
 
 /*

@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { UserRegister } from 'src/app/models/userRegister';
-import { AuthService } from 'src/app/services/authentication/authentication.service';
+import { AuthenticatService } from 'src/app/services/authentication/authentication.service';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { BsModalRef  } from 'ngx-bootstrap/modal';
 import { AlertifyService } from 'src/app/services/alertify/alertify.service';
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   bsConfig: Partial<BsDatepickerConfig>;
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private alertify: AlertifyService,
+  constructor(private authService: AuthenticatService, private fb: FormBuilder, private alertify: AlertifyService,
               public modalRef: BsModalRef) { }
 
   ngOnInit() {
