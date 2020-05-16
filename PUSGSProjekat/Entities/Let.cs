@@ -11,11 +11,12 @@ namespace PUSGSProjekat.DTO
         public int Id { get; set; }
         public DateTime DatumVrijemePolaska { get; set; }
         public DateTime DatumVrijemeDolaska { get; set; }
-        public DateTime VrijemePutovanja { get; set; }
+        public string VrijemePutovanja { get; set; }
         public string DuzinaPutovanja { get; set; }
         public int BrojPresjedanja { get; set; }
         public string LokacijePresjedanja { get; set; }
         public float CijenaKarte { get; set; }
+        public string nazivAviokompanije { get; set; }
 
         [ForeignKey("Aviokompanija")]
         public int AviokompanijaId { get; set; }
