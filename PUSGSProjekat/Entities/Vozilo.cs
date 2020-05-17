@@ -19,10 +19,7 @@ namespace PUSGSProjekat.DTO
         public string Transmisija { get; set; }
         public float Cijena { get; set; }
         public string Image { get; set; }
-
         [ForeignKey("RentACar")]
         public int RentACarId { get; set; }
-        public virtual RentACar RentACar { get; set; }
-
     }
 }

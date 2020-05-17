@@ -38,7 +38,6 @@ C:\Users\User\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\bin\Debug\netcore
 C:\Users\User\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\bin\Debug\netcoreapp2.1\PUSGSProjekat.runtimeconfig.dev.json
 C:\Users\User\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\bin\Debug\netcoreapp2.1\PUSGSProjekat.dll
 C:\Users\User\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\bin\Debug\netcoreapp2.1\PUSGSProjekat.pdb
-C:\Users\User\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\obj\Debug\netcoreapp2.1\PUSGSProjekat.csprojAssemblyReference.cache
 C:\Users\User\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\obj\Debug\netcoreapp2.1\PUSGSProjekat.RazorAssemblyInfo.cache
 C:\Users\User\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\obj\Debug\netcoreapp2.1\PUSGSProjekat.RazorAssemblyInfo.cs
 C:\Users\User\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\obj\Debug\netcoreapp2.1\PUSGSProjekat.AssemblyInfoInputs.cache
@@ -46,3 +45,4 @@ C:\Users\User\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\obj\Debug\netcore
 C:\Users\User\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\obj\Debug\netcoreapp2.1\PUSGSProjekat.RazorTargetAssemblyInfo.cache
 C:\Users\User\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\obj\Debug\netcoreapp2.1\PUSGSProjekat.dll
 C:\Users\User\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\obj\Debug\netcoreapp2.1\PUSGSProjekat.pdb
+C:\Users\User\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\obj\Debug\netcoreapp2.1\PUSGSProjekat.csprojAssemblyReference.cache

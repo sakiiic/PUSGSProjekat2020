@@ -196,6 +196,8 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("VrijemePutovanja");
 
+                    b.Property<string>("nazivAviokompanije");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AviokompanijaId");
@@ -363,7 +365,7 @@ namespace PUSGSProjekat.Migrations
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Vozilo", b =>
                 {
-                    b.HasOne("PUSGSProjekat.DTO.RentACar", "RentACar")
+                    b.HasOne("PUSGSProjekat.DTO.RentACar")
                         .WithMany("Vozila")
                         .HasForeignKey("RentACarId")
                         .OnDelete(DeleteBehavior.Cascade);

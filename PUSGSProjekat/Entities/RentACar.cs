@@ -12,7 +12,7 @@ namespace PUSGSProjekat.DTO
         public string Adresa { get; set; }
         public string Opis { get; set; }
         public float Ocjena { get; set; }
-        public List<Vozilo> Vozila { get; set; }
+        public virtual ICollection<Vozilo> Vozila { get; set; }
         public string Lokacije { get; set; }
     }
 }
