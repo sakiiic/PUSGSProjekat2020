@@ -1,3 +1,45 @@
-<div>
-  <h2>Letovi</h2>
+<div class="text-center mb-3">
+  <div style="text-align:center">     
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+   
+         <ng-container matColumnDef="datumVrijemePolaska">
+            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Polazak </th>
+            <td mat-cell *matCellDef="let element"> {{element.datumVrijemePolaska}} </td>
+         </ng-container>
+   
+         <ng-container matColumnDef="datumVrijemeDolaska">
+            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Dolazak </th>
+            <td mat-cell *matCellDef="let element"> {{element.datumVrijemeDolaska}} </td>
+         </ng-container>
+   
+         <ng-container matColumnDef="vrijemePutovanja">
+            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Vrijeme putovanja </th>
+            <td mat-cell *matCellDef="let element"> {{element.vrijemePutovanja}} </td>
+         </ng-container>
+   
+         <ng-container matColumnDef="duzinaPutovanja">
+            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Duzina </th>
+            <td mat-cell *matCellDef="let element"> {{element.duzinaPutovanja}} </td>
+         </ng-container>
+   
+         <ng-container matColumnDef="brojPresjedanja">
+            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Broj presijedanja </th>
+            <td mat-cell *matCellDef="let element"> {{element.brojPresjedanja}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="lokacijePresjedanja">
+          <th mat-header-cell *matHeaderCellDef style="text-align:center"> Lokacije presijedanja </th>
+          <td mat-cell *matCellDef="let element"> {{element.lokacijePresjedanja}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cijenaKarte">
+          <th mat-header-cell *matHeaderCellDef style="text-align:center"> Cijena </th>
+          <td mat-cell *matCellDef="let element"> {{element.cijenaKarte}} </td>
+        </ng-container>
+   
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"> </tr>
+   
+      </table>
+   </div>
 </div>

@@ -88,6 +88,7 @@ namespace PUSGSProjekat
 
             services.AddScoped<IRentACarService, RentACarService>();
             services.AddScoped<IAviokompanijaService, AviokompanijaService>();
+            services.AddScoped<ILetService, LetService>();
 
             services.AddSwaggerGen(c =>
             {
