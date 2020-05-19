@@ -194,9 +194,9 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("LokacijePresjedanja");
 
-                    b.Property<string>("VrijemePutovanja");
+                    b.Property<string>("NazivAviokompanije");
 
-                    b.Property<string>("nazivAviokompanije");
+                    b.Property<string>("VrijemePutovanja");
 
                     b.HasKey("Id");
 

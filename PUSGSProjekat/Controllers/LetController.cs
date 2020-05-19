@@ -25,5 +25,30 @@ namespace PUSGSProjekat.Controllers
         {
             return _letService.getLetovi();
         }
+
+        [HttpPost("DodajLet")]
+        public async Task<IActionResult> DodajLet([FromBody] Let let)
+        {
+            var x = _letService.DodajLet(let);
+
+            return Ok(x);
+        }
+
+        [HttpDelete("ObrisiLet/{id}")]
+        public async Task<IActionResult> ObrisiLet(int id)
+        {
+            var x = _letService.ObrisiLet(id);
+
+            return Ok(x);
+        }
+
+        [HttpPatch("IzmijeniLet")]
+        public async Task<IActionResult> IzmijeniLet([FromBody] Let let)
+        {
+            var x = _letService.IzmijeniLet(let);
+
+            return Ok(x);
+        }
+
     }
 }

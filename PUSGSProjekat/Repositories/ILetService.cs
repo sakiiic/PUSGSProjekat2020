@@ -9,5 +9,9 @@ namespace PUSGSProjekat.Repositories
     public interface ILetService
     {
         List<Let> getLetovi();
+        bool ObrisiLet(int id);
+        bool IzmijeniLet(Let l);
+        bool DodajLet(Let l);
+
     }
 }
