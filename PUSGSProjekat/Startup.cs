@@ -116,7 +116,7 @@ namespace PUSGSProjekat
                 app.UseHsts();
             }
 
-            //seeder.SeedUsers();
+            seeder.SeedUsers();
             app.UseCors("CorsPolicy");
             app.UseAuthentication();
 
