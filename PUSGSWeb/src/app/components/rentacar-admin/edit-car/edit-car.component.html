@@ -1,0 +1,67 @@
+<div class="text-center mb-5">
+    <h3>Izmjena vozila</h3>
+</div>
+<div>
+    <div class="div2 mb-5 form-group">
+
+        <form (ngSubmit)="dodaj()" [formGroup]="dodajVoziloForm">
+
+            <p class="ml-5 mt-5 mb-5 text-center">
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Marka</mat-label>
+                    <input matInput placeholder="Marka" class="form-control" formControlName="marka">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Model</mat-label>
+                    <input matInput placeholder="Model" class="form-control" formControlName="model">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Godina proizvodnje</mat-label>
+                    <input matInput placeholder="Godina proizvodnje" class="form-control" formControlName="godinaProizvodnje">
+                </mat-form-field>
+            </p>
+
+            <p class="ml-5 mt-5 mb-5 text-center">
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Tip vozila</mat-label>
+                    <input matInput placeholder="Tip vozila" class="form-control" formControlName="tipVozila">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Broj sjedista</mat-label>
+                    <input matInput placeholder="Broj sjedista" class="form-control" formControlName="brojSjedista">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Cijena</mat-label>
+                    <input matInput placeholder="Cijena" class="form-control" formControlName="cijena">
+                </mat-form-field>
+            </p>
+
+            <p class="ml-5 mt-5 mb-5 text-center">
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Slika</mat-label>
+                    <input matInput placeholder="Slika" class="form-control" formControlName="image">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Tip goriva</mat-label>
+                    <input matInput placeholder="Tip goriva" class="form-control" formControlName="tipGoriva">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Transmisija</mat-label>
+                    <input matInput placeholder="Transmisija" class="form-control" formControlName="transmisija">
+                </mat-form-field>
+            </p>
+
+            <div class="text-center mt-5">
+                <button type="submit" class="btn btn-primary mr-5">Izmijeni vozilo</button>
+                <button type="button" class="btn btn-secondary" (click)="goBack()">Odustani</button>
+            </div>
+        </form>
+
+    </div>
+</div>

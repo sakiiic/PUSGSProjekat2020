@@ -39,6 +39,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { LetoviComponent } from './components/letovi/letovi.component';
+import { AddNewCarComponent } from './components/rentacar-admin/add-new-car/add-new-car.component';
+import { EditCarComponent } from './components/rentacar-admin/edit-car/edit-car.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -59,7 +61,9 @@ export function getToken() {
     DetaljiLetaComponent,
     DetaljiVozilaComponent,
     LetRezervacijaComponent,
-    LetoviComponent
+    LetoviComponent,
+    AddNewCarComponent,
+    EditCarComponent
   ],
   imports: [ 
     MbscModule,  
