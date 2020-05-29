@@ -41,6 +41,8 @@ import { MatInputModule } from '@angular/material/input';
 import { LetoviComponent } from './components/letovi/letovi.component';
 import { AddNewCarComponent } from './components/rentacar-admin/add-new-car/add-new-car.component';
 import { EditCarComponent } from './components/rentacar-admin/edit-car/edit-car.component';
+import { AddNewFlightComponent } from './components/aviokompanija-admin/add-new-flight/add-new-flight.component';
+import { EditFlightComponent } from './components/aviokompanija-admin/edit-flight/edit-flight.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -63,7 +65,9 @@ export function getToken() {
     LetRezervacijaComponent,
     LetoviComponent,
     AddNewCarComponent,
-    EditCarComponent
+    EditCarComponent,
+    AddNewFlightComponent,
+    EditFlightComponent
   ],
   imports: [ 
     MbscModule,  

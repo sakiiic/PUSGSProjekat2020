@@ -1,0 +1,53 @@
+<div class="text-center mb-5">
+    <h3>Dodavanje novog leta</h3>
+</div>
+<div>
+    <div class="div2 mb-5 form-group">
+
+        <form (ngSubmit)="dodaj()" [formGroup]="dodajLetForm">
+
+            <p class="ml-5 mt-5 mb-5 text-center">
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Polazak</mat-label>
+                    <input matInput placeholder="Polazak" class="form-control" formControlName="datumVrijemePolaska">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Dolazak</mat-label>
+                    <input matInput placeholder="Dolazak" class="form-control" formControlName="datumVrijemeDolaska">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Trajanje</mat-label>
+                    <input matInput placeholder="Trajanje" class="form-control" formControlName="vrijemePutovanja">
+                </mat-form-field>
+            
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Duzina</mat-label>
+                    <input matInput placeholder="Duzina" class="form-control" formControlName="duzinaPutovanja">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Broj presijedanja</mat-label>
+                    <input matInput placeholder="Broj presijedanja" class="form-control" formControlName="brojPresjedanja">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Lokacije presjedanja</mat-label>
+                    <input matInput placeholder="Lokacije presijedanja" class="form-control" formControlName="lokacijePresjedanja">
+                </mat-form-field>
+            
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Cijena karte</mat-label>
+                    <input matInput placeholder="Cijena karte" class="form-control" formControlName="cijenaKarte">
+                </mat-form-field>          
+            </p>
+
+            <div class="text-center mt-5">
+                <button type="submit" class="btn btn-primary mr-5">Dodaj let</button>
+                <button type="button" class="btn btn-secondary" (click)="goBack()">Odustani</button>
+            </div>
+        </form>
+
+    </div>
+</div>

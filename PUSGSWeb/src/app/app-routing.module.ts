@@ -13,6 +13,8 @@ import { LetRezervacijaComponent } from './components/let-rezervacija/let-rezerv
 import { LetoviComponent } from './components/letovi/letovi.component';
 import { AddNewCarComponent } from './components/rentacar-admin/add-new-car/add-new-car.component';
 import { EditCarComponent } from './components/rentacar-admin/edit-car/edit-car.component';
+import { AddNewFlightComponent } from './components/aviokompanija-admin/add-new-flight/add-new-flight.component';
+import { EditFlightComponent } from './components/aviokompanija-admin/edit-flight/edit-flight.component';
 
 export const routes: Routes = [
   //children: [ { path: 'vozila', component: VozilaComponent } ] 
@@ -26,7 +28,9 @@ export const routes: Routes = [
   { path: 'aviokompanija/aviokompanijainfo/:id', component: DetaljiAviokompanijaComponent},
   { path: 'aviokompanija/aviokompanijainfo/:id/letovi', component: DetaljiLetaComponent},
   { path: 'addNewCar', component: AddNewCarComponent},
-  { path: 'editCar', component: EditCarComponent}
+  { path: 'editCar', component: EditCarComponent},
+  { path: 'addNewFlight', component: AddNewFlightComponent},
+  { path: 'editFlight', component: EditFlightComponent}
 ];
 
 @NgModule({
