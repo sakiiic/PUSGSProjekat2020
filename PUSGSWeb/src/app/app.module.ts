@@ -47,6 +47,8 @@ import { AddRentacarServiceComponent } from './components/rentacar-admin/add-ren
 import { DeleteCarModalComponent } from './components/rentacar-admin/delete-car-modal/delete-car-modal.component';
 import { DeleteServiceModalComponent } from './components/rentacar-admin/delete-service-modal/delete-service-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AddNewFlightComponent } from './components/aviokompanija-admin/add-new-flight/add-new-flight.component';
+import { EditFlightComponent } from './components/aviokompanija-admin/edit-flight/edit-flight.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -74,7 +76,9 @@ export function getToken() {
     CarDetailsComponent,
     AddRentacarServiceComponent,
     DeleteCarModalComponent,
-    DeleteServiceModalComponent
+    DeleteServiceModalComponent,
+    AddNewFlightComponent,
+    EditFlightComponent
   ],
   imports: [ 
     MbscModule,  

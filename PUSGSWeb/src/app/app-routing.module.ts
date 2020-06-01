@@ -16,6 +16,8 @@ import { GetRentacarServiceComponent } from './components/rentacar-admin/get-ren
 import { EditRentacarServiceComponent } from './components/rentacar-admin/edit-rentacar-service/edit-rentacar-service.component';
 import { CarDetailsComponent } from './components/rentacar-admin/car-details/car-details.component';
 import { AddRentacarServiceComponent } from './components/rentacar-admin/add-rentacar-service/add-rentacar-service.component';
+import { AddNewFlightComponent } from './components/aviokompanija-admin/add-new-flight/add-new-flight.component';
+import { EditFlightComponent } from './components/aviokompanija-admin/edit-flight/edit-flight.component';
 
 export const routes: Routes = [
   //children: [ { path: 'vozila', component: VozilaComponent } ] 
@@ -32,7 +34,9 @@ export const routes: Routes = [
   { path: 'rentacarServices', component: GetRentacarServiceComponent},
   { path: 'editRentacarService/:id', component: EditRentacarServiceComponent},
   { path: 'rentacarService/carDetails/:id', component: CarDetailsComponent},
-  { path: 'addRentacarService', component: AddRentacarServiceComponent}
+  { path: 'addRentacarService', component: AddRentacarServiceComponent },
+  { path: 'addNewFlight', component: AddNewFlightComponent },
+  { path: 'editFlight', component: EditFlightComponent }
 ];
 
 @NgModule({
