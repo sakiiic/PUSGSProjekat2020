@@ -29,10 +29,40 @@ namespace PUSGSProjekat.Controllers
             return _rentACarService.getAllRentACars();
         }
 
-        [HttpGet("GetRentACarInfo/{rentACarId}")]
-        public RentACar GetRentACarInfo(int rentACarId)
+        [HttpGet("GetRentACarInfo/{rentacarId}")]
+        public RentACar GetRentACarInfo(int rentacarId)
         {
-            return _rentACarService.getRentACarInfo(rentACarId);
+            return _rentACarService.getRentACarInfo(rentacarId);
+        }
+
+        [HttpPost("DodajRentacarServis")]
+        public async Task<IActionResult> DodajVozilo([FromBody] RentACar rent)
+        {
+            var x = _rentACarService.DodajRentacarServis(rent);
+
+            return Ok(x);
+        }
+
+        [HttpPatch("IzmijeniRentacarServis")]
+        public async Task<IActionResult> IzmijeniRentacarServis(int rentacarId, [FromBody] RentACar rent)
+        {
+            var x = _rentACarService.IzmijeniRentacarServis(rentacarId, rent);
+
+            return Ok(x);
+        }
+
+        [HttpDelete("ObrisiRentacarServis/{rentacarId}")]
+        public async Task<IActionResult> ObrisiRentacarServis(int rentacarId)
+        {
+            var x = _rentACarService.ObrisiRentacarServis(rentacarId);
+
+            return Ok(x);
+        }
+
+        [HttpGet("getRentaCarsForCurrentUser/{userId}")]
+        public List<RentACar> GetRentaCarsForCurrentUser(int userId)
+        {
+            return _rentACarService.GetRentaCarsForCurrentUser(userId);
         }
     } 
 }

@@ -8,7 +8,7 @@ namespace PUSGSProjekat.DTO
 {
     public class Vozilo
     {
-        public int Id { get; set; }
+        public int VoziloId { get; set; }
         public string Marka { get; set; }
         public string Model { get; set; }
         public int GodinaProizvodnje { get; set; }
@@ -19,6 +19,10 @@ namespace PUSGSProjekat.DTO
         public string Transmisija { get; set; }
         public float Cijena { get; set; }
         public string Image { get; set; }
+        public DateTime DatumOd { get; set; }
+        public DateTime DatumDo { get; set; }
+        public Korisnik Korisnik { get; set; }
+
         [ForeignKey("RentACar")]
         public int RentACarId { get; set; }
     }

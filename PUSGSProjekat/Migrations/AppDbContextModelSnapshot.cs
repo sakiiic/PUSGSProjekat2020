@@ -130,6 +130,8 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
+                    b.Property<bool?>("ImaServis");
+
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
@@ -207,11 +209,13 @@ namespace PUSGSProjekat.Migrations
 
             modelBuilder.Entity("PUSGSProjekat.DTO.RentACar", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RentacarId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Adresa");
+
+                    b.Property<int>("KorisnikId");
 
                     b.Property<string>("Lokacije");
 
@@ -221,14 +225,14 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("Opis");
 
-                    b.HasKey("Id");
+                    b.HasKey("RentacarId");
 
                     b.ToTable("RentACar");
                 });
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Vozilo", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("VoziloId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -236,9 +240,15 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<float>("Cijena");
 
+                    b.Property<DateTime>("DatumDo");
+
+                    b.Property<DateTime>("DatumOd");
+
                     b.Property<int>("GodinaProizvodnje");
 
                     b.Property<string>("Image");
+
+                    b.Property<int?>("KorisnikId");
 
                     b.Property<string>("Marka");
 
@@ -254,7 +264,9 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("Transmisija");
 
-                    b.HasKey("Id");
+                    b.HasKey("VoziloId");
+
+                    b.HasIndex("KorisnikId");
 
                     b.HasIndex("RentACarId");
 
@@ -276,6 +288,44 @@ namespace PUSGSProjekat.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Address");
+                });
+
+            modelBuilder.Entity("PUSGSProjekat.Entities.Cjenovnik", b =>
+                {
+                    b.Property<int>("CjenovnikId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DatumDo");
+
+                    b.Property<DateTime>("DatumOd");
+
+                    b.Property<int>("RentACarId");
+
+                    b.HasKey("CjenovnikId");
+
+                    b.ToTable("Cjenovnik");
+                });
+
+            modelBuilder.Entity("PUSGSProjekat.Entities.CjenovnikVozilo", b =>
+                {
+                    b.Property<int>("CjenovnikVoziloId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("Cijena");
+
+                    b.Property<int?>("CjenovnikId");
+
+                    b.Property<int?>("VoziloId");
+
+                    b.HasKey("CjenovnikVoziloId");
+
+                    b.HasIndex("CjenovnikId");
+
+                    b.HasIndex("VoziloId");
+
+                    b.ToTable("CjenovnikVozilo");
                 });
 
             modelBuilder.Entity("PUSGSProjekat.Entities.Role", b =>
@@ -357,7 +407,7 @@ namespace PUSGSProjekat.Migrations
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Let", b =>
                 {
-                    b.HasOne("PUSGSProjekat.DTO.Aviokompanija", "Aviokompanija")
+                    b.HasOne("PUSGSProjekat.DTO.Aviokompanija")
                         .WithMany("Letovi")
                         .HasForeignKey("AviokompanijaId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -365,10 +415,25 @@ namespace PUSGSProjekat.Migrations
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Vozilo", b =>
                 {
+                    b.HasOne("PUSGSProjekat.DTO.Korisnik", "Korisnik")
+                        .WithMany("Vozila")
+                        .HasForeignKey("KorisnikId");
+
                     b.HasOne("PUSGSProjekat.DTO.RentACar")
                         .WithMany("Vozila")
                         .HasForeignKey("RentACarId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PUSGSProjekat.Entities.CjenovnikVozilo", b =>
+                {
+                    b.HasOne("PUSGSProjekat.Entities.Cjenovnik", "Cjenovnik")
+                        .WithMany()
+                        .HasForeignKey("CjenovnikId");
+
+                    b.HasOne("PUSGSProjekat.DTO.Vozilo", "Vozilo")
+                        .WithMany()
+                        .HasForeignKey("VoziloId");
                 });
 
             modelBuilder.Entity("PUSGSProjekat.Entities.UserRole", b =>

@@ -20,6 +20,5 @@ namespace PUSGSProjekat.DTO
 
         [ForeignKey("Aviokompanija")]
         public int AviokompanijaId { get; set; }
-        public virtual Aviokompanija Aviokompanija { get; set; }
     }
 }

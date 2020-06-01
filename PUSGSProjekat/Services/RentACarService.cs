@@ -17,6 +17,48 @@ namespace PUSGSProjekat.Services
             _dbContext = dbContext;
         }
 
+        public bool DodajRentacarServis(RentACar rent)
+        {
+            var servisi = _dbContext.RentACar.ToList();
+            var korisnici = _dbContext.Korisnici.ToList();
+
+            var servis = _dbContext.RentACar.Where(a => a.RentacarId == rent.RentacarId).FirstOrDefault();
+
+            if (servis != null)
+                return false;
+
+            foreach (var s in servisi)
+            {
+                foreach (var k in korisnici)
+                {
+                    if (k.Id == s.KorisnikId)
+                    {
+                        return false;
+                    }
+                }
+            }
+            
+            try
+            {
+                _dbContext.RentACar.Add(new RentACar
+                {
+                    Lokacije = rent.Lokacije,
+                    Naziv = rent.Naziv,
+                    Opis = rent.Opis,
+                    Adresa = rent.Adresa,
+                    KorisnikId = rent.KorisnikId
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Greska pri dodavanju servisa", e);
+            }
+                    
+     
+            _dbContext.SaveChanges();
+            return true;
+        }
+
         public List<RentACar> getAllRentACars()
         {
             try
@@ -24,7 +66,7 @@ namespace PUSGSProjekat.Services
                 return _dbContext.RentACar.Select(
                     r => new RentACar()
                     {
-                        Id = r.Id,
+                        RentacarId = r.RentacarId,
                         Naziv = r.Naziv,
                         Adresa = r.Adresa,
                         Vozila = r.Vozila,
@@ -42,17 +84,54 @@ namespace PUSGSProjekat.Services
             }
         }
 
+        public List<RentACar> GetRentaCarsForCurrentUser(int userId)
+        {
+            
+            try
+            {
+                var rentacars = _dbContext.RentACar.Where(a => a.KorisnikId == userId).ToList();
+                var rentacar = new List<RentACar>();
+
+                if (rentacars != null)
+                {
+                    rentacar = rentacars.Select(
+                    r => new RentACar()
+                    {
+                        RentacarId = r.RentacarId,
+                        Naziv = r.Naziv,
+                        Adresa = r.Adresa,
+                        Vozila = r.Vozila,
+                        Lokacije = r.Lokacije,
+                        Ocjena = r.Ocjena,
+                        Opis = r.Opis,
+                        KorisnikId = r.KorisnikId
+
+                    }).ToList();
+                }
+               
+
+                return rentacar; 
+            }
+            catch (Exception e)
+            {
+                var message = e.Message;
+                Console.WriteLine(message);
+                return null;
+            }
+        }
+
+
         public RentACar getRentACarInfo(int RentACarId)
         {
             try
             {
                 var rentACar = new RentACar();
-                var rentACars = _dbContext.RentACar.Where(x => x.Id == RentACarId).FirstOrDefault();
+                var rentACars = _dbContext.RentACar.Where(x => x.RentacarId == RentACarId).FirstOrDefault();
 
                 var car = _dbContext.Vozila.Where(x => x.RentACarId == RentACarId)
                     .Select(cars => new Vozilo()
                     {
-                        Id = cars.Id,
+                        RentACarId = cars.RentACarId,
                         Marka = cars.Marka,
                         Model = cars.Model,
                         GodinaProizvodnje = cars.GodinaProizvodnje,
@@ -62,10 +141,11 @@ namespace PUSGSProjekat.Services
                         Image = cars.Image,
                         Slobodno = cars.Slobodno,
                         TipGoriva = cars.TipGoriva,
-                        Transmisija = cars.Transmisija
+                        Transmisija = cars.Transmisija,
+                        VoziloId = cars.VoziloId
                     }).ToList();
 
-                rentACar.Id = rentACars.Id;
+                rentACar.RentacarId = rentACars.RentacarId;
                 rentACar.Adresa = rentACars.Adresa;
                 rentACar.Lokacije = rentACars.Lokacije;
                 rentACar.Naziv = rentACars.Naziv;
@@ -80,6 +160,49 @@ namespace PUSGSProjekat.Services
                 var message = e.Message;
                 Console.WriteLine(message);
                 return null;
+            }
+        }
+
+        public bool IzmijeniRentacarServis(int id, RentACar rent)
+        {
+            try
+            {
+                var rentacar = _dbContext.RentACar.FirstOrDefault(c => c.RentacarId == id);
+                if (rentacar != null)
+                {
+                    rentacar.Opis = rent.Opis;
+                    rentacar.Naziv = rent.Naziv;
+                    rentacar.Lokacije = rent.Lokacije;
+                    rentacar.Adresa = rent.Adresa;
+
+                    _dbContext.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool ObrisiRentacarServis(int id)
+        {
+            try
+            {
+                var rent = _dbContext.RentACar.Where(bc => bc.RentacarId == id).FirstOrDefault();
+                if (rent != null)
+                {
+                    _dbContext.RentACar.Remove(rent);
+                    _dbContext.SaveChanges();
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

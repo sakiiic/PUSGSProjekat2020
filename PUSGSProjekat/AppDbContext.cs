@@ -33,7 +33,8 @@ namespace PUSGSProjekat
         public DbSet<Vozilo> Vozila { get; set; }
         public DbSet<Korisnik> Korisnici { get; set; }
         public DbSet<Address> Addresses { get; set; }
-
+        public DbSet<Cjenovnik> Cjenovnik { get; set; }
+        public DbSet<CjenovnikVozilo> CjenovnikVozilo { get; set; }
         public IConfiguration Configuration { get; }
 
         public AppDbContext(IConfiguration configuration)

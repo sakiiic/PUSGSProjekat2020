@@ -19,7 +19,7 @@ namespace PUSGSProjekat.Services
 
         public bool DodajVozilo(Vozilo v)
         {
-            var vozila = _dbContext.Vozila.Where(a => a.Id == v.Id).FirstOrDefault();
+            var vozila = _dbContext.Vozila.Where(a => a.VoziloId == v.VoziloId).FirstOrDefault();
 
             if (vozila != null)
                 return false;
@@ -28,6 +28,7 @@ namespace PUSGSProjekat.Services
             {
                 _dbContext.Vozila.Add(new Vozilo
                 {
+                    VoziloId = v.VoziloId,
                     BrojSjedista = v.BrojSjedista,
                     Marka = v.Marka,
                     Model = v.Model,
@@ -50,11 +51,11 @@ namespace PUSGSProjekat.Services
             return true;
         }
 
-        public bool IzmijeniVozilo(Vozilo v)
+        public bool IzmijeniVozilo(int id, Vozilo v)
         {
             try
             {
-                var vozila = _dbContext.Vozila.FirstOrDefault(c => c.Id == v.Id);
+                var vozila = _dbContext.Vozila.FirstOrDefault(c => c.VoziloId == id);
                 if (vozila != null)
                 {
                     vozila.Image = v.Image;
@@ -83,7 +84,7 @@ namespace PUSGSProjekat.Services
         {
             try
             {
-                var vozila = _dbContext.Vozila.Where(bc => bc.Id == id).FirstOrDefault();
+                var vozila = _dbContext.Vozila.Where(bc => bc.VoziloId == id).FirstOrDefault();
                 if (vozila != null)
                 {
                     _dbContext.Vozila.Remove(vozila);

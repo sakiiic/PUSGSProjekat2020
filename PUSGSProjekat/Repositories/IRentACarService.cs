@@ -10,5 +10,9 @@ namespace PUSGSProjekat.Repositories
     {
         List<RentACar> getAllRentACars();
         RentACar getRentACarInfo(int RentACarId);
+        bool ObrisiRentacarServis(int id);
+        bool IzmijeniRentacarServis(int id, RentACar rent);
+        bool DodajRentacarServis(RentACar rent);
+        List<RentACar> GetRentaCarsForCurrentUser(int userId);
     }
 }

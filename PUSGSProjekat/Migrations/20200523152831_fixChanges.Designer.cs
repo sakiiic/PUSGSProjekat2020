@@ -10,8 +10,8 @@ using PUSGSProjekat;
 namespace PUSGSProjekat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200518170423_S2Migration")]
-    partial class S2Migration
+    [Migration("20200523152831_fixChanges")]
+    partial class fixChanges
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -132,6 +132,8 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
+                    b.Property<bool>("ImaServis");
+
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
@@ -214,6 +216,8 @@ namespace PUSGSProjekat.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Adresa");
+
+                    b.Property<int>("KorisnikId");
 
                     b.Property<string>("Lokacije");
 
@@ -359,7 +363,7 @@ namespace PUSGSProjekat.Migrations
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Let", b =>
                 {
-                    b.HasOne("PUSGSProjekat.DTO.Aviokompanija", "Aviokompanija")
+                    b.HasOne("PUSGSProjekat.DTO.Aviokompanija")
                         .WithMany("Letovi")
                         .HasForeignKey("AviokompanijaId")
                         .OnDelete(DeleteBehavior.Cascade);

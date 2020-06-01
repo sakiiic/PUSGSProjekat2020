@@ -1,15 +1,16 @@
-<div class="text-center mb-5">
+<label>edit car works</label>
+<!-- <div class="text-center mb-5">
     <h3>Izmjena vozila</h3>
 </div>
 <div>
     <div class="div2 mb-5 form-group">
 
-        <form (ngSubmit)="dodaj()" [formGroup]="dodajVoziloForm">
+        <form (ngSubmit)="dodaj()" [formGroup]="newVoziloForm">
 
             <p class="ml-5 mt-5 mb-5 text-center">
                 <mat-form-field appearance="outline" class="mr-5">
                     <mat-label>Marka</mat-label>
-                    <input matInput placeholder="Marka" class="form-control" formControlName="marka">
+                    <input matInput placeholder="Marka" class="form-control" formControlName="marka" [(ngModel)]="vozila[0].marka">
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="mr-5">
@@ -64,4 +65,4 @@
         </form>
 
     </div>
-</div>
+</div> -->

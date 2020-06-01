@@ -1,4 +1,5 @@
 export class VoziloModel{
+    voziloId: number;
     naziv: string;
     marka: string;
     model: string;

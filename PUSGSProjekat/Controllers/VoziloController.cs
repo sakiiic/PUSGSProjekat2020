@@ -30,18 +30,18 @@ namespace PUSGSProjekat.Controllers
             return Ok(x);
         }
 
-        [HttpDelete("ObrisiVozilo/{id}")]
-        public async Task<IActionResult> ObrisiVozilo(int id)
+        [HttpDelete("ObrisiVozilo/{voziloId}")]
+        public async Task<IActionResult> ObrisiVozilo(int voziloId)
         {
-            var x = _voziloService.ObrisiVozilo(id);
+            var x = _voziloService.ObrisiVozilo(voziloId);
 
             return Ok(x);
         }
 
         [HttpPatch("IzmijeniVozilo")]
-        public async Task<IActionResult> IzmijeniVozilo([FromBody] Vozilo vozilo)
+        public async Task<IActionResult> IzmijeniVozilo(int voziloId, [FromBody] Vozilo vozilo)
         {
-            var x = _voziloService.IzmijeniVozilo(vozilo);
+            var x = _voziloService.IzmijeniVozilo(voziloId, vozilo);
 
             return Ok(x);
         }

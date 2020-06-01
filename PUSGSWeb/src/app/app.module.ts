@@ -20,7 +20,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { DetaljiRentacarComponent } from './components/rent-acar/detalji-rentacar/detalji-rentacar.component';
 import { DetaljiAviokompanijaComponent } from './components/aviokompanija/detalji-aviokompanija/detalji-aviokompanija.component';
 import { DetaljiLetaComponent } from './components/aviokompanija/detalji-leta/detalji-leta.component';
-import { DetaljiVozilaComponent } from './components/rent-acar/detalji-vozila/detalji-vozila.component';
 import { AuthenticatService } from './services/authentication/authentication.service';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -41,6 +40,13 @@ import { MatInputModule } from '@angular/material/input';
 import { LetoviComponent } from './components/letovi/letovi.component';
 import { AddNewCarComponent } from './components/rentacar-admin/add-new-car/add-new-car.component';
 import { EditCarComponent } from './components/rentacar-admin/edit-car/edit-car.component';
+import { GetRentacarServiceComponent } from './components/rentacar-admin/get-rentacar-service/get-rentacar-service.component';
+import { EditRentacarServiceComponent } from './components/rentacar-admin/edit-rentacar-service/edit-rentacar-service.component';
+import { CarDetailsComponent } from './components/rentacar-admin/car-details/car-details.component';
+import { AddRentacarServiceComponent } from './components/rentacar-admin/add-rentacar-service/add-rentacar-service.component';
+import { DeleteCarModalComponent } from './components/rentacar-admin/delete-car-modal/delete-car-modal.component';
+import { DeleteServiceModalComponent } from './components/rentacar-admin/delete-service-modal/delete-service-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -59,11 +65,16 @@ export function getToken() {
     DetaljiRentacarComponent,
     DetaljiAviokompanijaComponent,
     DetaljiLetaComponent,
-    DetaljiVozilaComponent,
     LetRezervacijaComponent,
     LetoviComponent,
     AddNewCarComponent,
-    EditCarComponent
+    EditCarComponent,
+    GetRentacarServiceComponent,
+    EditRentacarServiceComponent,
+    CarDetailsComponent,
+    AddRentacarServiceComponent,
+    DeleteCarModalComponent,
+    DeleteServiceModalComponent
   ],
   imports: [ 
     MbscModule,  
@@ -95,7 +106,8 @@ export function getToken() {
     MatPaginatorModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [AuthenticatService, AlertifyService, BsModalRef, BsModalService ],
   bootstrap: [AppComponent]

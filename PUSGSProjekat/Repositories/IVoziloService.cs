@@ -9,7 +9,7 @@ namespace PUSGSProjekat.Repositories
     public interface IVoziloService
     {
         bool ObrisiVozilo(int id);
-        bool IzmijeniVozilo(Vozilo v);
+        bool IzmijeniVozilo(int id, Vozilo v);
         bool DodajVozilo(Vozilo v);
     }
 }

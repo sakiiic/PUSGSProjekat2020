@@ -13,6 +13,6 @@ namespace PUSGSProjekat.DTO
         public string Opis { get; set; }
         public float Ocjena { get; set; }
         public string Destinacije { get; set; }
-        public List<Let> Letovi { get; set; }
+        public ICollection<Let> Letovi { get; set; }
     }
 }

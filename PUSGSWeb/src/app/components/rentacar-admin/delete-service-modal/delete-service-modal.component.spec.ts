@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DetaljiVozilaComponent } from './detalji-vozila.component';
+import { DeleteServiceModalComponent } from './delete-service-modal.component';
 
-describe('DetaljiVozilaComponent', () => {
-  let component: DetaljiVozilaComponent;
-  let fixture: ComponentFixture<DetaljiVozilaComponent>;
+describe('DeleteServiceModalComponent', () => {
+  let component: DeleteServiceModalComponent;
+  let fixture: ComponentFixture<DeleteServiceModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DetaljiVozilaComponent ]
+      declarations: [ DeleteServiceModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DetaljiVozilaComponent);
+    fixture = TestBed.createComponent(DeleteServiceModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

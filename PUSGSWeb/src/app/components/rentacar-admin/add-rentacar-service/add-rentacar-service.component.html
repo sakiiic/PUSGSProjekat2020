@@ -1,0 +1,40 @@
+<div class="text-center mb-5">
+    <h3>Dodavanje novog rentacar servisa</h3>
+</div>
+<div>
+    <div class="div2 mb-5 form-group">
+
+        <form (ngSubmit)="dodaj()" [formGroup]="dodajServisForm">
+
+            <p class="ml-5 mt-5 mb-5 text-center">
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Naziv</mat-label>
+                    <input matInput placeholder="Naziv" class="form-control" formControlName="naziv">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Adresa</mat-label>
+                    <input matInput placeholder="Adresa" class="form-control" formControlName="adresa">
+                </mat-form-field>
+            </p>
+            <p class="ml-5 mt-5 mb-5 text-center">
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Opis</mat-label>
+                    <input matInput placeholder="Opis" class="form-control" formControlName="opis">
+                </mat-form-field>
+        
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Lokacije</mat-label>
+                    <input matInput placeholder="Lokacije" class="form-control" formControlName="lokacije">
+                </mat-form-field>
+            </p>
+
+            <div class="text-center mt-5">
+                <button type="submit" class="btn btn-primary mr-5">Dodaj servis</button>
+                <button type="button" class="btn btn-secondary" (click)="goBack()">Odustani</button>
+            </div>
+        </form>
+
+    </div>
+</div>

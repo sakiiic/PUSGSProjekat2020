@@ -11,7 +11,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DetaljiRentacarComponent implements OnInit {
 
-  displayedColumns = ['naziv', 'marka', 'model', 'godinaProizvodnje', 'brojSjedista', 'tipVozila', 'detalji'];
   id: any;
   p: Number = 1;
   count: Number = 4;
@@ -23,6 +22,7 @@ export class DetaljiRentacarComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router) {
     this.dataSource = new MatTableDataSource<RentACarModel>();
+    console.log(this.activatedRoute.snapshot.params, 'paramss')
     if (this.activatedRoute.snapshot.params["id"])
       this.id = this.activatedRoute.snapshot.params["id"];
   }

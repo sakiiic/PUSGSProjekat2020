@@ -29,7 +29,7 @@
      
            <ng-container matColumnDef="vozila">
               <th mat-header-cell *matHeaderCellDef style="text-align:center"> Detalji </th>
-              <td mat-cell *matCellDef="let element" [routerLink]="['/rentacar/rentacarinfo/', element.id]">
+              <td mat-cell *matCellDef="let element" [routerLink]="['/rentacar/rentacarinfo/', element.rentacarId]">
                 <mat-icon>commute</mat-icon>  
               </td>
            </ng-container>
