@@ -10,5 +10,9 @@ namespace PUSGSProjekat.Repositories
     {
         List<Aviokompanija> getAllAviokompanije();
         Aviokompanija getAviokompanijaInfo(int AviokompanijaId);
+        bool DodajAviokompaniju(Aviokompanija aviokompanija);
+        List<Aviokompanija> GetAviokompanijeForCurrentUser(int userId);
+        bool IzmijeniAviokompaniju(int id, Aviokompanija avio);
+        bool ObrisiAviokompaniju(int id);
     }
 }

@@ -1,4 +1,5 @@
 export class LetModel{
+    letId: number;
     datumVrijemePolaska: Date;
     datumVrijemeDolaska: Date;
     vrijemePutovanja: string;

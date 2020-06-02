@@ -34,5 +34,35 @@ namespace PUSGSProjekat.Controllers
         {
             return _avioKompanijaService.getAviokompanijaInfo(aviokompanijaId);
         }
+
+        [HttpPost("DodajAviokompaniju")]
+        public async Task<IActionResult> DodajAviokompaniju([FromBody] Aviokompanija avio)
+        {
+            var x = _avioKompanijaService.DodajAviokompaniju(avio);
+
+            return Ok(x);
+        }
+
+        [HttpPatch("IzmijeniAviokompaniju")]
+        public async Task<IActionResult> IzmijeniAviokompaniju(int aviokompanijaId, [FromBody] Aviokompanija avio)
+        {
+            var x = _avioKompanijaService.IzmijeniAviokompaniju(aviokompanijaId, avio);
+
+            return Ok(x);
+        }
+
+        [HttpDelete("ObrisiAviokompaniju/{aviokompanijaId}")]
+        public async Task<IActionResult> ObrisiAviokompaniju(int aviokompanijaId)
+        {
+            var x = _avioKompanijaService.ObrisiAviokompaniju(aviokompanijaId);
+
+            return Ok(x);
+        }
+
+        [HttpGet("GetAviokompanijeForCurrentUser/{userId}")]
+        public List<Aviokompanija> GetAviokompanijeForCurrentUser(int userId)
+        {
+            return _avioKompanijaService.GetAviokompanijeForCurrentUser(userId);
+        }
     }
 }

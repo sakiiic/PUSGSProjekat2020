@@ -36,7 +36,7 @@ export const routes: Routes = [
   { path: 'rentacarService/carDetails/:id', component: CarDetailsComponent},
   { path: 'addRentacarService', component: AddRentacarServiceComponent },
   { path: 'addNewFlight', component: AddNewFlightComponent },
-  { path: 'editFlight', component: EditFlightComponent }
+  { path: 'aviokompanijaServices/editFlight/:id', component: EditFlightComponent }
 ];
 
 @NgModule({

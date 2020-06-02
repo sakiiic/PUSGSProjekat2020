@@ -24,4 +24,12 @@ export class AviokompanijaService {
     console.log(this.apiURI + 'api/Let/DodajLet')
     return this.http.post(this.apiURI + 'api/Let/DodajLet', flight);
   }
+
+  editLet(id, flight: LetModel){
+    return this.http.patch(this.apiURI + 'api/Let/IzmijeniLet', flight);
+  }
+
+  deleteLet(id){
+    return this.http.delete(this.apiURI + 'api/Let/ObrisiLet/' + id);
+  }
 }
