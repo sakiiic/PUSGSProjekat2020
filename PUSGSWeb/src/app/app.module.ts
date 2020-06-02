@@ -49,6 +49,12 @@ import { DeleteServiceModalComponent } from './components/rentacar-admin/delete-
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddNewFlightComponent } from './components/aviokompanija-admin/add-new-flight/add-new-flight.component';
 import { EditFlightComponent } from './components/aviokompanija-admin/edit-flight/edit-flight.component';
+import { AddAviocompanyComponent } from './components/aviokompanija-admin/add-aviocompany/add-aviocompany.component';
+import { FlightDetailsComponent } from './components/aviokompanija-admin/flight-details/flight-details.component';
+import { DeleteFlightComponent } from './components/aviokompanija-admin/delete-flight/delete-flight.component';
+import { DeleteAviocompanyComponent } from './components/aviokompanija-admin/delete-aviocompany/delete-aviocompany.component';
+import { EditAviocompanyComponent } from './components/aviokompanija-admin/edit-aviocompany/edit-aviocompany.component';
+import { GetAviocompanyComponent } from './components/aviokompanija-admin/get-aviocompany/get-aviocompany.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -78,7 +84,13 @@ export function getToken() {
     DeleteCarModalComponent,
     DeleteServiceModalComponent,
     AddNewFlightComponent,
-    EditFlightComponent
+    EditFlightComponent,
+    AddAviocompanyComponent,
+    FlightDetailsComponent,
+    DeleteFlightComponent,
+    DeleteAviocompanyComponent,
+    EditAviocompanyComponent,
+    GetAviocompanyComponent
   ],
   imports: [ 
     MbscModule,  
