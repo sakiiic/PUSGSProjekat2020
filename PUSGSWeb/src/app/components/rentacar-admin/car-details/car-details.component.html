@@ -48,11 +48,11 @@
                                     Nije dostupno</span>
                                 <div class="text-center">
                                     <button class="btn btn-primary" class="btn btn-success btn-block"
-                                        [routerLink]="['/rentacarService/editCar/', item.voziloId]">Izmijeni</button>
+                                        (click)="openEditModal(item.voziloId)">Izmijeni</button>
                                 </div>
                                 <div class="text-center">
                                     <button class="btn btn-primary" class="btn btn-danger btn-block"
-                                        (click)="openModal(item.voziloId)">Obrisi</button>
+                                        (click)="openDeleteModal(item.voziloId)">Obrisi</button>
                                 </div>
 
                             </div>

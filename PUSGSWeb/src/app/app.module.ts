@@ -41,7 +41,6 @@ import { LetoviComponent } from './components/letovi/letovi.component';
 import { AddNewCarComponent } from './components/rentacar-admin/add-new-car/add-new-car.component';
 import { EditCarComponent } from './components/rentacar-admin/edit-car/edit-car.component';
 import { GetRentacarServiceComponent } from './components/rentacar-admin/get-rentacar-service/get-rentacar-service.component';
-import { EditRentacarServiceComponent } from './components/rentacar-admin/edit-rentacar-service/edit-rentacar-service.component';
 import { CarDetailsComponent } from './components/rentacar-admin/car-details/car-details.component';
 import { AddRentacarServiceComponent } from './components/rentacar-admin/add-rentacar-service/add-rentacar-service.component';
 import { DeleteCarModalComponent } from './components/rentacar-admin/delete-car-modal/delete-car-modal.component';
@@ -49,6 +48,8 @@ import { DeleteServiceModalComponent } from './components/rentacar-admin/delete-
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddNewFlightComponent } from './components/aviokompanija-admin/add-new-flight/add-new-flight.component';
 import { EditFlightComponent } from './components/aviokompanija-admin/edit-flight/edit-flight.component';
+import { EditCarModalComponent } from './components/rentacar-admin/edit-car-modal/edit-car-modal.component';
+import { EditServiceModalComponent } from './components/rentacar-admin/edit-service-modal/edit-service-modal.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -72,13 +73,14 @@ export function getToken() {
     AddNewCarComponent,
     EditCarComponent,
     GetRentacarServiceComponent,
-    EditRentacarServiceComponent,
     CarDetailsComponent,
     AddRentacarServiceComponent,
     DeleteCarModalComponent,
     DeleteServiceModalComponent,
     AddNewFlightComponent,
-    EditFlightComponent
+    EditFlightComponent,
+    EditCarModalComponent,
+    EditServiceModalComponent
   ],
   imports: [ 
     MbscModule,  

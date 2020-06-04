@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { RentACarModel } from 'src/app/models/rentACar.model';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { DeleteCarModalComponent } from '../delete-car-modal/delete-car-modal.component';
+import { EditCarModalComponent } from '../edit-car-modal/edit-car-modal.component';
 
 @Component({
   selector: 'app-car-details',
@@ -28,7 +29,7 @@ export class CarDetailsComponent implements OnInit {
     public matDialog: MatDialog) {
     this.dataSource = new MatTableDataSource<RentACarModel>();
     if (this.activatedRoute.snapshot.params["id"])
-      this.rentacarId = this.activatedRoute.snapshot.params["id"];
+       this.rentacarId = this.activatedRoute.snapshot.params["id"];
   }
 
   ngOnInit(): void {
@@ -40,7 +41,7 @@ export class CarDetailsComponent implements OnInit {
       })
   }
 
-  openModal(id) {
+  openDeleteModal(id) {
     const dialogConfig = new MatDialogConfig();
     // The user can't close the dialog by clicking outside its body
     dialogConfig.disableClose = true;
@@ -52,6 +53,19 @@ export class CarDetailsComponent implements OnInit {
       width: '470px', 
       data: {rentacarId: id}
     });
-    console.log('adjjjj', id)
+  }
+
+  openEditModal(id) {
+    const dialogConfig = new MatDialogConfig();
+    // The user can't close the dialog by clicking outside its body
+    dialogConfig.disableClose = true;
+    dialogConfig.id = "modal-component";
+    dialogConfig.height = "350px";
+    dialogConfig.width = "600px";
+    // https://material.angular.io/components/dialog/overview
+    const modalDialog = this.matDialog.open(EditCarModalComponent, {
+      width: '600px', 
+      data: {rentacarId: this.rentacarId, voziloId: id}
+    });
   }
 }
