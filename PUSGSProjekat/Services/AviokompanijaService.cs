@@ -40,14 +40,14 @@ namespace PUSGSProjekat.Services
             }
         }
 
-        public Aviokompanija getAviokompanijaInfo(int AviokompanijaId)
+        public Aviokompanija getAviokompanijaInfo(int id)
         {
             try
             {
                 var aviokompanija = new Aviokompanija();
-                var aviokompanije = _dbContext.Aviokompanije.Where(x => x.AviokompanijaId == AviokompanijaId).FirstOrDefault();
+                var aviokompanije = _dbContext.Aviokompanije.Where(x => x.AviokompanijaId == id).FirstOrDefault();
 
-                var flights = _dbContext.Letovi.Where(x => x.AviokompanijaId == AviokompanijaId)
+                var flights = _dbContext.Letovi.Where(x => x.AviokompanijaId == id)
                     .Select(flight => new Let()
                     {
                         AviokompanijaId = flight.AviokompanijaId,

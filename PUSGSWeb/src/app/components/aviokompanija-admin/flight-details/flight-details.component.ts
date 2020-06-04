@@ -15,8 +15,8 @@ import { DeleteFlightComponent } from '../delete-flight/delete-flight.component'
 export class FlightDetailsComponent implements OnInit {
 
   displayedColumns = ['datumVrijemePolaska', 'datumVrijemeDolaska', 'vrijemePutovanja', 'duzinaPutovanja', 'brojPresjedanja', 'lokacijePresjedanja', 'cijenaKarte'];
-  letId: any;
   aviokompanijaId: any;
+  letId: any;
   dataSource: any;
 
   constructor(public service: AviokompanijaService,
