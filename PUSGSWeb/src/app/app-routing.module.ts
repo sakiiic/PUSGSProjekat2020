@@ -14,6 +14,10 @@ import { CarDetailsComponent } from './components/rentacar-admin/car-details/car
 import { AddRentacarServiceComponent } from './components/rentacar-admin/add-rentacar-service/add-rentacar-service.component';
 import { AddNewFlightComponent } from './components/aviokompanija-admin/add-new-flight/add-new-flight.component';
 import { EditFlightComponent } from './components/aviokompanija-admin/edit-flight/edit-flight.component';
+import { GetAviocompanyComponent } from './components/aviokompanija-admin/get-aviocompany/get-aviocompany.component';
+import { EditAviocompanyComponent } from './components/aviokompanija-admin/edit-aviocompany/edit-aviocompany.component';
+import { FlightDetailsComponent } from './components/aviokompanija-admin/flight-details/flight-details.component';
+import { AddAviocompanyComponent } from './components/aviokompanija-admin/add-aviocompany/add-aviocompany.component';
 
 export const routes: Routes = [
   //children: [ { path: 'vozila', component: VozilaComponent } ] 
@@ -30,7 +34,11 @@ export const routes: Routes = [
   { path: 'rentacarService/carDetails/:id', component: CarDetailsComponent},
   { path: 'addRentacarService', component: AddRentacarServiceComponent },
   { path: 'addNewFlight', component: AddNewFlightComponent },
-  { path: 'editFlight', component: EditFlightComponent }
+  { path: 'editFlight/:id', component: EditFlightComponent },
+  { path: 'aviocompany', component: GetAviocompanyComponent},
+  { path: 'editAviocompany/:id', component: EditAviocompanyComponent},
+  { path: 'aviocompany/flightDetails/:id', component: FlightDetailsComponent},
+  { path: 'addAviocompany', component: AddAviocompanyComponent }
 ];
 
 @NgModule({

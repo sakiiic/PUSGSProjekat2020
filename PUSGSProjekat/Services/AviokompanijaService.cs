@@ -23,7 +23,7 @@ namespace PUSGSProjekat.Services
                 return _dbContext.Aviokompanije.Select(
                     a => new Aviokompanija()
                     {
-                        Id = a.Id,
+                        AviokompanijaId = a.AviokompanijaId,
                         Naziv = a.Naziv,
                         Adresa = a.Adresa,
                         Opis = a.Opis,
@@ -40,17 +40,17 @@ namespace PUSGSProjekat.Services
             }
         }
 
-        public Aviokompanija getAviokompanijaInfo(int AviokompanijaId)
+        public Aviokompanija getAviokompanijaInfo(int id)
         {
             try
             {
                 var aviokompanija = new Aviokompanija();
-                var aviokompanije = _dbContext.Aviokompanije.Where(x => x.Id == AviokompanijaId).FirstOrDefault();
+                var aviokompanije = _dbContext.Aviokompanije.Where(x => x.AviokompanijaId == id).FirstOrDefault();
 
-                var flights = _dbContext.Letovi.Where(x => x.AviokompanijaId == AviokompanijaId)
+                var flights = _dbContext.Letovi.Where(x => x.AviokompanijaId == id)
                     .Select(flight => new Let()
                     {
-                        Id = flight.Id,
+                        AviokompanijaId = flight.AviokompanijaId,
                         CijenaKarte = flight.CijenaKarte,
                         BrojPresjedanja = flight.BrojPresjedanja,
                         DatumVrijemePolaska = flight.DatumVrijemePolaska,
@@ -60,7 +60,7 @@ namespace PUSGSProjekat.Services
                         VrijemePutovanja = flight.VrijemePutovanja
                     }).ToList();
 
-                aviokompanija.Id = aviokompanije.Id;
+                aviokompanija.AviokompanijaId = aviokompanije.AviokompanijaId;
                 aviokompanija.Adresa = aviokompanije.Adresa;
                 aviokompanija.Destinacije = aviokompanije.Destinacije;
                 aviokompanija.Naziv = aviokompanije.Naziv;
@@ -75,6 +75,128 @@ namespace PUSGSProjekat.Services
                 var message = e.Message;
                 Console.WriteLine(message);
                 return null;
+            }
+        }
+
+        public bool DodajAviokompaniju(Aviokompanija aviokompanija)
+        {
+            var servisi = _dbContext.Aviokompanije.ToList();
+            var korisnici = _dbContext.Korisnici.ToList();
+
+            var servis = _dbContext.Aviokompanije.Where(a => a.AviokompanijaId == aviokompanija.AviokompanijaId).FirstOrDefault();
+
+            if (servis != null)
+                return false;
+
+            foreach (var s in servisi)
+            {
+                foreach (var k in korisnici)
+                {
+                    if (k.Id == s.KorisnikId)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            try
+            {
+                _dbContext.Aviokompanije.Add(new Aviokompanija
+                {
+                    Destinacije = aviokompanija.Destinacije,
+                    Naziv = aviokompanija.Naziv,
+                    Opis = aviokompanija.Opis,
+                    Adresa = aviokompanija.Adresa,
+                    KorisnikId = aviokompanija.KorisnikId
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Greska pri dodavanju servisa", e);
+            }
+
+
+            _dbContext.SaveChanges();
+            return true;
+        }
+
+
+        public List<Aviokompanija> GetAviokompanijeForCurrentUser(int userId)
+        {
+
+            try
+            {
+                var aviokompanije = _dbContext.Aviokompanije.Where(a => a.KorisnikId == userId).ToList();
+                var aviokompanija = new List<Aviokompanija>();
+
+                if (aviokompanije != null)
+                {
+                    aviokompanija = aviokompanije.Select(
+                    a => new Aviokompanija()
+                    {
+                        AviokompanijaId = a.AviokompanijaId,
+                        Naziv = a.Naziv,
+                        Adresa = a.Adresa,
+                        Letovi = a.Letovi,
+                        Destinacije = a.Destinacije,
+                        Ocjena = a.Ocjena,
+                        Opis = a.Opis,
+                        KorisnikId = a.KorisnikId
+
+                    }).ToList();
+                }
+
+
+                return aviokompanija;
+            }
+            catch (Exception e)
+            {
+                var message = e.Message;
+                Console.WriteLine(message);
+                return null;
+            }
+        }
+
+        public bool IzmijeniAviokompaniju(int id, Aviokompanija avio)
+        {
+            try
+            {
+                var aviokompanija = _dbContext.Aviokompanije.FirstOrDefault(c => c.AviokompanijaId == id);
+                if (aviokompanija != null)
+                {
+                    aviokompanija.Opis = avio.Opis;
+                    aviokompanija.Naziv = avio.Naziv;
+                    aviokompanija.Destinacije = avio.Destinacije;
+                    aviokompanija.Adresa = avio.Adresa;
+
+                    _dbContext.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool ObrisiAviokompaniju(int id)
+        {
+            try
+            {
+                var avio = _dbContext.Aviokompanije.Where(ak => ak.AviokompanijaId == id).FirstOrDefault();
+                if (avio != null)
+                {
+                    _dbContext.Aviokompanije.Remove(avio);
+                    _dbContext.SaveChanges();
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

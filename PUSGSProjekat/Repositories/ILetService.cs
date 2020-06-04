@@ -10,7 +10,7 @@ namespace PUSGSProjekat.Repositories
     {
         List<Let> getLetovi();
         bool ObrisiLet(int id);
-        bool IzmijeniLet(Let l);
+        bool IzmijeniLet(int id, Let l);
         bool DodajLet(Let l);
 
     }

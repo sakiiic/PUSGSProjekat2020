@@ -26,7 +26,7 @@ namespace PUSGSProjekat.Services
                 return _dbContext.Letovi.Select(
                     l => new Let()
                     {
-                        Id = l.Id,
+                        LetId = l.LetId,
                         DatumVrijemePolaska = l.DatumVrijemePolaska,
                         DatumVrijemeDolaska = l.DatumVrijemeDolaska,
                         VrijemePutovanja = l.VrijemePutovanja,
@@ -47,7 +47,7 @@ namespace PUSGSProjekat.Services
 
         public bool DodajLet(Let l)
         {
-            var letovi = _dbContext.Letovi.Where(a => a.Id == l.Id).FirstOrDefault();
+            var letovi = _dbContext.Letovi.Where(a => a.LetId == l.LetId).FirstOrDefault();
 
             if (letovi != null)
                 return false;
@@ -56,6 +56,7 @@ namespace PUSGSProjekat.Services
             {
                 _dbContext.Letovi.Add(new Let
                 {
+                    LetId = l.LetId,
                     DatumVrijemePolaska = l.DatumVrijemePolaska,
                     DatumVrijemeDolaska = l.DatumVrijemeDolaska,
                     VrijemePutovanja = l.VrijemePutovanja,
@@ -63,7 +64,6 @@ namespace PUSGSProjekat.Services
                     BrojPresjedanja = l.BrojPresjedanja,
                     LokacijePresjedanja = l.LokacijePresjedanja,
                     CijenaKarte = l.CijenaKarte,
-                    NazivAviokompanije = l.NazivAviokompanije,
                     AviokompanijaId = l.AviokompanijaId
 
                 });
@@ -77,11 +77,11 @@ namespace PUSGSProjekat.Services
             return true;
         }
 
-        public bool IzmijeniLet(Let l)
+        public bool IzmijeniLet(int id, Let l)
         {
             try
             {
-                var letovi = _dbContext.Letovi.FirstOrDefault(c => c.Id == l.Id);
+                var letovi = _dbContext.Letovi.FirstOrDefault(c => c.LetId == id);
                 if (letovi != null)
                 {
                     letovi.DatumVrijemePolaska = l.DatumVrijemePolaska;
@@ -91,7 +91,6 @@ namespace PUSGSProjekat.Services
                     letovi.BrojPresjedanja = l.BrojPresjedanja;
                     letovi.LokacijePresjedanja = l.LokacijePresjedanja;
                     letovi.CijenaKarte = l.CijenaKarte;
-                    letovi.NazivAviokompanije = l.NazivAviokompanije;
                     letovi.AviokompanijaId = l.AviokompanijaId;
 
                     _dbContext.SaveChanges();
@@ -109,7 +108,7 @@ namespace PUSGSProjekat.Services
         {
             try
             {
-                var let = _dbContext.Letovi.Where(bc => bc.Id == id).FirstOrDefault();
+                var let = _dbContext.Letovi.Where(bc => bc.LetId == id).FirstOrDefault();
                 if (let != null)
                 {
                     _dbContext.Letovi.Remove(let);

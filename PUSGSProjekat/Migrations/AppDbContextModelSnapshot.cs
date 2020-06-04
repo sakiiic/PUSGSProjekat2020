@@ -91,7 +91,7 @@ namespace PUSGSProjekat.Migrations
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Aviokompanija", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AviokompanijaId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -99,13 +99,15 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("Destinacije");
 
+                    b.Property<int>("KorisnikId");
+
                     b.Property<string>("Naziv");
 
                     b.Property<float>("Ocjena");
 
                     b.Property<string>("Opis");
 
-                    b.HasKey("Id");
+                    b.HasKey("AviokompanijaId");
 
                     b.ToTable("Aviokompanija");
                 });
@@ -178,7 +180,7 @@ namespace PUSGSProjekat.Migrations
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Let", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("LetId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -200,7 +202,7 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("VrijemePutovanja");
 
-                    b.HasKey("Id");
+                    b.HasKey("LetId");
 
                     b.HasIndex("AviokompanijaId");
 

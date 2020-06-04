@@ -1,0 +1,68 @@
+<div class="text-center mt-5">
+    <button class="btn btn-primary" [routerLink]="['/addNewFlight']">Dodaj let</button>
+</div>
+
+<div class="ml-5 mb-5">
+    <div class="ml-5">
+        <div class="ml-5">
+            <div class="row ml-5 mb-5">
+            </div>
+            <div class="row ml-5">
+                <div class="col-lg-10 offset-lg-1 col-md-12 card"
+                    *ngFor="let item of dataSource.letovi | paginate: { itemsPerPage: count, currentPage: p }"
+                    [class.bg-secondary]="item.selected">
+                    <div class="card-body">
+                        <div class="row">
+                            
+                            <div class="col-md-6 col-sm-12">
+                                <h5 class="card-title">
+                                    <span>
+                                        <mat-icon>flight_takeoff</mat-icon> {{item.datumVrijemePolaska}}
+                                    </span>
+                                    <br>
+                                    <span>
+                                        <mat-icon>flight_land</mat-icon> {{item.datumVrijemeDolaska}}
+                                    </span>
+                                </h5>
+                                <p class="card-text">
+                                    <span>
+                                        <mat-icon>schedule</mat-icon> {{item.vrijemePutovanja}}
+                                    </span>
+                                    <span>
+                                        <mat-icon> straighten</mat-icon> {{item.duzinaPutovanja}}
+                                    </span>
+                                    <span>
+                                        <mat-icon> flight</mat-icon> {{item.brojPresjedanja}}
+                                    </span>
+                                    <span>
+                                        <mat-icon> place</mat-icon> {{item.lokacijePresjedanja}}
+                                    </span>
+                                    <span>
+                                        <mat-icon>euro_symbol</mat-icon> {{item.cijenaKarte}}
+                                    </span>
+                                    <br>
+                                    <br>
+                                </p>
+                            </div>
+                            <div class="col-md-2 col-sm-12">
+                                <h3 class="d-flex justify-content-center text-green">${{item.cijenaKarte}}</h3>
+                                <div class="text-center">
+                                    <button class="btn btn-primary" class="btn btn-success btn-block"
+                                        [routerLink]="['/editFlight/', item.letId]">Izmijeni</button>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-primary" class="btn btn-danger btn-block"
+                                        (click)="openModal(item.letId)">Obrisi</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

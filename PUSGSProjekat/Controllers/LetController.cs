@@ -20,12 +20,6 @@ namespace PUSGSProjekat.Controllers
             _letService = letService;
         }
 
-        [HttpGet("GetLetovi")]
-        public List<Let> GetLetovi()
-        {
-            return _letService.getLetovi();
-        }
-
         [HttpPost("DodajLet")]
         public async Task<IActionResult> DodajLet([FromBody] Let let)
         {
@@ -34,21 +28,20 @@ namespace PUSGSProjekat.Controllers
             return Ok(x);
         }
 
-        [HttpDelete("ObrisiLet/{id}")]
-        public async Task<IActionResult> ObrisiLet(int id)
+        [HttpDelete("ObrisiLet/{letId}")]
+        public async Task<IActionResult> ObrisiLet(int letId)
         {
-            var x = _letService.ObrisiLet(id);
+            var x = _letService.ObrisiLet(letId);
 
             return Ok(x);
         }
 
         [HttpPatch("IzmijeniLet")]
-        public async Task<IActionResult> IzmijeniLet([FromBody] Let let)
+        public async Task<IActionResult> IzmijeniLet(int letId, [FromBody] Let let)
         {
-            var x = _letService.IzmijeniLet(let);
+            var x = _letService.IzmijeniLet(letId, let);
 
             return Ok(x);
         }
-
     }
 }
