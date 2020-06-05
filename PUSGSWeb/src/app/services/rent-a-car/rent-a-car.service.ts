@@ -51,4 +51,8 @@ export class RentACarService {
   getRentaCarsForCurrentUser(id){
     return this.http.get(this.apiURI + 'api/RentACar/getRentaCarsForCurrentUser/' + id);
   }
+
+  getVozilo(rentacarId, voziloId){
+    return this.http.get(this.apiURI + 'api/Vozilo/GetVozilo/' + rentacarId + '/' + voziloId);
+  }
 }

@@ -51,6 +51,19 @@ namespace PUSGSProjekat.Services
             return true;
         }
 
+        public Vozilo GetVozilo(int rentacarId, int voziloId)
+        {
+            try
+            {
+                return _dbContext.Vozila.Where(a => a.RentACarId == rentacarId && a.VoziloId == voziloId).FirstOrDefault();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
         public bool IzmijeniVozilo(int id, Vozilo v)
         {
             try

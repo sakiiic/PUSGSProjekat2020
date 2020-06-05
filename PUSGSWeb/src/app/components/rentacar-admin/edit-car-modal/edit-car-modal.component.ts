@@ -34,14 +34,11 @@ export class EditCarModalComponent implements OnInit {
 
     this.rentaId = data.rentacarId;
     this.voziloId = data.voziloId;
-    console.log('thissss', this.rentaId)
   }
 
   ngOnInit(): void {
-    this.service.getRentACarInfo(this.rentaId).subscribe((res: any[]) => {
+    this.service.getVozilo(this.rentaId, this.voziloId).subscribe((res: any[]) => {
       this.dataSource = res;
-      this.vozila = this.dataSource.vozila;
-      console.log(this.vozila)
     })
   }
 
@@ -68,11 +65,12 @@ export class EditCarModalComponent implements OnInit {
       tipGoriva: this.tipGoriva,
       transmisija: this.transmisija,
       rentacarId: this.rentaId,
-      image: this.vozila[this.voziloId].image
+      image: this.dataSource.voziloId.image
     }
 
-    this.service.editVozilo(this.voziloId, model).subscribe();
+    this.service.editVozilo(this.dataSource.voziloId, model).subscribe();
     this.dialogRef.close();
+    
   }
 
   closeModal() {

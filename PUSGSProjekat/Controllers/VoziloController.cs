@@ -45,5 +45,13 @@ namespace PUSGSProjekat.Controllers
 
             return Ok(x);
         }
+
+        [HttpGet("GetVozilo/{rentacarId}/{voziloId}")]
+        public Vozilo GetVozilo (int rentacarId, int voziloId)
+        {
+            var x = _voziloService.GetVozilo(rentacarId, voziloId);
+
+            return x;
+        }
     }
 }
