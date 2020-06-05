@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AviokompanijaModel } from 'src/app/models/aviokompanija.model';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { DeleteFlightComponent } from '../delete-flight/delete-flight.component';
+import { EditFlightComponent } from '../edit-flight/edit-flight.component';
 
 
 @Component({
@@ -15,8 +16,8 @@ import { DeleteFlightComponent } from '../delete-flight/delete-flight.component'
 export class FlightDetailsComponent implements OnInit {
 
   displayedColumns = ['datumVrijemePolaska', 'datumVrijemeDolaska', 'vrijemePutovanja', 'duzinaPutovanja', 'brojPresjedanja', 'lokacijePresjedanja', 'cijenaKarte'];
-  aviokompanijaId: any;
   letId: any;
+  aviokompanijaId: any;
   dataSource: any;
 
   constructor(public service: AviokompanijaService,
@@ -37,7 +38,7 @@ export class FlightDetailsComponent implements OnInit {
       })
   }
 
-  openModal(id) {
+  openDeleteModal(id) {
     const dialogConfig = new MatDialogConfig();
     // The user can't close the dialog by clicking outside its body
     dialogConfig.disableClose = true;
@@ -50,6 +51,20 @@ export class FlightDetailsComponent implements OnInit {
       data: {aviokompanijaId: id}
     });
     console.log('Ovo je id ', id)
+  }
+
+  openEditModal(id) {
+    const dialogConfig = new MatDialogConfig();
+    // The user can't close the dialog by clicking outside its body
+    dialogConfig.disableClose = true;
+    dialogConfig.id = "modal-component";
+    dialogConfig.height = "350px";
+    dialogConfig.width = "600px";
+    // https://material.angular.io/components/dialog/overview
+    const modalDialog = this.matDialog.open(EditFlightComponent, {
+      width: '600px', 
+      data: {aviokompanijaId: this.aviokompanijaId, voziloId: id}
+    });
   }
 
 }

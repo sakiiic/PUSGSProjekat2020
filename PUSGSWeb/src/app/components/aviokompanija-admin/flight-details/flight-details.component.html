@@ -48,13 +48,12 @@
                                 <h3 class="d-flex justify-content-center text-green">${{item.cijenaKarte}}</h3>
                                 <div class="text-center">
                                     <button class="btn btn-primary" class="btn btn-success btn-block"
-                                        [routerLink]="['/editFlight/', item.letId]">Izmijeni</button>
+                                        (click)="openEditModal(item.letId)">Izmijeni</button>
                                 </div>
                                 <div class="text-center">
                                     <button class="btn btn-primary" class="btn btn-danger btn-block"
-                                        (click)="openModal(item.letId)">Obrisi</button>
+                                        (click)="openDeleteModal(item.letId)">Obrisi</button>
                                 </div>
-
                             </div>
                         </div>
                     </div>

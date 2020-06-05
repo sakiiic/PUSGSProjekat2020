@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AviokompanijaService } from 'src/app/services/aviokompanija/aviokompanija.service';
-import { RentACarModel } from 'src/app/models/rentACar.model';
+import { LetService } from 'src/app/services/let/let.service';
 
 @Component({
   selector: 'app-delete-flight',
@@ -14,7 +13,7 @@ export class DeleteFlightComponent implements OnInit {
 
   @ViewChild('messageblock', {static: true }) messageblock: ElementRef;
   constructor(public dialogRef: MatDialogRef<DeleteFlightComponent>,
-    public service: AviokompanijaService, @Inject(MAT_DIALOG_DATA) public data: any) {
+    public service: LetService, @Inject(MAT_DIALOG_DATA) public data: any) {
       this.id = data.aviokompanijaId;
       console.log(this.id, "aaaaa")
     }

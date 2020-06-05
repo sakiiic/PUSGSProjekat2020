@@ -1,1 +1,38 @@
-<p>edit-aviocompany works!</p>
+<div class="text-center mb-5">
+    <h3>Izmjena aviokompanije</h3>
+</div>
+<div>
+    <div class="div2 mb-5 form-group">
+
+        <form #editServiceForm="ngForm" (ngSubmit)=editService(editServiceForm)>
+
+            <p class="ml-5 mt-5 mb-5 text-center">
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Naziv</mat-label>
+                    <input name="naziv" matInput placeholder="Naziv" [(ngModel)]="dataSource.naziv" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Adresa</mat-label>
+                    <input name="adresa" matInput placeholder="Adresa" [(ngModel)]="dataSource.adresa" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Opis</mat-label>
+                    <input name="opis" matInput placeholder="Opis" [(ngModel)]="dataSource.opis" required>
+                </mat-form-field>
+        
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Destinacije</mat-label>
+                    <textarea name="destinacije" matInput placeholder="Destinacije" [(ngModel)]="dataSource.destinacije" required></textarea>
+                </mat-form-field>
+            </p>
+
+            <div class="text-center mt-5">
+                <button mat-raised-button class="btn btn-primary mr-5">Izmijeni servis</button>
+                <button type="button" class="btn btn-secondary" (click)="closeModal()">Odustani</button>
+            </div>
+        </form>
+
+    </div>
+</div>

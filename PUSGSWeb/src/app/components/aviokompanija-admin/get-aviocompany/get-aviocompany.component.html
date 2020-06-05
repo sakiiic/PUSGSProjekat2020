@@ -48,28 +48,21 @@
   
         <ng-container matColumnDef="izmijeni">
           <th mat-header-cell *matHeaderCellDef style="text-align:center"> Izmijeni </th>
-          <td mat-cell *matCellDef="let element" [routerLink]="['/editAviocompany/', element.aviokompanijaId]">
+          <td mat-cell *matCellDef="let element" (click)="openEditModal()">
             <mat-icon>edit</mat-icon>
           </td>
-        </ng-container>
-  
-        <!-- <ng-container matColumnDef="dodaj">
-          <th mat-header-cell *matHeaderCellDef style="text-align:center"> Dodaj </th>
-          <td mat-cell *matCellDef="let element" [routerLink]="['/addRentacarService']">
-            <mat-icon>add</mat-icon>
-          </td>
-        </ng-container> -->
-  
+        </ng-container> 
+         
         <ng-container matColumnDef="obrisi">
           <th mat-header-cell *matHeaderCellDef style="text-align:center"> Obrisi </th>
-          <td mat-cell *matCellDef="let element" (click)="openModal()">
+          <td mat-cell *matCellDef="let element" (click)="openDeleteModal()">
             <mat-icon>delete</mat-icon>
           </td>
         </ng-container>
   
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"> </tr>
-  
+
       </table>
     </div>
   </div>

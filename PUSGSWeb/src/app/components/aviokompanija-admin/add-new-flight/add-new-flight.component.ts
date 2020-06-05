@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LetModel } from 'src/app/models/let.model';
-import { AviokompanijaService } from 'src/app/services/aviokompanija/aviokompanija.service';
+import { LetService } from 'src/app/services/let/let.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ export class AddNewFlightComponent implements OnInit {
   dodajLetForm: FormGroup;
   let: LetModel;
 
-  constructor(private fb: FormBuilder, private aviokompanijaService: AviokompanijaService, private router: Router) { }
+  constructor(private fb: FormBuilder, private letService: LetService, private router: Router) { }
 
   ngOnInit(): void {
     this.dodajLet();
@@ -29,13 +29,13 @@ export class AddNewFlightComponent implements OnInit {
       brojPresjedanja: ['', Validators.required],
       lokacijePresjedanja: ['', Validators.required],
       cijenaKarte: ['', Validators.required],
-      aviokompanijaId: 5
+      aviokompanijaId: 1
     });
   }
 
   dodaj() {
     this.let = Object.assign({}, this.dodajLetForm.value);
-    this.aviokompanijaService.postLet(this.let).subscribe(() => {
+    this.letService.postLet(this.let).subscribe(() => {
       console.log('Uspjesno dodat let');
       this.router.navigate(['/aviocompany/flightDetails/' + 5]);
     }, error => {
