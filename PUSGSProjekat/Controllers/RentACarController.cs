@@ -43,7 +43,7 @@ namespace PUSGSProjekat.Controllers
             return Ok(x);
         }
 
-        [HttpPatch("IzmijeniRentacarServis")]
+        [HttpPatch("IzmijeniRentacarServis/{rentacarId}")]
         public async Task<IActionResult> IzmijeniRentacarServis(int rentacarId, [FromBody] RentACar rent)
         {
             var x = _rentACarService.IzmijeniRentacarServis(rentacarId, rent);

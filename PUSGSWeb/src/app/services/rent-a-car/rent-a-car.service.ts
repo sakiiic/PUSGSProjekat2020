@@ -28,7 +28,8 @@ export class RentACarService {
   }
 
   editVozilo(id, vozilo: VoziloModel){
-    return this.http.patch(this.apiURI + 'api/Vozilo/IzmijeniVozilo', vozilo);
+    console.log(id)
+    return this.http.patch(this.apiURI + 'api/Vozilo/IzmijeniVozilo/' + id, vozilo);
   }
 
   deleteVozilo(id){
@@ -39,8 +40,8 @@ export class RentACarService {
     return this.http.post(this.apiURI + 'api/RentACar/DodajRentacarServis', rentacar);
   }
 
-  editRentacarServis(id, rentacar: RentacarDTOModel){
-    return this.http.patch(this.apiURI + 'api/RentACar/IzmijeniRentacarServis', rentacar);
+  editRentacarServis(id, rentacar: any){
+    return this.http.patch(this.apiURI + 'api/RentACar/IzmijeniRentacarServis/' + id, rentacar);
   }
 
   deleteRentacarServis(id){

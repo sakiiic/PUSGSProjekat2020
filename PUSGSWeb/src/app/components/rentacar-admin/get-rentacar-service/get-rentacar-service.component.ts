@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AuthenticatService } from 'src/app/services/authentication/authentication.service';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { DeleteServiceModalComponent } from '../delete-service-modal/delete-service-modal.component';
+import { EditServiceModalComponent } from '../edit-service-modal/edit-service-modal.component';
 
 @Component({
   selector: 'app-get-rentacar-service',
@@ -43,7 +44,7 @@ export class GetRentacarServiceComponent implements OnInit {
          })
   }
 
-  openModal() {
+  openDeleteModal() {
     const dialogConfig = new MatDialogConfig();
     // The user can't close the dialog by clicking outside its body
     dialogConfig.disableClose = true;
@@ -57,4 +58,17 @@ export class GetRentacarServiceComponent implements OnInit {
     });
   }
 
+  openEditModal() {
+    const dialogConfig = new MatDialogConfig();
+    // The user can't close the dialog by clicking outside its body
+    dialogConfig.disableClose = true;
+    dialogConfig.id = "modal-component";
+    dialogConfig.height = "350px";
+    dialogConfig.width = "600px";
+    // https://material.angular.io/components/dialog/overview
+    const modalDialog = this.matDialog.open(EditServiceModalComponent, {
+      width: '470px', 
+      data: {rentacarId: this.rentacarId}
+    });
+  }DZ
 }

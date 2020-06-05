@@ -38,7 +38,7 @@ namespace PUSGSProjekat.Controllers
             return Ok(x);
         }
 
-        [HttpPatch("IzmijeniVozilo")]
+        [HttpPatch("IzmijeniVozilo/{voziloId}")]
         public async Task<IActionResult> IzmijeniVozilo(int voziloId, [FromBody] Vozilo vozilo)
         {
             var x = _voziloService.IzmijeniVozilo(voziloId, vozilo);

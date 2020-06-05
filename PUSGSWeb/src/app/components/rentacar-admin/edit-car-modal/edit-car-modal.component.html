@@ -1,0 +1,66 @@
+<div class="text-center mb-5">
+    <h3>Izmjena vozila</h3>
+</div>
+<div>
+    <div class="div2 mb-5 form-group">
+
+        <form class="mb-5" #editServiceForm="ngForm" (ngSubmit)=editService(editServiceForm)>
+
+            <div *ngFor="let item of vozila">
+                <div class="ml-5 mt-5 mb-1 text-center">
+                    <mat-form-field appearance="outline" class="mr-5">
+                        <mat-label>Marka</mat-label>
+                        <input name="marka" matInput placeholder="Marka" [(ngModel)]="item.marka" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="mr-5">
+                        <mat-label>Model</mat-label>
+                        <input name="model" matInput placeholder="Model" [(ngModel)]="item.model" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="mr-5">
+                        <mat-label>Godina proizvodnje</mat-label>
+                        <input name="godinaProizvodnje" matInput placeholder="Godina proizvodnje"
+                            [(ngModel)]="item.godinaProizvodnje" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="mr-5">
+                        <mat-label>Tip vozila</mat-label>
+                        <input name="tipVozila" matInput placeholder="Tip vozila" [(ngModel)]="item.tipVozila"
+                            required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="mr-5">
+                        <mat-label>Broj sjedista</mat-label>
+                        <input name="brojSjedista" matInput placeholder="Broj sjedista"
+                            [(ngModel)]="item.brojSjedista" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="mr-5">
+                        <mat-label>Cijena</mat-label>
+                        <input name="cijena" matInput placeholder="Cijena" [(ngModel)]="item.cijena" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="mr-5">
+                        <mat-label>Tip goriva</mat-label>
+                        <input name="tipGoriva" matInput placeholder="Tip goriva" [(ngModel)]="item.tipGoriva"
+                            required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="mr-5">
+                        <mat-label>Transmisija</mat-label>
+                        <input name="transmisija" matInput placeholder="Transmisija" [(ngModel)]="item.transmisija"
+                            required>
+                    </mat-form-field>
+
+                </div>
+
+                <div class="text-center mt-5">
+                    <button mat-raised-button class="btn btn-primary mr-5">Izmijeni vozilo</button>
+                    <button type="button" class="btn btn-secondary" (click)="closeModal()">Odustani</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

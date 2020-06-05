@@ -58,16 +58,17 @@ namespace PUSGSProjekat.Services
                 var vozila = _dbContext.Vozila.FirstOrDefault(c => c.VoziloId == id);
                 if (vozila != null)
                 {
-                    vozila.Image = v.Image;
+                    vozila.Image = vozila.Image;
                     vozila.Marka = v.Marka;
                     vozila.Model = v.Model;
-                    vozila.Slobodno = v.Slobodno;
+                    vozila.Slobodno = vozila.Slobodno;
                     vozila.RentACarId = v.RentACarId;
                     vozila.TipGoriva = v.TipGoriva;
                     vozila.TipVozila = v.TipVozila;
                     vozila.Transmisija = v.Transmisija;
                     vozila.Cijena = v.Cijena;
                     vozila.BrojSjedista = v.BrojSjedista;
+    
                     
                     _dbContext.SaveChanges();
                     return true;
