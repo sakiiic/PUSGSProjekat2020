@@ -91,7 +91,6 @@ namespace PUSGSProjekat.Services
                     letovi.BrojPresjedanja = l.BrojPresjedanja;
                     letovi.LokacijePresjedanja = l.LokacijePresjedanja;
                     letovi.CijenaKarte = l.CijenaKarte;
-                    letovi.AviokompanijaId = l.AviokompanijaId;
 
                     _dbContext.SaveChanges();
                     return true;

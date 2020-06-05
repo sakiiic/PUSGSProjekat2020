@@ -36,7 +36,7 @@ namespace PUSGSProjekat.Controllers
             return Ok(x);
         }
 
-        [HttpPatch("IzmijeniLet")]
+        [HttpPatch("IzmijeniLet/{letId}")]
         public async Task<IActionResult> IzmijeniLet(int letId, [FromBody] Let let)
         {
             var x = _letService.IzmijeniLet(letId, let);

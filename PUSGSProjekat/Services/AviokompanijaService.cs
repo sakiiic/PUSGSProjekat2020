@@ -57,7 +57,8 @@ namespace PUSGSProjekat.Services
                         DatumVrijemeDolaska = flight.DatumVrijemeDolaska,
                         DuzinaPutovanja = flight.DuzinaPutovanja,
                         LokacijePresjedanja = flight.LokacijePresjedanja,
-                        VrijemePutovanja = flight.VrijemePutovanja
+                        VrijemePutovanja = flight.VrijemePutovanja, 
+                        LetId = flight.LetId
                     }).ToList();
 
                 aviokompanija.AviokompanijaId = aviokompanije.AviokompanijaId;

@@ -70,5 +70,5 @@ export class GetRentacarServiceComponent implements OnInit {
       width: '470px', 
       data: {rentacarId: this.rentacarId}
     });
-  }DZ
+  }
 }

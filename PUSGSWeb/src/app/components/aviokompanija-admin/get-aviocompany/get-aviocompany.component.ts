@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AuthenticatService } from 'src/app/services/authentication/authentication.service';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { DeleteAviocompanyComponent } from '../delete-aviocompany/delete-aviocompany.component';
+import { EditAviocompanyComponent } from '../edit-aviocompany/edit-aviocompany.component';
 
 @Component({
   selector: 'app-get-aviocompany',
@@ -25,34 +26,50 @@ export class GetAviocompanyComponent implements OnInit {
     this.dataSource = new MatTableDataSource<AviokompanijaModel>();
      }
 
-  ngOnInit(): void {
-    this.service.getAviocompanyForCurrentUser(this.userId)
-         .subscribe((res: AviokompanijaModel[]) => {
-            console.log(res)
-            this.dataSource = res;
-            if (this.dataSource != '')
-            {
-              this.aviokompanijaId = this.dataSource[0].aviokompanijaId;
-            }
-            else 
-            {
-              this.aviokompanijaId = 0;
-            }
-         })
-  }
+     ngOnInit() {
+      this.service.getAviocompanyForCurrentUser(this.userId)
+           .subscribe((res: AviokompanijaModel[]) => {
+              console.log(res)
+              this.dataSource = res;
+              console.log('resssssss',this.dataSource)
+              if (this.dataSource != '')
+              {
+                this.aviokompanijaId = this.dataSource[0].aviokompanijaId;
+              }
+              else 
+              {
+                this.aviokompanijaId = 0;
+              }
+              console.log('aaaaaaaaaaaa', this.aviokompanijaId)
+           })
+    }
 
-  openModal() {
-    const dialogConfig = new MatDialogConfig();
-    // The user can't close the dialog by clicking outside its body
-    dialogConfig.disableClose = true;
-    dialogConfig.id = "modal-component";
-    dialogConfig.height = "350px";
-    dialogConfig.width = "600px";
-    // https://material.angular.io/components/dialog/overview
-    const modalDialog = this.matDialog.open(DeleteAviocompanyComponent, {
-      width: '470px', 
-      data: {aviokompanijaId: this.aviokompanijaId}
-    });
-  }
+    openDeleteModal() {
+      const dialogConfig = new MatDialogConfig();
+      // The user can't close the dialog by clicking outside its body
+      dialogConfig.disableClose = true;
+      dialogConfig.id = "modal-component";
+      dialogConfig.height = "350px";
+      dialogConfig.width = "600px";
+      // https://material.angular.io/components/dialog/overview
+      const modalDialog = this.matDialog.open(DeleteAviocompanyComponent, {
+        width: '470px', 
+        data: {aviokompanijaId: this.aviokompanijaId}
+      });
+    }
+  
+    openEditModal() {
+      const dialogConfig = new MatDialogConfig();
+      // The user can't close the dialog by clicking outside its body
+      dialogConfig.disableClose = true;
+      dialogConfig.id = "modal-component";
+      dialogConfig.height = "350px";
+      dialogConfig.width = "600px";
+      // https://material.angular.io/components/dialog/overview
+      const modalDialog = this.matDialog.open(EditAviocompanyComponent, {
+        width: '470px', 
+        data: {aviokompanijaId: this.aviokompanijaId}
+      });
+    }
 
 }

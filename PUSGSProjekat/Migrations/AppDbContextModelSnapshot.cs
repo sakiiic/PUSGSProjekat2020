@@ -198,8 +198,6 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("LokacijePresjedanja");
 
-                    b.Property<string>("NazivAviokompanije");
-
                     b.Property<string>("VrijemePutovanja");
 
                     b.HasKey("LetId");
