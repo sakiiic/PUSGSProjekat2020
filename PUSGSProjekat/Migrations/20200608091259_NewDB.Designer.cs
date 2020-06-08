@@ -10,8 +10,8 @@ using PUSGSProjekat;
 namespace PUSGSProjekat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200605165454_Nova")]
-    partial class Nova
+    [Migration("20200608091259_NewDB")]
+    partial class NewDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

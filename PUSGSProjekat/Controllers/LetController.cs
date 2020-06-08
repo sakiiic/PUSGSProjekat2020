@@ -43,5 +43,13 @@ namespace PUSGSProjekat.Controllers
 
             return Ok(x);
         }
+
+        [HttpGet("GetLet/{aviokompanijaId}/{letId}")]
+        public Let GetLet(int aviokompanijaId, int letId)
+        {
+            var x = _letService.GetLet(aviokompanijaId, letId);
+
+            return x;
+        }
     }
 }

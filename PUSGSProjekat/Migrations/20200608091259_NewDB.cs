@@ -2,7 +2,7 @@
 
 namespace PUSGSProjekat.Migrations
 {
-    public partial class Nova : Migration
+    public partial class NewDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
