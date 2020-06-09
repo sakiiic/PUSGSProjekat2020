@@ -196,6 +196,8 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("DuzinaPutovanja");
 
+                    b.Property<int?>("KorisnikId");
+
                     b.Property<string>("LokacijePresjedanja");
 
                     b.Property<string>("VrijemePutovanja");
@@ -203,6 +205,8 @@ namespace PUSGSProjekat.Migrations
                     b.HasKey("LetId");
 
                     b.HasIndex("AviokompanijaId");
+
+                    b.HasIndex("KorisnikId");
 
                     b.ToTable("Let");
                 });
@@ -411,6 +415,10 @@ namespace PUSGSProjekat.Migrations
                         .WithMany("Letovi")
                         .HasForeignKey("AviokompanijaId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("PUSGSProjekat.DTO.Korisnik")
+                        .WithMany("Letovi")
+                        .HasForeignKey("KorisnikId");
                 });
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Vozilo", b =>

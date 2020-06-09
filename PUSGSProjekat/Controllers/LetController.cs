@@ -51,5 +51,11 @@ namespace PUSGSProjekat.Controllers
 
             return x;
         }
+
+        [HttpGet("GetLetovi")]
+        public List<Let> GetLetovi()
+        {
+            return _letService.getLetovi();
+        }
     }
 }

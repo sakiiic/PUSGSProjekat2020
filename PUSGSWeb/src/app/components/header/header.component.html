@@ -51,12 +51,6 @@
                                 Statistika</a>
                         </li>
                         <li class="nav-item" *ngIf="isAviocompanyAdmin()">
-                            <a [routerLink]="['/addNewFlight']" routerLinkActive="router-link-active"
-                                class="nav-link text-white p-0 pt-3 pb-3 pl-1 mb-2 sidebar-link">
-                                <i class="fa fa-user text-light fa-lg mr-3"></i>
-                                Dodaj let</a>
-                        </li>
-                        <li class="nav-item" *ngIf="isAviocompanyAdmin()">
                             <a [routerLink]="['aviocompany']" routerLinkActive="router-link-active"
                                 class="nav-link text-white p-0 pt-3 pb-3 pl-1 mb-2 sidebar-link">
                                 <i class="fa fa-user text-light fa-lg mr-3"></i>
@@ -95,7 +89,7 @@
                         </div>
                         <div class="row moiClassWhiteDiv m-0 justify-content-center"
                             *ngIf="!isAdmin() && !isRentacarAdmin() && !isAviocompanyAdmin() && !isPassenger()">
-                            <div [routerLink]="['/aviokompanije']" routerLinkActive="router-link-active"
+                            <div [routerLink]="['/aviokompanija']" routerLinkActive="router-link-active"
                                 class="text-center moiClassIconMenu">
                                 <img class="moiClassButtonMenu" src="../../../assets/images/images.png" alt="TimeTable">
                                 <p style="color: orange">Aviokompanije</p>
@@ -108,9 +102,26 @@
                         </div>
                         <div class="row moiClassWhiteDiv m-0 justify-content-center"
                             *ngIf="!isAdmin() && !isRentacarAdmin() && !isAviocompanyAdmin() && isPassenger()">
-                            <h4>Passenger page</h4>
-                            <button type="button" class="btn btn-dark btn-lg btn-block" routerLink="/rezervisiLet">
-                                <mat-icon>airplanemode_active</mat-icon> Rezerviši let</button>
+                            <div [routerLink]="['/korisnik']" routerLinkActive="router-link-active"
+                                class="text-center moiClassIconMenu">
+                                <img class="moiClassButtonMenu" src="../../../assets/images/user.png" alt="TimeTable">
+                                <p style="color: orange">Profil korisnika</p>
+                            </div>
+                            <div [routerLink]="['/aviokompanija']" routerLinkActive="router-link-active"
+                                class="text-center moiClassIconMenu">
+                                <img class="moiClassButtonMenu" src="../../../assets/images/images.png" alt="TimeTable">
+                                <p style="color: orange">Letovi</p>
+                            </div>
+                            <div [routerLink]="['/rentacar']" routerLinkActive="router-link-active"
+                                class="text-center moiClassIconMenu">
+                                <img class="moiClassButtonMenu" src="../../../assets/images/download.png" alt="TimeTable">
+                                <p style="color: orange">Rent a car</p>
+                            </div>
+                            <div [routerLink]="['/rezervisiLet']" routerLinkActive="router-link-active"
+                                class="text-center moiClassIconMenu">
+                                <img class="moiClassButtonMenu" src="../../../assets/images/ticket.png" alt="TimeTable">
+                                <p style="color: orange">Rezrvisi let</p>
+                            </div>
                         </div>
                     </div>
                 </div>

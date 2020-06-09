@@ -27,9 +27,9 @@
               <td mat-cell *matCellDef="let element"> {{element.destinacije}} </td>
            </ng-container>
 
-           <ng-container matColumnDef="detalji">
+           <ng-container matColumnDef="letovi">
             <th mat-header-cell *matHeaderCellDef style="text-align:center"> Detalji </th>
-            <td mat-cell *matCellDef="let element" [routerLink]="['/aviokompanija/aviokompanijainfo/', element.id]">
+            <td mat-cell *matCellDef="let element" [routerLink]="['/aviokompanija/aviokompanijainfo/', element.aviokompanijaId]">
               <mat-icon>flight</mat-icon>  
             </td>
          </ng-container>

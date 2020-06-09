@@ -113,5 +113,37 @@ namespace PUSGSProjekat.Services
                 return false;
             }
         }
+
+        public List<Vozilo> getVozila()
+        {
+
+            try
+            {
+                Vozilo vozilo = new Vozilo();
+
+                return _dbContext.Vozila.Select(
+                    cars => new Vozilo()
+                    {
+                        RentACarId = cars.RentACarId,
+                        Marka = cars.Marka,
+                        Model = cars.Model,
+                        GodinaProizvodnje = cars.GodinaProizvodnje,
+                        BrojSjedista = cars.BrojSjedista,
+                        TipVozila = cars.TipVozila,
+                        Cijena = cars.Cijena,
+                        Image = cars.Image,
+                        Slobodno = cars.Slobodno,
+                        TipGoriva = cars.TipGoriva,
+                        Transmisija = cars.Transmisija,
+                        VoziloId = cars.VoziloId
+                    }).ToList();
+            }
+            catch (Exception e)
+            {
+                var message = e.Message;
+                Console.WriteLine(message);
+                return null;
+            }
+        }
     }
 }

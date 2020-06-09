@@ -55,4 +55,8 @@ export class RentACarService {
   getVozilo(rentacarId, voziloId){
     return this.http.get(this.apiURI + 'api/Vozilo/GetVozilo/' + rentacarId + '/' + voziloId);
   }
+
+  getVozila() {
+    return this.http.get(this.apiURI + 'api/Vozilo/GetVozila');
+  }
 }

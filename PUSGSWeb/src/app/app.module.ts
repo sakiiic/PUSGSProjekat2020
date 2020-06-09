@@ -19,7 +19,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { DetaljiRentacarComponent } from './components/rent-acar/detalji-rentacar/detalji-rentacar.component';
 import { DetaljiAviokompanijaComponent } from './components/aviokompanija/detalji-aviokompanija/detalji-aviokompanija.component';
-import { DetaljiLetaComponent } from './components/aviokompanija/detalji-leta/detalji-leta.component';
 import { AuthenticatService } from './services/authentication/authentication.service';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -56,6 +55,9 @@ import { EditAviocompanyComponent } from './components/aviokompanija-admin/edit-
 import { GetAviocompanyComponent } from './components/aviokompanija-admin/get-aviocompany/get-aviocompany.component';
 import { EditCarModalComponent } from './components/rentacar-admin/edit-car-modal/edit-car-modal.component';
 import { EditServiceModalComponent } from './components/rentacar-admin/edit-service-modal/edit-service-modal.component';
+import { KorisnikComponent } from './components/korisnik/korisnik.component';
+import { EditKorisnikComponent } from './components/korisnik/edit-korisnik/edit-korisnik.component';
+import { VozilaComponent } from './components/vozila/vozila.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -73,7 +75,6 @@ export function getToken() {
     HeaderComponent,
     DetaljiRentacarComponent,
     DetaljiAviokompanijaComponent,
-    DetaljiLetaComponent,
     LetRezervacijaComponent,
     LetoviComponent,
     AddNewCarComponent,
@@ -93,7 +94,10 @@ export function getToken() {
     GetAviocompanyComponent,
 
     EditCarModalComponent,
-    EditServiceModalComponent
+    EditServiceModalComponent,
+    KorisnikComponent,
+    EditKorisnikComponent,
+    VozilaComponent
   ],
   imports: [ 
     MbscModule,  

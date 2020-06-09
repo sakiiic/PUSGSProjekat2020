@@ -53,5 +53,11 @@ namespace PUSGSProjekat.Controllers
 
             return x;
         }
+
+        [HttpGet("GetVozila")]
+        public List<Vozilo> GetVozila()
+        {
+            return _voziloService.getVozila();
+        }
     }
 }
