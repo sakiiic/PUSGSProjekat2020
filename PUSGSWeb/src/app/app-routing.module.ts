@@ -5,7 +5,6 @@ import { AviokompanijaComponent } from './components/aviokompanija/aviokompanija
 import { RentACarComponent } from './components/rent-acar/rent-acar.component';
 import { DetaljiRentacarComponent } from './components/rent-acar/detalji-rentacar/detalji-rentacar.component';
 import { DetaljiAviokompanijaComponent } from './components/aviokompanija/detalji-aviokompanija/detalji-aviokompanija.component';
-import { DetaljiLetaComponent } from './components/aviokompanija/detalji-leta/detalji-leta.component';
 import { LetRezervacijaComponent } from './components/let-rezervacija/let-rezervacija.component';
 import { LetoviComponent } from './components/letovi/letovi.component';
 import { AddNewCarComponent } from './components/rentacar-admin/add-new-car/add-new-car.component';
@@ -22,17 +21,20 @@ import { GetCarsComponent } from './components/passenger/get-cars/get-cars.compo
 import { GetReservedCarsComponent } from './components/passenger/get-reserved-cars/get-reserved-cars.component';
 import { GetServicesComponent } from './components/passenger/get-services/get-services.component';
 import { ReserveCarModalComponent } from './components/passenger/reserve-car-modal/reserve-car-modal.component';
+import { KorisnikComponent } from './components/korisnik/korisnik.component';
+import { EditKorisnikComponent } from './components/korisnik/edit-korisnik/edit-korisnik.component';
+import { VozilaComponent } from './components/vozila/vozila.component';
 
 export const routes: Routes = [
   //children: [ { path: 'vozila', component: VozilaComponent } ] 
   { path: '', component: HomePageComponent },
-  { path: 'aviokompanije', component: AviokompanijaComponent },
+  { path: 'aviokompanija', component: AviokompanijaComponent },
   { path: 'rezervisiLet', component: LetRezervacijaComponent },
   { path: 'letovi', component: LetoviComponent },
+  { path: 'vozila', component: VozilaComponent },
   { path: 'rentacar', component: RentACarComponent},
   { path: 'rentacar/rentacarinfo/:id', component: DetaljiRentacarComponent},
   { path: 'aviokompanija/aviokompanijainfo/:id', component: DetaljiAviokompanijaComponent},
-  { path: 'aviokompanija/aviokompanijainfo/:id/letovi', component: DetaljiLetaComponent},
   { path: 'rentacarService/addNewCar', component: AddNewCarComponent},
   { path: 'rentacarServices', component: GetRentacarServiceComponent},
   { path: 'rentacarService/carDetails/:id', component: CarDetailsComponent},
@@ -45,6 +47,8 @@ export const routes: Routes = [
   { path: 'getReservedCars', component: GetReservedCarsComponent },
   { path: 'getServices', component: GetServicesComponent },
   { path: 'rezervacija', component: ReserveCarModalComponent}
+  { path: 'korisnik', component: KorisnikComponent },
+  { path: 'izmijeniKorisnika', component: EditKorisnikComponent }
 ];
 
 @NgModule({

@@ -29,4 +29,7 @@ export class LetService {
     return this.http.delete(this.apiURI + 'api/Let/ObrisiLet/' + id);
   }
 
+  getLet(aviokompanijaId, letId){
+    return this.http.get(this.apiURI + 'api/Let/GetLet/' + aviokompanijaId + '/' + letId);
+  }
 }

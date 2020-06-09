@@ -1,1 +1,57 @@
-<p>edit-flight works!</p>
+<div class="text-center mb-5">
+    <h3>Izmjena leta</h3>
+</div>
+<div>
+    <div class="div2 mb-5 form-group">
+
+        <form class="mb-5" #editServiceForm="ngForm" (ngSubmit)=editService(editServiceForm)>
+
+            <div class="ml-5 mt-5 mb-1 text-center">
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Polazak</mat-label>
+                    <input name="datumVrijemePolaska" matInput placeholder="Polazak" [(ngModel)]="dataSource.datumVrijemePolaska" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Dolazak</mat-label>
+                    <input name="datumVrijemeDolaska" matInput placeholder="Dolazak" [(ngModel)]="dataSource.datumVrijemeDolaska" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Trajanje</mat-label>
+                    <input name="vrijemePutovanja" matInput placeholder="Trajanje"
+                        [(ngModel)]="dataSource.vrijemePutovanja" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Duzina</mat-label>
+                    <input name="duzinaPutovanja" matInput placeholder="Duzina" [(ngModel)]="dataSource.duzinaPutovanja"
+                        required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Broj presijedanja</mat-label>
+                    <input name="brojPresjedanja" matInput placeholder="Broj presijedanja" [(ngModel)]="dataSource.brojPresjedanja" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Lokacije presijedanja</mat-label>
+                    <input name="lokacijePresjedanja" matInput placeholder="Lokacije presijedanja" [(ngModel)]="dataSource.lokacijePresjedanja" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Cijena karte</mat-label>
+                    <input name="cijenaKarte" matInput placeholder="Cijena karte" [(ngModel)]="dataSource.cijenaKarte"
+                        required>
+                </mat-form-field>
+
+            </div>
+
+            <div class="text-center mt-5">
+                <button mat-raised-button class="btn btn-primary mr-5">Izmijeni let</button>
+                <button type="button" class="btn btn-secondary" (click)="closeModal()">Odustani</button>
+            </div>
+        </form>
+
+    </div>
+</div>

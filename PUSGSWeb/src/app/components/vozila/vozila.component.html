@@ -1,0 +1,67 @@
+<div class="text-center mb-3">
+  <div style="text-align:center">     
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+   
+         <ng-container matColumnDef="marka">
+            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Marka </th>
+            <td mat-cell *matCellDef="let element"> {{element.marka}} </td>
+         </ng-container>
+   
+         <ng-container matColumnDef="model">
+            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Model </th>
+            <td mat-cell *matCellDef="let element"> {{element.model}} </td>
+         </ng-container>
+   
+         <ng-container matColumnDef="godinaProizvodnje">
+            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Godina prozivodnje </th>
+            <td mat-cell *matCellDef="let element"> {{element.godinaProizvodnje}} </td>
+         </ng-container>
+   
+         <ng-container matColumnDef="brojSjedista">
+            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Broj sjedista </th>
+            <td mat-cell *matCellDef="let element"> {{element.brojSjedista}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="tipVozila">
+          <th mat-header-cell *matHeaderCellDef style="text-align:center"> Tip vozila </th>
+          <td mat-cell *matCellDef="let element"> {{element.tipVozila}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="slobodno">
+          <th mat-header-cell *matHeaderCellDef style="text-align:center"> Slobodno </th>
+          <td mat-cell *matCellDef="let element"> {{element.slobodno}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="tipGoriva">
+           <th mat-header-cell *matHeaderCellDef style="text-align:center"> Tip goriva </th>
+           <td mat-cell *matCellDef="let element"> {{element.tipGoriva}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="transmisija">
+            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Transmisija </th>
+            <td mat-cell *matCellDef="let element"> {{element.transmisija}} </td>
+           </ng-container>
+  
+           <ng-container matColumnDef="image">
+             <th mat-header-cell *matHeaderCellDef style="text-align:center"> Slika </th>
+             <td mat-cell *matCellDef="let element"> {{element.image}} </td>
+           </ng-container>
+         
+           <ng-container matColumnDef="cijena">
+            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Cijena </th>
+            <td mat-cell *matCellDef="let element"> {{element.cijena}}<mat-icon>euro_symbol</mat-icon> </td>
+           </ng-container>
+
+           <ng-container matColumnDef="rez">
+                <th mat-header-cell *matHeaderCellDef style="text-align:center"> Rezervisi </th>
+                <td mat-cell *matCellDef="let element" [routerLink]="['/rezervisanaVozila/', element.id]">
+                    <mat-icon>directions_car</mat-icon>  
+                </td>
+            </ng-container>
+   
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"> </tr>
+   
+      </table>
+   </div>
+</div>

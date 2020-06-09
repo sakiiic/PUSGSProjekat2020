@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PUSGSProjekat;
 
 namespace PUSGSProjekat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200608091259_NewDB")]
+    partial class NewDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -196,8 +198,6 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("DuzinaPutovanja");
 
-                    b.Property<int?>("KorisnikId");
-
                     b.Property<string>("LokacijePresjedanja");
 
                     b.Property<string>("VrijemePutovanja");
@@ -205,8 +205,6 @@ namespace PUSGSProjekat.Migrations
                     b.HasKey("LetId");
 
                     b.HasIndex("AviokompanijaId");
-
-                    b.HasIndex("KorisnikId");
 
                     b.ToTable("Let");
                 });
@@ -415,15 +413,11 @@ namespace PUSGSProjekat.Migrations
                         .WithMany("Letovi")
                         .HasForeignKey("AviokompanijaId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("PUSGSProjekat.DTO.Korisnik")
-                        .WithMany("Letovi")
-                        .HasForeignKey("KorisnikId");
                 });
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Vozilo", b =>
                 {
-                    b.HasOne("PUSGSProjekat.DTO.Korisnik")
+                    b.HasOne("PUSGSProjekat.DTO.Korisnik", "Korisnik")
                         .WithMany("Vozila")
                         .HasForeignKey("KorisnikId");
 

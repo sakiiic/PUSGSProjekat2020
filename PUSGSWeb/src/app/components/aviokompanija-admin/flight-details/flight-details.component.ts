@@ -63,7 +63,7 @@ export class FlightDetailsComponent implements OnInit {
     // https://material.angular.io/components/dialog/overview
     const modalDialog = this.matDialog.open(EditFlightComponent, {
       width: '600px', 
-      data: {aviokompanijaId: this.aviokompanijaId, voziloId: id}
+      data: {aviokompanijaId: this.aviokompanijaId, letId: id}
     });
   }
 

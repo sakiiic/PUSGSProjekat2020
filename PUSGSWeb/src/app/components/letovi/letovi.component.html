@@ -34,8 +34,15 @@
 
         <ng-container matColumnDef="cijenaKarte">
           <th mat-header-cell *matHeaderCellDef style="text-align:center"> Cijena </th>
-          <td mat-cell *matCellDef="let element"> {{element.cijenaKarte}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.cijenaKarte}}<mat-icon>euro_symbol</mat-icon> </td>
         </ng-container>
+
+        <ng-container matColumnDef="rez">
+            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Rezervisi </th>
+            <td mat-cell *matCellDef="let element" [routerLink]="['/rezervisaniLetovi/', element.id]">
+            <mat-icon>flight_takeoff</mat-icon>  
+            </td>
+         </ng-container>
    
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"> </tr>

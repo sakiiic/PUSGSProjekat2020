@@ -2,6 +2,7 @@
 using PUSGSProjekat.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,5 +19,6 @@ namespace PUSGSProjekat.DTO
         public ICollection<UserRole> UserRoles { get; set; }
         public bool? ImaServis { get; set; } //za admine, da li imaju servis, ako nemaju mogu da dodaju svoj, u suprotnom ne mogu
         public ICollection<Vozilo> Vozila { get; set; } //za korisnike koji mogu da imaju listu rezervisanih vozila
+        public ICollection<Let> Letovi { get; set; }
     }
 }

@@ -11,10 +11,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AviokompanijaComponent implements OnInit {
 
-  displayedColumns = ['naziv', 'adresa', 'opis', 'ocjena', 'destinacije', 'detalji'];
+  displayedColumns = ['naziv', 'adresa', 'opis', 'ocjena', 'destinacije', 'letovi'];
   dataSource: any;
 
-  constructor(public service: AviokompanijaService, private activatedRoute: ActivatedRoute) { 
+  constructor(public service: AviokompanijaService, private activatedRoute: ActivatedRoute) {
     this.dataSource = new MatTableDataSource<AviokompanijaModel>();
     console.log(this.activatedRoute.snapshot.params, 'paramss')
   }

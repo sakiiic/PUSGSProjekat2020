@@ -12,6 +12,6 @@ namespace PUSGSProjekat.Repositories
         bool ObrisiLet(int id);
         bool IzmijeniLet(int id, Let l);
         bool DodajLet(Let l);
-
+        Let GetLet(int aviokompanijaId, int letId);
     }
 }

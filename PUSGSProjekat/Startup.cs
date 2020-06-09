@@ -91,6 +91,7 @@ namespace PUSGSProjekat
             services.AddScoped<ILetService, LetService>();
             services.AddScoped<IVoziloService, VoziloService>();
             services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<IKorisnikService, KorisnikService>();
 
             services.AddSwaggerGen(c =>
             {

@@ -1,54 +1,65 @@
-<div class="text-center mb-3">
-    <img src="../../../../assets/images/airplane.jpg">
-
-    <div style="text-align:center">     
-        <table mat-table [dataSource]="dataSource.letovi" class="mat-elevation-z8">
-     
-           <ng-container matColumnDef="datumVrijemePolaska">
-              <th mat-header-cell *matHeaderCellDef style="text-align:center"> Vrijeme polaska </th>
-              <td mat-cell *matCellDef="let element"> {{element.datumVrijemePolaska}} </td>
-           </ng-container>
-     
-           <ng-container matColumnDef="datumVrijemeDolaska">
-              <th mat-header-cell *matHeaderCellDef style="text-align:center"> vrijeme dolaska </th>
-              <td mat-cell *matCellDef="let element"> {{element.datumVrijemeDolaska}} </td>
-           </ng-container>
-     
-           <ng-container matColumnDef="vrijemePutovanja">
-              <th mat-header-cell *matHeaderCellDef style="text-align:center"> Vrijeme putovanja </th>
-              <td mat-cell *matCellDef="let element"> {{element.vrijemePutovanja}} </td>
-           </ng-container>
-     
-           <ng-container matColumnDef="duzinaPutovanja">
-              <th mat-header-cell *matHeaderCellDef style="text-align:center"> Duzina putovanja </th>
-              <td mat-cell *matCellDef="let element"> {{element.duzinaPutovanja}} </td>
-           </ng-container>
-     
-           <ng-container matColumnDef="brojPresjedanja">
-              <th mat-header-cell *matHeaderCellDef style="text-align:center"> Broj presjedanja </th>
-              <td mat-cell *matCellDef="let element"> {{element.brojPresjedanja}} </td>
-           </ng-container>
-
-           <ng-container matColumnDef="lokacijePresjedanja">
-            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Lokacije presjedanja </th>
-            <td mat-cell *matCellDef="let element"> {{element.lokacijePresjedanja}} </td>
-           </ng-container>
-
-           <ng-container matColumnDef="cijenaKarte">
-            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Cijena karte </th>
-            <td mat-cell *matCellDef="let element"> {{element.cijenaKarte}} </td>
-           </ng-container>
-     
-           <ng-container matColumnDef="detalji">
-              <th mat-header-cell *matHeaderCellDef style="text-align:center"> Detalji </th>
-              <td mat-cell *matCellDef="let element" [routerLink]="['/aviokompanija/aviokompanijainfo/', element.id, 'letovi']">
-                <mat-icon>flight_takeoff</mat-icon>  
-              </td>
-           </ng-container>
-     
-           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-           <tr mat-row *matRowDef="let row; columns: displayedColumns;"> </tr>
-     
-        </table>
-     </div>
+<div class="text-center mt-5">
+  <mat-form-field>
+    <mat-label>Izaberite datum</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+<div class="text-center">
+  <button class="btn btn-primary">Prikazi</button>
+</div>
+<div class="ml-5 mb-5">
+  <div class="ml-5">
+    <div class="ml-5">
+      <div class="row ml-5 mb-5">
+      </div>
+      <div class="row ml-5">
+        <div class="col-lg-10 offset-lg-1 col-md-12 card"
+          *ngFor="let item of dataSource.letovi | paginate: { itemsPerPage: count, currentPage: p }"
+          [class.bg-secondary]="item.selected">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <h5 class="card-title">
+                  <span>
+                    <mat-icon>flight_takeoff</mat-icon> {{item.datumVrijemePolaska}}
+                </span>
+                <br>
+                <span>
+                    <mat-icon>flight_land</mat-icon> {{item.datumVrijemeDolaska}}
+                </span>
+                </h5>
+                <p class="card-text">
+                  <span>
+                    <mat-icon>schedule</mat-icon> {{item.vrijemePutovanja}}
+                </span>
+                <span>
+                    <mat-icon> straighten</mat-icon> {{item.duzinaPutovanja}}
+                </span>
+                <span>
+                    <mat-icon> flight</mat-icon> {{item.brojPresjedanja}}
+                </span>
+                <span>
+                    <mat-icon> place</mat-icon> {{item.lokacijePresjedanja}}
+                </span>
+                <span>
+                    <mat-icon>euro_symbol</mat-icon> {{item.cijenaKarte}}
+                </span>
+                <br>
+                <br>
+                </p>
+              </div>
+              <div class="col-md-2 col-sm-12">
+                <h3 class="d-flex justify-content-center text-green">{{item.cijenaKarte}} <mat-icon>euro_symbol</mat-icon></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-right">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

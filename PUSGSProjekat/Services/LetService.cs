@@ -122,5 +122,18 @@ namespace PUSGSProjekat.Services
                 return false;
             }
         }
+
+        public Let GetLet(int aviokompanijaId, int letId)
+        {
+            try
+            {
+                return _dbContext.Letovi.Where(a => a.AviokompanijaId == aviokompanijaId && a.LetId == letId).FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
     }
 }
