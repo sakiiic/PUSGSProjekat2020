@@ -46,7 +46,7 @@ export const routes: Routes = [
   { path: 'getCars/:id', component: GetCarsComponent },
   { path: 'getReservedCars', component: GetReservedCarsComponent },
   { path: 'getServices', component: GetServicesComponent },
-  { path: 'rezervacija', component: ReserveCarModalComponent}
+  { path: 'rezervacija', component: ReserveCarModalComponent},
   { path: 'korisnik', component: KorisnikComponent },
   { path: 'izmijeniKorisnika', component: EditKorisnikComponent }
 ];
