@@ -4,6 +4,7 @@ import { RentacarDTOModel } from 'src/app/models/rentacarDTO.model';
 import { RentACarService } from 'src/app/services/rent-a-car/rent-a-car.service';
 import { AuthenticatService } from 'src/app/services/authentication/authentication.service';
 import { Router } from '@angular/router';
+import { AlertifyService } from 'src/app/services/alertify/alertify.service';
 
 @Component({
   selector: 'app-add-rentacar-service',
@@ -16,7 +17,7 @@ export class AddRentacarServiceComponent implements OnInit {
   rentacarModel: RentacarDTOModel;
 
   constructor(private fb: FormBuilder, private servis: RentACarService, private auth: AuthenticatService, 
-    private router: Router) { 
+    private router: Router, private alertify: AlertifyService) { 
     this.dodajServisForm = this.fb.group({
       naziv: ['', Validators.required],
       adresa: ['', Validators.required],
@@ -33,6 +34,7 @@ export class AddRentacarServiceComponent implements OnInit {
     this.rentacarModel = Object.assign({}, this.dodajServisForm.value);
     this.servis.postRentacarServis(this.rentacarModel).subscribe(() => {
       console.log('Uspjesno dodat servis');
+      this.alertify.success('Uspjesno dodat servis!');
       this.router.navigate(['/rentacarServices']);
     }, error => {
       console.log('Neuspjesno dodat servis');

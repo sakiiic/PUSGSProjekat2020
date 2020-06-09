@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { VoziloModel } from 'src/app/models/vozilo.model';
 import { RentACarService } from 'src/app/services/rent-a-car/rent-a-car.service';
+import { AlertifyService } from 'src/app/services/alertify/alertify.service';
 
 @Component({
   selector: 'app-add-new-car',
@@ -13,7 +14,8 @@ export class AddNewCarComponent implements OnInit {
   dodajVoziloForm: FormGroup;
   vozilo: VoziloModel;
 
-  constructor(private fb: FormBuilder, private rentacarService: RentACarService) { }
+  constructor(private fb: FormBuilder, private rentacarService: RentACarService, 
+    private alertify: AlertifyService) { }
 
   ngOnInit(): void {
     this.dodajVozilo();
@@ -38,6 +40,7 @@ export class AddNewCarComponent implements OnInit {
     this.vozilo = Object.assign({}, this.dodajVoziloForm.value);
     this.rentacarService.postVozilo(this.vozilo).subscribe(() => {
       console.log('Uspjesno dodato vozilo');
+      this.alertify.success('Uspjesno rezervisano vozilo!');
     }, error => {
       console.log('Neuspjesno dodato vozilo');
     });

@@ -10,8 +10,8 @@ using PUSGSProjekat;
 namespace PUSGSProjekat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200605164943_Dodaj")]
-    partial class Dodaj
+    [Migration("20200608204111_fixVozilo")]
+    partial class fixVozilo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -250,7 +250,7 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("Image");
 
-                    b.Property<int?>("KorisnikId");
+                    b.Property<int>("KorisnikId");
 
                     b.Property<string>("Marka");
 
@@ -417,9 +417,10 @@ namespace PUSGSProjekat.Migrations
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Vozilo", b =>
                 {
-                    b.HasOne("PUSGSProjekat.DTO.Korisnik", "Korisnik")
+                    b.HasOne("PUSGSProjekat.DTO.Korisnik")
                         .WithMany("Vozila")
-                        .HasForeignKey("KorisnikId");
+                        .HasForeignKey("KorisnikId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("PUSGSProjekat.DTO.RentACar")
                         .WithMany("Vozila")

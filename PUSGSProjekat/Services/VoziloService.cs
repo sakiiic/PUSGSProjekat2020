@@ -51,6 +51,37 @@ namespace PUSGSProjekat.Services
             return true;
         }
 
+        public List<Vozilo> GetVozila(int rentacarId)
+        {
+            try
+            {
+                var vozila = _dbContext.Vozila.Where(a => a.RentACarId == rentacarId).ToList();
+
+                return vozila;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public List<Vozilo> GetVozilaDate(DateTime startDate, DateTime endDate, int rentacarId)
+        {
+            try
+            {
+                var vozila = _dbContext.Vozila.Where(a => a.RentACarId == rentacarId
+                && a.DatumOd >= startDate && a.DatumDo <= endDate).ToList();
+
+                return vozila;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
         public Vozilo GetVozilo(int rentacarId, int voziloId)
         {
             try
@@ -111,6 +142,63 @@ namespace PUSGSProjekat.Services
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+        public Vozilo OtkaziRezervaciju(int voziloId)
+        {
+            try
+            {
+                var vozilo = _dbContext.Vozila.Where(a => a.VoziloId == voziloId ).FirstOrDefault();
+
+                vozilo.Slobodno = true;
+                vozilo.KorisnikId = null;
+
+
+                _dbContext.SaveChanges();
+                return vozilo;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public List<Vozilo> PrikazRezervisanihVozila(int korisnikId)
+        {
+
+            try
+            {
+                var vozila = _dbContext.Vozila.Where(a => a.KorisnikId == korisnikId).ToList();
+
+                return vozila;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public Vozilo RezervisiVozilo(int voziloId, int korisnikId)
+        {
+            try
+            {
+                var vozilo = _dbContext.Vozila.Where(a => a.VoziloId == voziloId).FirstOrDefault();
+
+                vozilo.Slobodno = false;
+                vozilo.KorisnikId = korisnikId;
+                
+                
+                _dbContext.SaveChanges();
+                return vozilo;
+
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
             }
         }
     }

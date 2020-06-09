@@ -18,6 +18,10 @@ import { GetAviocompanyComponent } from './components/aviokompanija-admin/get-av
 import { EditAviocompanyComponent } from './components/aviokompanija-admin/edit-aviocompany/edit-aviocompany.component';
 import { FlightDetailsComponent } from './components/aviokompanija-admin/flight-details/flight-details.component';
 import { AddAviocompanyComponent } from './components/aviokompanija-admin/add-aviocompany/add-aviocompany.component';
+import { GetCarsComponent } from './components/passenger/get-cars/get-cars.component';
+import { GetReservedCarsComponent } from './components/passenger/get-reserved-cars/get-reserved-cars.component';
+import { GetServicesComponent } from './components/passenger/get-services/get-services.component';
+import { ReserveCarModalComponent } from './components/passenger/reserve-car-modal/reserve-car-modal.component';
 
 export const routes: Routes = [
   //children: [ { path: 'vozila', component: VozilaComponent } ] 
@@ -36,7 +40,11 @@ export const routes: Routes = [
   { path: 'addNewFlight', component: AddNewFlightComponent },
   { path: 'aviocompany', component: GetAviocompanyComponent},
   { path: 'aviocompany/flightDetails/:id', component: FlightDetailsComponent},
-  { path: 'addAviocompany', component: AddAviocompanyComponent }
+  { path: 'addAviocompany', component: AddAviocompanyComponent },
+  { path: 'getCars/:id', component: GetCarsComponent },
+  { path: 'getReservedCars', component: GetReservedCarsComponent },
+  { path: 'getServices', component: GetServicesComponent },
+  { path: 'rezervacija', component: ReserveCarModalComponent}
 ];
 
 @NgModule({

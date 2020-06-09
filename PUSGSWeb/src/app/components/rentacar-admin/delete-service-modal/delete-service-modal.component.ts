@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RentACarService } from 'src/app/services/rent-a-car/rent-a-car.service';
 import { RentACarModel } from 'src/app/models/rentACar.model';
 import { ActivatedRoute } from '@angular/router';
+import { AlertifyService } from 'src/app/services/alertify/alertify.service';
 
 @Component({
   selector: 'app-delete-service-modal',
@@ -18,7 +19,7 @@ export class DeleteServiceModalComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<DeleteServiceModalComponent>,
     public service: RentACarService, 
     private activatedRoute: ActivatedRoute,
-    @Inject(MAT_DIALOG_DATA) public data: any) { 
+    @Inject(MAT_DIALOG_DATA) public data: any, private alertify: AlertifyService) { 
       this.id = data.rentacarId;
       console.log(this.id, "aaaaa")
     }
@@ -29,6 +30,7 @@ export class DeleteServiceModalComponent implements OnInit {
   openModal(){
     this.service.deleteRentacarServis(this.id).subscribe();
     this.dialogRef.close();
+    this.alertify.success('Uspjesno obrisan servis!');
     window.location.reload();
   }
 

@@ -4,6 +4,7 @@ import { RentACarService } from 'src/app/services/rent-a-car/rent-a-car.service'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RentACarModel } from 'src/app/models/rentACar.model';
 import { VoziloModel } from 'src/app/models/vozilo.model';
+import { AlertifyService } from 'src/app/services/alertify/alertify.service';
 
 @Component({
   selector: 'app-edit-car-modal',
@@ -30,7 +31,7 @@ export class EditCarModalComponent implements OnInit {
 
   @ViewChild('messageblock', { static: true }) messageblock: ElementRef;
   constructor(fb: FormBuilder, private service: RentACarService, @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<EditCarModalComponent>) {
+    public dialogRef: MatDialogRef<EditCarModalComponent>, private alertify: AlertifyService) {
 
     this.rentaId = data.rentacarId;
     this.voziloId = data.voziloId;
@@ -69,6 +70,7 @@ export class EditCarModalComponent implements OnInit {
     }
 
     this.service.editVozilo(this.dataSource.voziloId, model).subscribe();
+    this.alertify.success('Uspjesno izmijenjeno vozilo!');
     this.dialogRef.close();
     
   }

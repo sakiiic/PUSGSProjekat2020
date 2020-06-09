@@ -4,6 +4,7 @@ import { RentACarService } from 'src/app/services/rent-a-car/rent-a-car.service'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { RentACarModel } from 'src/app/models/rentACar.model';
 import { RentacarDTOModel } from 'src/app/models/rentacarDTO.model';
+import { AlertifyService } from 'src/app/services/alertify/alertify.service';
 
 @Component({
   selector: 'app-edit-service-modal',
@@ -23,7 +24,7 @@ export class EditServiceModalComponent implements OnInit {
 
   @ViewChild('messageblock', { static: true }) messageblock: ElementRef;
   constructor(fb: FormBuilder, private service: RentACarService, @Inject(MAT_DIALOG_DATA) public data: any, 
-  public dialogRef: MatDialogRef<EditServiceModalComponent>) {
+  public dialogRef: MatDialogRef<EditServiceModalComponent>, private alertify: AlertifyService) {
 
     this.serviceId = data.rentacarId;
     console.log('thissss', this.serviceId)
@@ -52,6 +53,7 @@ export class EditServiceModalComponent implements OnInit {
     }
    
     this.service.editRentacarServis(this.serviceId, model).subscribe();
+    this.alertify.success('Uspjesno izmijenjen servis!');
     this.dialogRef.close();
   }
 
