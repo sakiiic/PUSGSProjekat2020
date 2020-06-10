@@ -22,6 +22,7 @@ export class AddNewFlightComponent implements OnInit {
 
   dodajLet() {
     this.dodajLetForm = this.fb.group({
+      destinacija: ['', Validators.required],
       datumVrijemePolaska: ['', Validators.required],
       datumVrijemeDolaska: ['', Validators.required],
       vrijemePutovanja: ['', Validators.required],

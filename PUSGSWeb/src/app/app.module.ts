@@ -63,6 +63,11 @@ import { PotvrdiOtkazivanjeModalComponent } from './components/passenger/potvrdi
 import { KorisnikComponent } from './components/korisnik/korisnik.component';
 import { EditKorisnikComponent } from './components/korisnik/edit-korisnik/edit-korisnik.component';
 import { VozilaComponent } from './components/vozila/vozila.component';
+import { GetAviocompaniesComponent } from './components/passenger/get-aviocompanies/get-aviocompanies.component';
+import { GetFlightsComponent } from './components/passenger/get-flights/get-flights.component';
+import { ReserveFlightComponent } from './components/passenger/reserve-flight/reserve-flight.component';
+import { GetReservedFlightsComponent } from './components/passenger/get-reserved-flights/get-reserved-flights.component';
+import { CancelReservationComponent } from './components/passenger/cancel-reservation/cancel-reservation.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -107,7 +112,12 @@ export function getToken() {
     PotvrdiOtkazivanjeModalComponent,
     KorisnikComponent,
     EditKorisnikComponent,
-    VozilaComponent
+    VozilaComponent,
+    GetAviocompaniesComponent,
+    GetFlightsComponent,
+    ReserveFlightComponent,
+    GetReservedFlightsComponent,
+    CancelReservationComponent
   ],
   imports: [ 
     MbscModule,  

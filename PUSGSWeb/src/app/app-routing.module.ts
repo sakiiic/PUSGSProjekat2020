@@ -24,6 +24,9 @@ import { ReserveCarModalComponent } from './components/passenger/reserve-car-mod
 import { KorisnikComponent } from './components/korisnik/korisnik.component';
 import { EditKorisnikComponent } from './components/korisnik/edit-korisnik/edit-korisnik.component';
 import { VozilaComponent } from './components/vozila/vozila.component';
+import { GetAviocompaniesComponent} from './components/passenger/get-aviocompanies/get-aviocompanies.component';
+import { GetFlightsComponent } from './components/passenger/get-flights/get-flights.component'; 
+import { GetReservedFlightsComponent } from './components/passenger/get-reserved-flights/get-reserved-flights.component';
 
 export const routes: Routes = [
   //children: [ { path: 'vozila', component: VozilaComponent } ] 
@@ -48,6 +51,9 @@ export const routes: Routes = [
   { path: 'getServices', component: GetServicesComponent },
   { path: 'rezervacija', component: ReserveCarModalComponent},
   { path: 'korisnik', component: KorisnikComponent },
+  { path: 'getAviocompanies', component: GetAviocompaniesComponent },
+  { path: 'getFlights/:id', component: GetFlightsComponent },
+  { path: 'getReservedFlights', component: GetReservedFlightsComponent },
   { path: 'izmijeniKorisnika', component: EditKorisnikComponent }
 ];
 

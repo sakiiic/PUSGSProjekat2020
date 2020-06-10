@@ -8,6 +8,11 @@
 
             <div class="ml-5 mt-5 mb-1 text-center">
                 <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Destinacija</mat-label>
+                    <input name="destinacija" matInput placeholder="Destinacija" [(ngModel)]="dataSource.destinacija" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="mr-5">
                     <mat-label>Polazak</mat-label>
                     <input name="datumVrijemePolaska" matInput placeholder="Polazak" [(ngModel)]="dataSource.datumVrijemePolaska" required>
                 </mat-form-field>

@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AuthenticatService } from 'src/app/services/authentication/authentication.service';
-import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
-import { KorisnikService } from 'src/app/services/korisnik/korisnik.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AlertifyService } from 'src/app/services/alertify/alertify.service';
 
 @Component({
   selector: 'app-korisnik',
@@ -11,63 +10,34 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class KorisnikComponent implements OnInit {
 
-  username: string;
+  id: any;
+  korisnikId: any;
+  username: any;
+  email: any;
   password: string;
-  firstName: string;
-  lastName: string;
-  email: string;
+  name: string;
+  surname: string;
   city: string;
   number: string;
   street: string;
   dateOfBirth: Date;
-  userId: any = this.auth.currentUser.id;
 
-  public formModel: FormGroup;
-  public id: any;
-  public dataSource: any;
-  korisnici: any;
+  constructor(private auth: AuthenticatService, private alertify: AlertifyService) {
 
-  constructor(private auth: AuthenticatService, fb: FormBuilder, private service: KorisnikService) {
-      
-      this.id = this.userId;
-
-      console.log('Ovo mi je id', this.userId);
-      console.log('Korisnik', this.dataSource)
-     }
+    this.korisnikId = this.auth.currentUser.id;
+    this.username = this.auth.currentUser.userName;
+    this.email = this.auth.currentUser.email;
+    this.password = this.auth.currentUser.password;
+    this.name = this.auth.currentUser.name;
+    this.surname = this.auth.currentUser.surname;
+    this.city = this.auth.currentUser.address.city;
+    this.street = this.auth.currentUser.address.street;
+    this.number = this.auth.currentUser.address.number;
+    this.dateOfBirth = this.auth.currentUser.dateOfBirth;
+   }
 
   ngOnInit(): void {
-    this.service.getKorisnik(this.id).subscribe((res: any[]) => {
-      this.dataSource = res;
-    })
   }
 
-  editService(form: NgForm) {
-    //this.username = form.value.username;
-    this.password = form.value.password;
-    //this.firstName = form.value.firstName;
-    //this.lastName = form.value.lastName;
-    this.email = form.value.email;
-    //this.city = form.value.city;
-    //this.street = form.value.street;
-    //this.number = form.value.number;
-    this.dateOfBirth = form.value.dateOfBirth;
-
-    let model: any;
-
-    model = {
-      //username: this.username,
-      password: this.password,
-      //firstName: this.firstName,
-      //lastName: this.lastName,
-      email: this.email,
-      //city: this.city,
-      //street: this.street,
-      //number: this.number,
-      dateOfBirth: this.dateOfBirth,    
-    }
-
-    this.service.editKorisnik(this.dataSource.id, model).subscribe();
-    
-  }
-
+  
 }

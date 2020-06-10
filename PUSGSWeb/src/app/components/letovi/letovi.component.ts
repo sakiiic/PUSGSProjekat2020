@@ -10,7 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class LetoviComponent implements OnInit {
 
-  displayedColumns = ['datumVrijemePolaska', 'datumVrijemeDolaska', 'vrijemePutovanja', 'duzinaPutovanja', 'brojPresjedanja', 'lokacijePresjedanja', 'cijenaKarte', 'rez'];
+  displayedColumns = ['destinacija', 'datumVrijemePolaska', 'datumVrijemeDolaska', 'vrijemePutovanja', 'duzinaPutovanja', 'brojPresjedanja', 'lokacijePresjedanja', 'cijenaKarte', 'rez'];
   dataSource: any;
 
   constructor(public service: LetService) { 

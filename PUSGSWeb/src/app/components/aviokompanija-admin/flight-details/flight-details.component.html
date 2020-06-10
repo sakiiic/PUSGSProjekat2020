@@ -13,9 +13,14 @@
                     [class.bg-secondary]="item.selected">
                     <div class="card-body">
                         <div class="row">
-                            
+                            <div class="col-md-4 col-sm-12">
+                                <img class="" src="../../../assets/images/ticket.png" width="33%">
+                            </div>
                             <div class="col-md-6 col-sm-12">
                                 <h5 class="card-title">
+                                    <span>
+                                        <mat-icon>place</mat-icon> {{item.destinacija}}
+                                    </span>
                                     <span>
                                         <mat-icon>flight_takeoff</mat-icon> {{item.datumVrijemePolaska}}
                                     </span>

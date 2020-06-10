@@ -58,16 +58,46 @@
                                 Statistika</a>
                         </li>
                         <li class="nav-item" *ngIf="isAviocompanyAdmin()">
-                            <a [routerLink]="['aviocompany']" routerLinkActive="router-link-active"
+                            <a [routerLink]="['/korisnik']" routerLinkActive="router-link-active"
+                                class="nav-link text-white p-0 pt-3 pb-3 pl-1 mb-2 sidebar-link">
+                                <i class="fa fa-user text-light fa-lg mr-3"></i>
+                                Moj profil</a>
+                        </li>
+                        <li class="nav-item" *ngIf="isAviocompanyAdmin()">
+                            <a [routerLink]="['/aviocompany']" routerLinkActive="router-link-active"
                                 class="nav-link text-white p-0 pt-3 pb-3 pl-1 mb-2 sidebar-link">
                                 <i class="fa fa-user text-light fa-lg mr-3"></i>
                                 Profil avio kompanije</a>
                         </li>
                         <li class="nav-item" *ngIf="isPassenger()">
-                            <a [routerLink]="['/rezervisiLet']" routerLinkActive="router-link-active"
+                            <a [routerLink]="['/korisnik']" routerLinkActive="router-link-active"
+                                class="nav-link text-white p-0 pt-3 pb-3 pl-1 mb-2 sidebar-link">
+                                <i class="fa fa-user text-light fa-lg mr-3"></i>
+                                Profil korisnika</a>
+                        </li>
+                        <li class="nav-item" *ngIf="isPassenger()">
+                            <a [routerLink]="['/aviokompanija']" routerLinkActive="router-link-active"
+                                class="nav-link text-white p-0 pt-3 pb-3 pl-1 mb-2 sidebar-link">
+                                <i class="fa fa-user text-light fa-lg mr-3"></i>
+                                Aviokompanije</a>
+                        </li>
+                        <li class="nav-item" *ngIf="isPassenger()">
+                            <a [routerLink]="['/rentacar']" routerLinkActive="router-link-active"
+                                class="nav-link text-white p-0 pt-3 pb-3 pl-1 mb-2 sidebar-link">
+                                <i class="fa fa-user text-light fa-lg mr-3"></i>
+                                Rent a car servisi</a>
+                        </li>
+                        <li class="nav-item" *ngIf="isPassenger()">
+                            <a [routerLink]="['/getAviocompanies']" routerLinkActive="router-link-active"
                                 class="nav-link text-white p-0 pt-3 pb-3 pl-1 mb-2 sidebar-link">
                                 <i class="fa fa-user text-light fa-lg mr-3"></i>
                                 Rezerviši let</a>
+                        </li>
+                        <li class="nav-item" *ngIf="isPassenger()">
+                            <a [routerLink]="['/getReservedFlights']" routerLinkActive="router-link-active"
+                                class="nav-link text-white p-0 pt-3 pb-3 pl-1 mb-2 sidebar-link">
+                                <i class="fa fa-user text-light fa-lg mr-3"></i>
+                                Rezervisani letovi</a>
                         </li>
                         <li class="nav-item" *ngIf="isPassenger()">
                             <a [routerLink]="['/getServices']" routerLinkActive="router-link-active"
@@ -80,18 +110,6 @@
                                 class="nav-link text-white p-0 pt-3 pb-3 pl-1 mb-2 sidebar-link">
                                 <i class="fa fa-user text-light fa-lg mr-3"></i>
                                 Rezervisana vozila</a>
-                        </li>
-                        <li class="nav-item" *ngIf="isPassenger()">
-                            <a [routerLink]="['/korisnik']" routerLinkActive="router-link-active"
-                                class="nav-link text-white p-0 pt-3 pb-3 pl-1 mb-2 sidebar-link">
-                                <i class="fa fa-user text-light fa-lg mr-3"></i>
-                                Profil korisnika</a>
-                        </li>
-                        <li class="nav-item" *ngIf="isPassenger()">
-                            <a [routerLink]="['/aviokompanija']" routerLinkActive="router-link-active"
-                                class="nav-link text-white p-0 pt-3 pb-3 pl-1 mb-2 sidebar-link">
-                                <i class="fa fa-user text-light fa-lg mr-3"></i>
-                                Aviokompanija</a>
                         </li>
                     </ul>
                 </div>
@@ -137,7 +155,7 @@
                                 <p style="color: orange">Rent a car</p>
                             </div>
                         </div>
-                        <!-- <div class="row moiClassWhiteDiv m-0 justify-content-center"
+                        <!--<div class="row moiClassWhiteDiv m-0 justify-content-center"
                             *ngIf="!isAdmin() && !isRentacarAdmin() && !isAviocompanyAdmin() && isPassenger()">
                             <div [routerLink]="['/korisnik']" routerLinkActive="router-link-active"
                                 class="text-center moiClassIconMenu">
@@ -158,8 +176,8 @@
                                 class="text-center moiClassIconMenu">
                                 <img class="moiClassButtonMenu" src="../../../assets/images/ticket.png" alt="TimeTable">
                                 <p style="color: orange">Rezrvisi let</p>
-                            </div>-->
-                        </div>
+                            </div>
+                        </div>-->
                     </div>
                 </div>
 

@@ -32,4 +32,25 @@ export class LetService {
   getLet(aviokompanijaId, letId){
     return this.http.get(this.apiURI + 'api/Let/GetLet/' + aviokompanijaId + '/' + letId);
   }
+
+  getFlightDate(from, to, aviokomapnijaId){
+    return this.http.get(this.apiURI + 'api/Let/GetFlightDate?from=' + from + '&to=' + to + '&aviokompanijaId=' + aviokomapnijaId)
+  }
+
+  getFlights(aviokompanijaId){
+    return this.http.get(this.apiURI + 'api/Let/GetLetovi/' + aviokompanijaId)
+  }
+
+  rezervisiLet(letId, korisnikId){
+    return this.http.get(this.apiURI + 'api/Let/RezervisiLet?letId=' + letId + '&korisnikId=' + korisnikId);
+  }
+
+  getRezervisaniLetovi(korisnikId) {
+    return this.http.get(this.apiURI + 'api/Let/PrikazRezervisanihLetova?korisnikId=' + korisnikId);
+  }
+
+  otkaziLet(letId){
+    return this.http.get(this.apiURI + 'api/Let/OtkaziLet?letId=' + letId);
+  }
+
 }

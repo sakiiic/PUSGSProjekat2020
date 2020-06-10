@@ -55,6 +55,7 @@ namespace PUSGSProjekat.Services
                         BrojPresjedanja = flight.BrojPresjedanja,
                         DatumVrijemePolaska = flight.DatumVrijemePolaska,
                         DatumVrijemeDolaska = flight.DatumVrijemeDolaska,
+                        Destinacija = flight.Destinacija,
                         DuzinaPutovanja = flight.DuzinaPutovanja,
                         LokacijePresjedanja = flight.LokacijePresjedanja,
                         VrijemePutovanja = flight.VrijemePutovanja, 

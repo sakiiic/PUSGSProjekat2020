@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PUSGSProjekat.DTO;
+using PUSGSProjekat.Entities;
 using PUSGSProjekat.Repositories;
 
 namespace PUSGSProjekat.Controllers
@@ -74,6 +75,14 @@ namespace PUSGSProjekat.Controllers
             return x;
         }
 
+        [HttpGet("OtkaziLet")]
+        public Let OtkaziLet(int letId)
+        {
+            var x = _letService.OtkaziLet(letId);
+
+            return x;
+        }
+
         [HttpGet("RezervisiLet")]
         public Let RezervisiLet(int letId, int korisnikId)
         {
@@ -90,12 +99,20 @@ namespace PUSGSProjekat.Controllers
             return x;
         }
 
-        [HttpGet("OtkaziLet")]
-        public Let OtkaziLet(int letId)
-        {
-            var x = _letService.OtkaziLet(letId);
+        //[HttpPost("RezervisiLet")]
+        //public async Task<IActionResult> RezervisiLet([FromBody] Rezervacije rezLet)
+        //{
+        //    var x = _letService.RezervisiLet(rezLet);
 
-            return x;
-        }    
+        //    return Ok(x);
+        //}
+
+        //[HttpGet("PrikazRezervisanihLetova")]
+        //public List<Let> PrikazRezervisanihLetova(int korisnikId)
+        //{
+        //    var x = _letService.PrikazRezervisanihLetova(korisnikId);
+
+        //    return x;
+        //}
     }
 }

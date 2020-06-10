@@ -1,7 +1,12 @@
-<div class="text-center mb-3">
+<div class="text-center mb-3" style="margin-left: 300px;">
   <div style="text-align:center">     
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
    
+         <ng-container matColumnDef="destinacija">
+            <th mat-header-cell *matHeaderCellDef style="text-align:center"> Destinacija </th>
+            <td mat-cell *matCellDef="let element"> {{element.destinacija}} </td>
+         </ng-container>
+
          <ng-container matColumnDef="datumVrijemePolaska">
             <th mat-header-cell *matHeaderCellDef style="text-align:center"> Polazak </th>
             <td mat-cell *matCellDef="let element"> {{element.datumVrijemePolaska}} </td>
@@ -36,6 +41,10 @@
           <th mat-header-cell *matHeaderCellDef style="text-align:center"> Cijena </th>
           <td mat-cell *matCellDef="let element"> {{element.cijenaKarte}}<mat-icon>euro_symbol</mat-icon> </td>
         </ng-container>
+
+        <div class="text-center mt-5">
+         <button type="submit" class="btn btn-primary mr-5">Dodaj let</button>
+       </div>
 
         <ng-container matColumnDef="rez">
             <th mat-header-cell *matHeaderCellDef style="text-align:center"> Rezervisi </th>
