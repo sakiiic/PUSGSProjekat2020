@@ -31,7 +31,6 @@ export class GetRentacarServiceComponent implements OnInit {
          .subscribe((res: RentACarModel[]) => {
             console.log(res)
             this.dataSource = res;
-            console.log('resssssss',this.dataSource)
             if (this.dataSource != '')
             {
               this.rentacarId = this.dataSource[0].rentacarId;
@@ -40,7 +39,6 @@ export class GetRentacarServiceComponent implements OnInit {
             {
               this.rentacarId = 0;
             }
-            console.log('aaaaaaaaaaaa', this.rentacarId)
          })
   }
 

@@ -16,7 +16,7 @@ namespace PUSGSProjekat.Controllers
     public class VoziloController : ControllerBase
     {
         private IVoziloService _voziloService;
-        
+
         public VoziloController(IVoziloService voziloService)
         {
             _voziloService = voziloService;
@@ -47,17 +47,51 @@ namespace PUSGSProjekat.Controllers
         }
 
         [HttpGet("GetVozilo/{rentacarId}/{voziloId}")]
-        public Vozilo GetVozilo (int rentacarId, int voziloId)
+        public Vozilo GetVozilo(int rentacarId, int voziloId)
         {
             var x = _voziloService.GetVozilo(rentacarId, voziloId);
 
             return x;
         }
 
-        [HttpGet("GetVozila")]
-        public List<Vozilo> GetVozila()
+        [HttpGet("GetVozilaDatum")]
+        public List<Vozilo> GetVozilaDate(DateTime from, DateTime to, int rentacarId)
         {
-            return _voziloService.getVozila();
+            var x = _voziloService.GetVozilaDate(from, to, rentacarId);
+
+            return x;
+        }
+
+        [HttpGet("GetVozila/{rentacarId}")]
+        public List<Vozilo> GetVozila(int rentacarId)
+        {
+            var x = _voziloService.GetVozila(rentacarId);
+
+            return x;
+        }
+
+        [HttpGet("RezervisiVozilo")]
+        public Vozilo RezervisiVozilo(int voziloId, int korisnikId)
+        {
+            var x = _voziloService.RezervisiVozilo(voziloId, korisnikId);
+
+            return x;
+        }
+
+        [HttpGet("PrikazRezervisanih")]
+        public List<Vozilo> PrikazRezervisanihVozila(int korisnikId)
+        {
+            var x = _voziloService.PrikazRezervisanihVozila(korisnikId);
+
+            return x;
+        }
+
+        [HttpGet("OtkaziRezervaciju")]
+        public Vozilo OtkaziRezervaciju(int voziloId)
+        {
+            var x = _voziloService.OtkaziRezervaciju(voziloId);
+
+            return x;
         }
     }
 }

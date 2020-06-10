@@ -10,8 +10,8 @@ using PUSGSProjekat;
 namespace PUSGSProjekat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200605164943_Dodaj")]
-    partial class Dodaj
+    [Migration("20200609181543_fixvozilo22")]
+    partial class fixvozilo22
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -417,7 +417,7 @@ namespace PUSGSProjekat.Migrations
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Vozilo", b =>
                 {
-                    b.HasOne("PUSGSProjekat.DTO.Korisnik", "Korisnik")
+                    b.HasOne("PUSGSProjekat.DTO.Korisnik")
                         .WithMany("Vozila")
                         .HasForeignKey("KorisnikId");
 

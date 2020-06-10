@@ -1,0 +1,59 @@
+<div class="ml-5 mb-5">
+    <div class="ml-5">
+      <div class="ml-5">
+        <div class="row ml-5 mb-5">
+        </div>
+        <div *ngIf="dataSource == ''" class="text-center"> 
+            <h4>Korisnik nema rezervisanih vozila</h4>
+        </div>
+        <div class="row ml-5" *ngIf="dataSource != ''">
+          <div class="col-lg-10 styless offset-lg-1 col-md-12 card"
+            *ngFor="let item of dataSource | paginate: { itemsPerPage: count, currentPage: p }"
+            [class.bg-secondary]="item.selected">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-4 col-sm-12">
+                  <img class="" src="{{item.image}}" alt="{{item.marka}}" width="100%">
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <h5 class="card-title">
+                    {{item.marka}} {{item.model}}
+                    <span>
+                      <mat-icon>event_seat</mat-icon> {{item.brojSjedista}}
+                    </span>
+                  </h5>
+                  <p class="card-text">
+                    <span>
+                      <mat-icon> bubble_chart</mat-icon> {{item.transmisija}}
+                    </span>
+                    <span>
+                      <mat-icon> directions_car</mat-icon> {{item.tipVozila}}
+                    </span>
+                    <span>
+                      <mat-icon> local_gas_station</mat-icon> {{item.tipGoriva}}
+                    </span>
+                    <span>
+                      <mat-icon>date_range</mat-icon> {{item.godinaProizvodnje}}
+                    </span>
+                    <br>
+                    <br>
+                  </p>
+                </div>
+                <div class="col-md-2 col-sm-12">
+                  <h3 class="d-flex justify-content-center text-green">${{item.cijena}}</h3>
+  
+                  <button type="button" class="btn btn-danger btn-block" (click)="openOtkaziModal(item.voziloId)">
+                      <i class="fa fa-times-circle"></i>
+                    Otkaži rezervaciju</button>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-right ml-5">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -194,6 +194,8 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<DateTime>("DatumVrijemePolaska");
 
+                    b.Property<DateTime>("DatumVrijemePovratka");
+
                     b.Property<string>("DuzinaPutovanja");
 
                     b.Property<int?>("KorisnikId");
@@ -423,7 +425,7 @@ namespace PUSGSProjekat.Migrations
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Vozilo", b =>
                 {
-                    b.HasOne("PUSGSProjekat.DTO.Korisnik", "Korisnik")
+                    b.HasOne("PUSGSProjekat.DTO.Korisnik")
                         .WithMany("Vozila")
                         .HasForeignKey("KorisnikId");
 

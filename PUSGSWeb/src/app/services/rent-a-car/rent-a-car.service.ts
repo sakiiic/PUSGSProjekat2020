@@ -56,7 +56,23 @@ export class RentACarService {
     return this.http.get(this.apiURI + 'api/Vozilo/GetVozilo/' + rentacarId + '/' + voziloId);
   }
 
-  getVozila() {
-    return this.http.get(this.apiURI + 'api/Vozilo/GetVozila');
+  getVozilaDate(from, to, rentacarId){
+    return this.http.get(this.apiURI + 'api/Vozilo/GetVozilaDatum?from=' + from + '&to=' + to + '&rentacarId=' + rentacarId)
+  }
+
+  getVozila(rentacarId){
+    return this.http.get(this.apiURI + 'api/Vozilo/GetVozila/' + rentacarId)
+  }
+
+  rezervisiVozilo(voziloId, korisnikId){
+    return this.http.get(this.apiURI + 'api/Vozilo/RezervisiVozilo?voziloId=' + voziloId + '&korisnikId=' + korisnikId);
+  }
+
+  getRezervisanaVozila(korisnikId) {
+    return this.http.get(this.apiURI + 'api/Vozilo/PrikazRezervisanih?korisnikId=' + korisnikId);
+  }
+
+  otkaziRezervaciju(voziloId){
+    return this.http.get(this.apiURI + 'api/Vozilo/OtkaziRezervaciju?voziloId=' + voziloId);
   }
 }

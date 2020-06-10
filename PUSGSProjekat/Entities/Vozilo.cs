@@ -21,7 +21,9 @@ namespace PUSGSProjekat.DTO
         public string Image { get; set; }
         public DateTime DatumOd { get; set; }
         public DateTime DatumDo { get; set; }
-        public Korisnik Korisnik { get; set; }
+
+        [ForeignKey("Korisnik")]
+        public int? KorisnikId { get; set; }
 
         [ForeignKey("RentACar")]
         public int RentACarId { get; set; }

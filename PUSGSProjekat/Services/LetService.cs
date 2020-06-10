@@ -16,7 +16,7 @@ namespace PUSGSProjekat.Services
             _dbContext = dbContext;
         }
 
-        public List<Let> getLetovi()
+        public List<Let> GetSviLetovi()
         {
 
             try
@@ -128,6 +128,89 @@ namespace PUSGSProjekat.Services
             try
             {
                 return _dbContext.Letovi.Where(a => a.AviokompanijaId == aviokompanijaId && a.LetId == letId).FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public List<Let> GetLetovi(int aviokompanijaId)
+        {
+            try
+            {
+                var letovi = _dbContext.Letovi.Where(l => l.AviokompanijaId == aviokompanijaId).ToList();
+
+                return letovi;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public List<Let> GetFlightDate(DateTime startDate, DateTime endDate, int aviokompanijaId)
+        {
+            try
+            {
+                var letovi = _dbContext.Letovi.Where(l => l.AviokompanijaId == aviokompanijaId
+                && l.DatumVrijemePolaska >= startDate && l.DatumVrijemePovratka <= endDate).ToList();
+
+                return letovi;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public Let OtkaziLet(int letId)
+        {
+            try
+            {
+                var let = _dbContext.Letovi.Where(l => l.LetId == letId).FirstOrDefault();
+
+                let.KorisnikId = null;
+
+
+                _dbContext.SaveChanges();
+                return let;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public List<Let> PrikazRezervisanihLetova(int korisnikId)
+        {
+            try
+            {
+                var letovi = _dbContext.Letovi.Where(l => l.KorisnikId == korisnikId).ToList();
+
+                return letovi;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public Let RezervisiLet(int letId, int korisnikId)
+        {
+            try
+            {
+                var let = _dbContext.Letovi.Where(l => l.LetId == letId).FirstOrDefault();
+
+                let.KorisnikId = korisnikId;
+
+                _dbContext.SaveChanges();
+                return let;
             }
             catch (Exception e)
             {

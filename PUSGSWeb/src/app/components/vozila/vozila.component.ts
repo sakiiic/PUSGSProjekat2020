@@ -25,12 +25,12 @@ export class VozilaComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    this.service.getVozila()
-         .subscribe((res: VoziloModel[]) => {
-            console.log(res)
-            this.dataSource = res;
-            console.log(this.dataSource)
-         })
+    // this.service.getVozila()
+    //      .subscribe((res: VoziloModel[]) => {
+    //         console.log(res)
+    //         this.dataSource = res;
+    //         console.log(this.dataSource)
+    //      })
   }
 
 }

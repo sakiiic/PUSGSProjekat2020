@@ -10,8 +10,8 @@ using PUSGSProjekat;
 namespace PUSGSProjekat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200602100542_NewMigration")]
-    partial class NewMigration
+    [Migration("20200608204111_fixVozilo")]
+    partial class fixVozilo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,7 +93,7 @@ namespace PUSGSProjekat.Migrations
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Aviokompanija", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AviokompanijaId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -101,13 +101,15 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("Destinacije");
 
+                    b.Property<int>("KorisnikId");
+
                     b.Property<string>("Naziv");
 
                     b.Property<float>("Ocjena");
 
                     b.Property<string>("Opis");
 
-                    b.HasKey("Id");
+                    b.HasKey("AviokompanijaId");
 
                     b.ToTable("Aviokompanija");
                 });
@@ -180,7 +182,7 @@ namespace PUSGSProjekat.Migrations
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Let", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("LetId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -198,11 +200,9 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("LokacijePresjedanja");
 
-                    b.Property<string>("NazivAviokompanije");
-
                     b.Property<string>("VrijemePutovanja");
 
-                    b.HasKey("Id");
+                    b.HasKey("LetId");
 
                     b.HasIndex("AviokompanijaId");
 
@@ -250,7 +250,7 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("Image");
 
-                    b.Property<int?>("KorisnikId");
+                    b.Property<int>("KorisnikId");
 
                     b.Property<string>("Marka");
 
@@ -417,9 +417,10 @@ namespace PUSGSProjekat.Migrations
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Vozilo", b =>
                 {
-                    b.HasOne("PUSGSProjekat.DTO.Korisnik", "Korisnik")
+                    b.HasOne("PUSGSProjekat.DTO.Korisnik")
                         .WithMany("Vozila")
-                        .HasForeignKey("KorisnikId");
+                        .HasForeignKey("KorisnikId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("PUSGSProjekat.DTO.RentACar")
                         .WithMany("Vozila")

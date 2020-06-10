@@ -10,8 +10,8 @@ using PUSGSProjekat;
 namespace PUSGSProjekat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200608091259_NewDB")]
-    partial class NewDB
+    [Migration("20200610085543_FixDB")]
+    partial class FixDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -196,7 +196,11 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<DateTime>("DatumVrijemePolaska");
 
+                    b.Property<DateTime>("DatumVrijemePovratka");
+
                     b.Property<string>("DuzinaPutovanja");
+
+                    b.Property<int?>("KorisnikId");
 
                     b.Property<string>("LokacijePresjedanja");
 
@@ -205,6 +209,8 @@ namespace PUSGSProjekat.Migrations
                     b.HasKey("LetId");
 
                     b.HasIndex("AviokompanijaId");
+
+                    b.HasIndex("KorisnikId");
 
                     b.ToTable("Let");
                 });
@@ -413,11 +419,15 @@ namespace PUSGSProjekat.Migrations
                         .WithMany("Letovi")
                         .HasForeignKey("AviokompanijaId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("PUSGSProjekat.DTO.Korisnik")
+                        .WithMany("Letovi")
+                        .HasForeignKey("KorisnikId");
                 });
 
             modelBuilder.Entity("PUSGSProjekat.DTO.Vozilo", b =>
                 {
-                    b.HasOne("PUSGSProjekat.DTO.Korisnik", "Korisnik")
+                    b.HasOne("PUSGSProjekat.DTO.Korisnik")
                         .WithMany("Vozila")
                         .HasForeignKey("KorisnikId");
 

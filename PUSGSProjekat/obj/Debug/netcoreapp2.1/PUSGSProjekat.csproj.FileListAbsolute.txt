@@ -45,4 +45,3 @@ C:\Users\Sloba\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\obj\Debug\netcor
 C:\Users\Sloba\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\obj\Debug\netcoreapp2.1\PUSGSProjekat.RazorTargetAssemblyInfo.cache
 C:\Users\Sloba\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\obj\Debug\netcoreapp2.1\PUSGSProjekat.dll
 C:\Users\Sloba\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\obj\Debug\netcoreapp2.1\PUSGSProjekat.pdb
-C:\Users\Sloba\Documents\GitHub\PUSGSProjekat2020\PUSGSProjekat\obj\Debug\netcoreapp2.1\PUSGSProjekat.csprojAssemblyReference.cache

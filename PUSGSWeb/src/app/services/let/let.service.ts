@@ -13,7 +13,7 @@ export class LetService {
   constructor(private http: HttpClient) { }
 
   getLetovi() {
-    return this.http.get(this.apiURI + 'api/Let/GetLetovi');
+    return this.http.get(this.apiURI + 'api/Let/GetSviLetovi');
   }
 
   postLet(flight: LetModel) {

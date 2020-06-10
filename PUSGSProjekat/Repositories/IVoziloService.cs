@@ -12,6 +12,10 @@ namespace PUSGSProjekat.Repositories
         bool IzmijeniVozilo(int id, Vozilo v);
         bool DodajVozilo(Vozilo v);
         Vozilo GetVozilo(int rentacarId, int voziloId);
-        List<Vozilo> getVozila();
+        List<Vozilo> GetVozilaDate(DateTime startDate, DateTime endDate, int rentacarId);
+        List<Vozilo> GetVozila(int rentacarId);
+        Vozilo RezervisiVozilo(int voziloId, int korisnikId);
+        List<Vozilo> PrikazRezervisanihVozila(int korisnikId);
+        Vozilo OtkaziRezervaciju(int voziloId);
     }
 }

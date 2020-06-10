@@ -38,7 +38,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { LetoviComponent } from './components/letovi/letovi.component';
 import { AddNewCarComponent } from './components/rentacar-admin/add-new-car/add-new-car.component';
-import { EditCarComponent } from './components/rentacar-admin/edit-car/edit-car.component';
 import { GetRentacarServiceComponent } from './components/rentacar-admin/get-rentacar-service/get-rentacar-service.component';
 import { CarDetailsComponent } from './components/rentacar-admin/car-details/car-details.component';
 import { AddRentacarServiceComponent } from './components/rentacar-admin/add-rentacar-service/add-rentacar-service.component';
@@ -55,6 +54,12 @@ import { EditAviocompanyComponent } from './components/aviokompanija-admin/edit-
 import { GetAviocompanyComponent } from './components/aviokompanija-admin/get-aviocompany/get-aviocompany.component';
 import { EditCarModalComponent } from './components/rentacar-admin/edit-car-modal/edit-car-modal.component';
 import { EditServiceModalComponent } from './components/rentacar-admin/edit-service-modal/edit-service-modal.component';
+import { FindCarModalComponent } from './components/passenger/find-car-modal/find-car-modal.component';
+import { GetCarsComponent } from './components/passenger/get-cars/get-cars.component';
+import { GetReservedCarsComponent } from './components/passenger/get-reserved-cars/get-reserved-cars.component';
+import { GetServicesComponent } from './components/passenger/get-services/get-services.component';
+import { ReserveCarModalComponent } from './components/passenger/reserve-car-modal/reserve-car-modal.component';
+import { PotvrdiOtkazivanjeModalComponent } from './components/passenger/potvrdi-otkazivanje-modal/potvrdi-otkazivanje-modal.component';
 import { KorisnikComponent } from './components/korisnik/korisnik.component';
 import { EditKorisnikComponent } from './components/korisnik/edit-korisnik/edit-korisnik.component';
 import { VozilaComponent } from './components/vozila/vozila.component';
@@ -78,7 +83,6 @@ export function getToken() {
     LetRezervacijaComponent,
     LetoviComponent,
     AddNewCarComponent,
-    EditCarComponent,
     GetRentacarServiceComponent,
     CarDetailsComponent,
     AddRentacarServiceComponent,
@@ -95,6 +99,12 @@ export function getToken() {
 
     EditCarModalComponent,
     EditServiceModalComponent,
+    FindCarModalComponent,
+    GetCarsComponent,
+    GetReservedCarsComponent,
+    GetServicesComponent,
+    ReserveCarModalComponent,
+    PotvrdiOtkazivanjeModalComponent,
     KorisnikComponent,
     EditKorisnikComponent,
     VozilaComponent
