@@ -25,7 +25,7 @@
                                 height="60" />
                         </div>
                         <div class="col-9 text-center justify-content-center" style="font-size: 16px"
-                         *ngIf="isAdmin() && !isRentacarAdmin() && !isAviocompanyAdmin()">
+                            *ngIf="isAdmin() && !isRentacarAdmin() && !isAviocompanyAdmin()">
                             <p class="text-white" style="float: right"><strong>Administrator</strong></p>
                         </div>
                         <div class="col-9 text-center" style="font-size: 16px" *ngIf="isRentacarAdmin()">
@@ -152,7 +152,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="row moiClassWhiteDiv m-0 justify-content-center"
                         *ngIf="!isAdmin() && !isRentacarAdmin() && !isAviocompanyAdmin() && !isPassenger()">
                         <div [routerLink]="['/aviokompanija']" routerLinkActive="router-link-active"
@@ -189,11 +189,11 @@
                                 <p style="color: orange">Rezrvisi let</p>
                             </div>
                         </div>-->
-                    </div>
                 </div>
-
             </div>
+
         </div>
+
     </div>
 </nav>
 <!-- END OF NAVBAR -->
