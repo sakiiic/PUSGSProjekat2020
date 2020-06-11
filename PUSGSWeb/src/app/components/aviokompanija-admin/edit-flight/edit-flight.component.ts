@@ -12,6 +12,7 @@ import { LetModel } from 'src/app/models/let.model';
 })
 export class EditFlightComponent implements OnInit {
 
+  destinacija: string;
   datumVrijemePolaska: Date;
   datumVrijemeDolaska: Date;
   vrijemePutovanja: string;
@@ -44,6 +45,7 @@ export class EditFlightComponent implements OnInit {
   }
 
   editService(form: NgForm) {
+    this.destinacija = form.value.destinacija;
     this.datumVrijemePolaska = form.value.datumVrijemePolaska;
     this.datumVrijemeDolaska = form.value.datumVrijemeDolaska;
     this.vrijemePutovanja = form.value.vrijemePutovanja;
@@ -56,6 +58,7 @@ export class EditFlightComponent implements OnInit {
     let model: any;
 
     model = {
+      destinacija: this.destinacija,
       datumVrijemePolaska: this.datumVrijemePolaska,
       datumVrijemeDolaska: this.datumVrijemeDolaska,
       vrijemePutovanja: this.vrijemePutovanja,

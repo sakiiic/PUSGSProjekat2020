@@ -1,14 +1,31 @@
-<div class="text-center mt-5">
-  <mat-form-field>
-    <mat-label>Izaberite datum</mat-label>
-    <input matInput [matDatepicker]="picker">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+<!--
+<form #dateForm="ngForm" class="styless">
+  <div class="text-center mt-5 mr-5">
+    <mat-form-field class="mr-5" appearence="outline">
+      <mat-label>Izaberite datum polaska</mat-label>
+      <input name="start" matInput [matDatepicker]="picker1" [(NgModel)]="startDate">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="ml-5" appearence="outline">
+      <mat-label>Izaberite datum povratka</mat-label>
+      <input name="end" matInput [matDatepicker]="picker2" [(NgModel)]="endDate">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker2></mat-datepicker>
+    </mat-form-field>
+</form>
+-->
+<mat-form-field appearance="outline" class="margina">
+  <mat-label>Odaberite destinaciju</mat-label>
+  <input matInput placeholder="Destinacija">
+</mat-form-field>
+
+<div class="text-center styless">  
+  <button class="btn btn-primary" (click)="prikazi(dateForm)">Prikaži</button>
 </div>
-<div class="text-center">
-  <button class="btn btn-primary">Prikazi</button>
-</div>
+
+
 <div class="ml-5 mb-5">
   <div class="ml-5">
     <div class="ml-5">
@@ -20,8 +37,14 @@
           [class.bg-secondary]="item.selected">
           <div class="card-body">
             <div class="row">
+              <div class="col-md-4 col-sm-12">
+                <img class="" src="../../../assets/images/ticket.png" width="33%">
+              </div>
               <div class="col-md-6 col-sm-12">
                 <h5 class="card-title">
+                  <span>
+                    <mat-icon> place</mat-icon> {{item.destinacija}}
+                </span>
                   <span>
                     <mat-icon>flight_takeoff</mat-icon> {{item.datumVrijemePolaska}}
                 </span>

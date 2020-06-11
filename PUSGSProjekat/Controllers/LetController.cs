@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PUSGSProjekat.DTO;
+using PUSGSProjekat.Entities;
 using PUSGSProjekat.Repositories;
 
 namespace PUSGSProjekat.Controllers
@@ -52,10 +53,66 @@ namespace PUSGSProjekat.Controllers
             return x;
         }
 
-        [HttpGet("GetLetovi")]
-        public List<Let> GetLetovi()
+        [HttpGet("GetSviLetovi")]
+        public List<Let> GetSviLetovi()
         {
-            return _letService.getLetovi();
+            return _letService.GetSviLetovi();
         }
+
+        [HttpGet("GetFlightDate")]
+        public List<Let> GetFlightDate(DateTime from, DateTime to, int aviokompanijaId)
+        {
+            var x = _letService.GetFlightDate(from, to, aviokompanijaId);
+
+            return x;
+        }
+
+        [HttpGet("GetLetovi/{aviokompanijaId}")]
+        public List<Let> GetLetovi(int aviokompanijaId)
+        {
+            var x = _letService.GetLetovi(aviokompanijaId);
+
+            return x;
+        }
+
+        [HttpGet("OtkaziLet")]
+        public Let OtkaziLet(int letId)
+        {
+            var x = _letService.OtkaziLet(letId);
+
+            return x;
+        }
+
+        [HttpGet("RezervisiLet")]
+        public Let RezervisiLet(int letId, int korisnikId)
+        {
+            var x = _letService.RezervisiLet(letId, korisnikId);
+
+            return x;
+        }
+
+        [HttpGet("PrikazRezervisanihLetova")]
+        public List<Let> PrikazRezervisanihLetova(int korisnikId)
+        {
+            var x = _letService.PrikazRezervisanihLetova(korisnikId);
+
+            return x;
+        }
+
+        //[HttpPost("RezervisiLet")]
+        //public async Task<IActionResult> RezervisiLet([FromBody] Rezervacije rezLet)
+        //{
+        //    var x = _letService.RezervisiLet(rezLet);
+
+        //    return Ok(x);
+        //}
+
+        //[HttpGet("PrikazRezervisanihLetova")]
+        //public List<Let> PrikazRezervisanihLetova(int korisnikId)
+        //{
+        //    var x = _letService.PrikazRezervisanihLetova(korisnikId);
+
+        //    return x;
+        //}
     }
 }

@@ -1,66 +1,58 @@
 
-<div>
+
    <div class="div2 mb-5 form-group margina">
 
        <form class="mb-5" #editServiceForm="ngForm" (ngSubmit)=editService(editServiceForm)>
+        <div class="text-center">
+            <h3>Moj profil <img src="../../../assets/images/user.png" width="5%"></h3>
+        </div>
+        <div class="ml-5 mt-5 mb-1 text-center">
+            <mat-form-field appearance="outline" class="mr-5">
+                <mat-label>Korisničko ime</mat-label>
+                <input name="usernma" matInput placeholder="Username" [(ngModel)]="username" required>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="mr-5">
+                <mat-label>Email</mat-label>
+                <input name="email" matInput placeholder="Email" [(ngModel)]="email" required>
+            </mat-form-field>
 
-           <div class="ml-5 mt-5 mb-1 text-center">
+            <mat-form-field appearance="outline" class="mr-5">
+                <mat-label>Lozinka</mat-label>
+                <input name="password" matInput placeholder="Lozinka" [(ngModel)]="password" required>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="mr-5">
+                <mat-label>Ime</mat-label>
+                <input name="name" matInput placeholder="Ime" [(ngModel)]="name" required>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="mr-5">
+                <mat-label>Prezime</mat-label>
+                <input name="surname" matInput placeholder="Prezime" [(ngModel)]="surname" required>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="mr-5">
+                <mat-label>Grad</mat-label>
+                <input name="city" matInput placeholder="Grad" [(ngModel)]="city"
+                    required>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="mr-5">
+                <mat-label>Ulica</mat-label>
+                <input name="street" matInput placeholder="Ulica" [(ngModel)]="street" required>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="mr-5">
+                <mat-label>Broj</mat-label>
+                <input name="number" matInput placeholder="Broj" [(ngModel)]="number" required>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="mr-5">
+                <mat-label>Datum rodjenja</mat-label>
+                <input name="dateOfBirth" matInput placeholder="Datum rodjenja" [(ngModel)]="dateOfBirth" required>
+            </mat-form-field>    
 
-                <mat-form-field appearance="outline" class="mr-5">
-                    <mat-label>Email</mat-label>
-                    <input name="email" matInput placeholder="Email" [(ngModel)]="dataSource.email" required>
-                </mat-form-field>
-
-                <mat-form-field appearance="outline" class="mr-5">
-                    <mat-label>Lozinka</mat-label>
-                    <input name="password" matInput placeholder="Lozinka" [(ngModel)]="dataSource.password" required>
-                </mat-form-field>
-
-                <mat-form-field appearance="outline" class="mr-5">
-                    <mat-label>Datum rodjenja</mat-label>
-                    <input name="dateOfBirth" matInput placeholder="Datum rodjenja" [(ngModel)]="dataSource.dateOfBirth" required>
-                 </mat-form-field>
-
-                 <!--
-               
-               <mat-form-field appearance="outline" class="mr-5">
-                   <mat-label>Korisnicko ime</mat-label>
-                   <input name="username" matInput placeholder="Korisnicko ime" [(ngModel)]="dataSource.username" required>
-               </mat-form-field>
-
-               <mat-form-field appearance="outline" class="mr-5">
-                   <mat-label>Ime</mat-label>
-                   <input name="firstName" matInput placeholder="Ime" [(ngModel)]="dataSource.firstName" required>
-               </mat-form-field>
-
-               <mat-form-field appearance="outline" class="mr-5">
-                   <mat-label>Prezime</mat-label>
-                   <input name="lastName" matInput placeholder="Prezime" [(ngModel)]="dataSource.lastName" required>
-               </mat-form-field>
-
-               <mat-form-field appearance="outline" class="mr-5">
-                   <mat-label>Grad</mat-label>
-                   <input name="city" matInput placeholder="Grad" [(ngModel)]="dataSource.city" required>
-               </mat-form-field>
-
-               <mat-form-field appearance="outline" class="mr-5">
-                  <mat-label>Ulica</mat-label>
-                  <input name="street" matInput placeholder="Ulica" [(ngModel)]="dataSource.street" required>
-               </mat-form-field>
-
-               <mat-form-field appearance="outline" class="mr-5">
-                   <mat-label>Broj</mat-label>
-                   <input name="number" matInput placeholder="Broj" [(ngModel)]="dataSource.number" required>
-               </mat-form-field>
-
-               -->
-
-           </div>
-
-           <div class="text-center mt-5">
-               <button mat-raised-button class="btn btn-primary mr-5">Izmijeni profil</button>
-           </div>
-       </form>
-
-   </div>
-</div>
+        </div>
+    </form>
+ </div>

@@ -15,7 +15,7 @@ import { EditFlightComponent } from '../edit-flight/edit-flight.component';
 })
 export class FlightDetailsComponent implements OnInit {
 
-  displayedColumns = ['datumVrijemePolaska', 'datumVrijemeDolaska', 'vrijemePutovanja', 'duzinaPutovanja', 'brojPresjedanja', 'lokacijePresjedanja', 'cijenaKarte'];
+  displayedColumns = ['destinacija', 'datumVrijemePolaska', 'datumVrijemeDolaska', 'vrijemePutovanja', 'duzinaPutovanja', 'brojPresjedanja', 'lokacijePresjedanja', 'cijenaKarte'];
   letId: any;
   aviokompanijaId: any;
   dataSource: any;

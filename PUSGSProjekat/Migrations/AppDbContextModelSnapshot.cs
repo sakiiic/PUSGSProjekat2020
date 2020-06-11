@@ -194,6 +194,10 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<DateTime>("DatumVrijemePolaska");
 
+                    b.Property<DateTime>("DatumVrijemePovratka");
+
+                    b.Property<string>("Destinacija");
+
                     b.Property<string>("DuzinaPutovanja");
 
                     b.Property<int?>("KorisnikId");
@@ -363,6 +367,25 @@ namespace PUSGSProjekat.Migrations
                     b.ToTable("KorisnikVozilo");
                 });
 
+            modelBuilder.Entity("PUSGSProjekat.Entities.Rezervacije", b =>
+                {
+                    b.Property<int>("IdRezervacije")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("KorisnikId");
+
+                    b.Property<int>("LetId");
+
+                    b.HasKey("IdRezervacije");
+
+                    b.HasIndex("KorisnikId");
+
+                    b.HasIndex("LetId");
+
+                    b.ToTable("Rezervacije");
+                });
+
             modelBuilder.Entity("PUSGSProjekat.Entities.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -473,6 +496,19 @@ namespace PUSGSProjekat.Migrations
                     b.HasOne("PUSGSProjekat.DTO.Vozilo", "Vozilo")
                         .WithMany()
                         .HasForeignKey("VoziloId");
+                });
+
+            modelBuilder.Entity("PUSGSProjekat.Entities.Rezervacije", b =>
+                {
+                    b.HasOne("PUSGSProjekat.DTO.Korisnik", "Korisnik")
+                        .WithMany()
+                        .HasForeignKey("KorisnikId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("PUSGSProjekat.DTO.Let", "Let")
+                        .WithMany()
+                        .HasForeignKey("LetId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("PUSGSProjekat.Entities.UserRole", b =>
