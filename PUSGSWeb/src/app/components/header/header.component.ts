@@ -32,6 +32,10 @@ export class HeaderComponent implements OnInit {
     this.modalRef = this.modalService.show(RegisterComponent);
   }
 
+  openModalRegisterRenta() {
+    this.modalRef = this.modalService.show(RegisterComponent);
+  }
+
   loggedIn() {
     return this.authenticatService.loggedIn();
     /* return true; */

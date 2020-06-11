@@ -24,6 +24,8 @@ import { ReserveCarModalComponent } from './components/passenger/reserve-car-mod
 import { KorisnikComponent } from './components/korisnik/korisnik.component';
 import { EditKorisnikComponent } from './components/korisnik/edit-korisnik/edit-korisnik.component';
 import { VozilaComponent } from './components/vozila/vozila.component';
+import { GetAdmininfoComponent } from './components/rentacar-admin/get-admininfo/get-admininfo.component';
+import { EditAdmininfoComponent } from './components/rentacar-admin/edit-admininfo/edit-admininfo.component';
 
 export const routes: Routes = [
   //children: [ { path: 'vozila', component: VozilaComponent } ] 
@@ -48,7 +50,9 @@ export const routes: Routes = [
   { path: 'getServices', component: GetServicesComponent },
   { path: 'rezervacija', component: ReserveCarModalComponent},
   { path: 'korisnik', component: KorisnikComponent },
-  { path: 'izmijeniKorisnika', component: EditKorisnikComponent }
+  { path: 'izmijeniKorisnika', component: EditKorisnikComponent },
+  { path: 'getAdminInfo', component: GetAdmininfoComponent },
+  { path: 'editAdminInfo', component: EditAdmininfoComponent },
 ];
 
 @NgModule({

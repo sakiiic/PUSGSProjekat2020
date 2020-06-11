@@ -1,5 +1,5 @@
 <div class="container moiClassRegisterBg">
-  <form (ngSubmit)="register()" [formGroup]="registerForm"> <!--  -->
+  <form  [formGroup]="registerForm"> <!--  -->
     <!-- <h2 class="text-center text-primary font-weight-bolder">Sign Up</h2>
     <hr> -->
     <div class="row">
@@ -92,8 +92,14 @@
   <br>
     <div class="row">
       <div class="col">
-          <div class="form-group text-center">
-              <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Register</button>
+          <div class="form-group text-center" *ngIf="userName == 11">
+              <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" (click)="register()">Register</button>
+            </div>
+            <div class="form-group text-center" *ngIf="userName == 'admin'">
+              <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" (click)="registerRenta()">Register Renta</button>
+            </div>
+            <div class="form-group text-center" *ngIf="userName == 'admin'">
+              <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" (click)="registerAvio()">Register Avio</button>
             </div>
       </div>
       <div class="col">

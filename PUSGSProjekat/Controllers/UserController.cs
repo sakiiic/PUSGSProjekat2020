@@ -75,5 +75,7 @@ namespace PUSGSProjekat.Controllers
                 throw new Exception($"Updating user {id} failed on save!");
             }
         }
+
+        
     }
 }

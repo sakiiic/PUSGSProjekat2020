@@ -24,9 +24,9 @@ export class PotvrdiOtkazivanjeModalComponent implements OnInit {
 
   otkaziRezervaciju(){
     this.service.otkaziRezervaciju(this.id).subscribe();
+    window.location.reload();
     this.alertify.success('Uspjesno otkazana rezervacija!');
     this.dialogRef.close();
-    window.location.reload();
   }
 
   closeModal() {

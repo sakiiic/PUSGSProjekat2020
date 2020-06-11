@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PUSGSProjekat.DTO;
+using PUSGSProjekat.Entities;
 using PUSGSProjekat.Repositories;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,39 @@ namespace PUSGSProjekat.Services
 
             _dbContext.SaveChanges();
             return true;
+        }
+
+        public bool DodajVoziloKorisniku(KorisnikVozilo objekat)
+        {
+            var vozilo = _dbContext.Vozila.Where(a => a.VoziloId == objekat.VoziloId).FirstOrDefault();
+
+            if (vozilo == null)
+                return false;
+
+            try
+            {
+                _dbContext.KorisnikVozilo.Add(new KorisnikVozilo
+                {
+                    KorisnikId = objekat.KorisnikId,
+                    VoziloId = vozilo.VoziloId,
+                    Name = objekat.Name,
+                    Surname = objekat.Surname,
+                    Username = objekat.Username,
+                    City = objekat.City,
+                    Street = objekat.Street,
+                    Number = objekat.Number,
+                    Email = objekat.Email,
+                    DatumRodjenja = objekat.DatumRodjenja
+                });
+
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
         }
 
         public List<Vozilo> GetVozila(int rentacarId)

@@ -62,6 +62,60 @@ namespace PUSGSProjekat.Controllers
             }
         }
 
+        [HttpPost("aviocompanyAdmin")]
+        public async Task<IActionResult> AddAviocompanyAdmin(RegisterDTO userForRegisterDto)
+        {
+            var userToCreate = _mapper.Map<Korisnik>(userForRegisterDto);
+
+            userToCreate.DateOfBirth = userToCreate.DateOfBirth.AddDays(1);
+
+            var result = await _userManager.CreateAsync(userToCreate, userForRegisterDto.Password);
+
+            if (result.Succeeded)
+            {
+                var result2 = await _userManager.AddToRoleAsync(userToCreate, "AviocompanyAdmin");
+                if (result2.Succeeded)
+                {
+                    return Ok(userToCreate);
+                }
+                else
+                {
+                    return BadRequest(result2.Errors);
+                }
+            }
+            else
+            {
+                return BadRequest(result.Errors);
+            }
+        }
+
+        [HttpPost("rentacarAdmin")]
+        public async Task<IActionResult> AddRentacarAdmin(RegisterDTO userForRegisterDto)
+        {
+            var userToCreate = _mapper.Map<Korisnik>(userForRegisterDto);
+
+            userToCreate.DateOfBirth = userToCreate.DateOfBirth.AddDays(1);
+
+            var result = await _userManager.CreateAsync(userToCreate, userForRegisterDto.Password);
+
+            if (result.Succeeded)
+            {
+                var result2 = await _userManager.AddToRoleAsync(userToCreate, "RentacarAdmin");
+                if (result2.Succeeded)
+                {
+                    return Ok(userToCreate);
+                }
+                else
+                {
+                    return BadRequest(result2.Errors);
+                }
+            }
+            else
+            {
+                return BadRequest(result.Errors);
+            }
+        }
+
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDTO userForLoginDto)
         {

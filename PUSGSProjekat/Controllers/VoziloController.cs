@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PUSGSProjekat.DTO;
+using PUSGSProjekat.Entities;
 using PUSGSProjekat.Repositories;
 
 namespace PUSGSProjekat.Controllers
@@ -90,6 +91,14 @@ namespace PUSGSProjekat.Controllers
         public Vozilo OtkaziRezervaciju(int voziloId)
         {
             var x = _voziloService.OtkaziRezervaciju(voziloId);
+
+            return x;
+        }
+
+        [HttpPost("KorisnikVozilo")]
+        public bool KorisnikVozilo(KorisnikVozilo objekat)
+        {
+            var x = _voziloService.DodajVoziloKorisniku(objekat);
 
             return x;
         }

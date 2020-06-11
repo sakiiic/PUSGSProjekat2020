@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { VoziloModel } from 'src/app/models/vozilo.model';
 import { RentACarModel } from 'src/app/models/rentACar.model';
 import { RentacarDTOModel } from 'src/app/models/rentacarDTO.model';
+import { KorisnikVozilo } from 'src/app/models/korisnikVozilo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -74,5 +75,10 @@ export class RentACarService {
 
   otkaziRezervaciju(voziloId){
     return this.http.get(this.apiURI + 'api/Vozilo/OtkaziRezervaciju?voziloId=' + voziloId);
+  }
+
+  dodajVoziloKorisniku(objekat: KorisnikVozilo) {
+    console.log('servis')
+    return this.http.post(this.apiURI + 'api/Vozilo/KorisnikVozilo', objekat);
   }
 }

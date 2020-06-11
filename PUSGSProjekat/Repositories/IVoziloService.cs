@@ -1,4 +1,5 @@
 ﻿using PUSGSProjekat.DTO;
+using PUSGSProjekat.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,6 @@ namespace PUSGSProjekat.Repositories
         Vozilo RezervisiVozilo(int voziloId, int korisnikId);
         List<Vozilo> PrikazRezervisanihVozila(int korisnikId);
         Vozilo OtkaziRezervaciju(int voziloId);
+        bool DodajVoziloKorisniku(KorisnikVozilo objekat);
     }
 }

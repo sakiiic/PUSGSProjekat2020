@@ -21,6 +21,15 @@ constructor(private http: HttpClient) { }
     return this.http.post(this.baseUrl + 'register', user);
   }
 
+  registerAviocompany(user: UserRegister) {
+    return this.http.post(this.baseUrl + 'aviocompanyAdmin', user);
+  }
+
+  registerRentacar(user: UserRegister) {
+    console.log('doslo')
+    return this.http.post(this.baseUrl + 'rentacarAdmin', user);
+  }
+
   login(model: any) {
     return this.http.post(this.baseUrl + 'login', model).pipe(
       map((response: any) => {

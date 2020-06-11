@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AuthenticatService } from 'src/app/services/authentication/authentication.service';
 import { RentACarService } from 'src/app/services/rent-a-car/rent-a-car.service';
 import { AlertifyService } from 'src/app/services/alertify/alertify.service';
+import { KorisnikVozilo } from 'src/app/models/korisnikVozilo.model';
 
 @Component({
   selector: 'app-reserve-car-modal',
@@ -21,6 +22,7 @@ export class ReserveCarModalComponent implements OnInit {
   number: string;
   street: string;
   dateOfBirth: Date;
+  voziloKorisnik: KorisnikVozilo;
 
   @ViewChild('messageblock', {static: true }) messageblock: ElementRef;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
@@ -45,8 +47,28 @@ export class ReserveCarModalComponent implements OnInit {
 
   rezervisi(){
     this.servis.rezervisiVozilo(this.id, this.korisnikId).subscribe();
+    this.dodajVozilo();
+    window.location.reload();
     this.alertify.success('Uspjesno rezervisano vozilo!');
     this.dialogRef.close();
+    
+  }
+
+  dodajVozilo(){
+    this.voziloKorisnik = {
+      korisnikId: this.korisnikId,
+      voziloId: this.id,
+      city: this.city,
+      datumRodjenja: this.dateOfBirth,
+      email: this.email,
+      name: this.name,
+      surname: this.surname,
+      username: this.username,
+      number: this.number,
+      street: this.street
+    }
+
+    this.servis.dodajVoziloKorisniku(this.voziloKorisnik).subscribe();
   }
 
   closeModal() {

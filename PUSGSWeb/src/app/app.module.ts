@@ -63,6 +63,8 @@ import { PotvrdiOtkazivanjeModalComponent } from './components/passenger/potvrdi
 import { KorisnikComponent } from './components/korisnik/korisnik.component';
 import { EditKorisnikComponent } from './components/korisnik/edit-korisnik/edit-korisnik.component';
 import { VozilaComponent } from './components/vozila/vozila.component';
+import { GetAdmininfoComponent } from './components/rentacar-admin/get-admininfo/get-admininfo.component';
+import { EditAdmininfoComponent } from './components/rentacar-admin/edit-admininfo/edit-admininfo.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -107,7 +109,10 @@ export function getToken() {
     PotvrdiOtkazivanjeModalComponent,
     KorisnikComponent,
     EditKorisnikComponent,
-    VozilaComponent
+    VozilaComponent,
+    GetAdmininfoComponent,
+    EditAdmininfoComponent,
+    
   ],
   imports: [ 
     MbscModule,  
