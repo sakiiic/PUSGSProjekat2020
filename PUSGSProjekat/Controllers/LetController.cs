@@ -122,5 +122,13 @@ namespace PUSGSProjekat.Controllers
 
         //    return x;
         //}
+
+        [HttpPost("OcijeniLet")]
+        public bool OcijeniLet(int letId, int ocjena)
+        {
+            var x = _letService.OcijeniLet(letId, ocjena);
+
+            return x;
+        }
     }
 }

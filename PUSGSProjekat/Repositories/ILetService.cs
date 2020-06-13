@@ -20,5 +20,6 @@ namespace PUSGSProjekat.Repositories
         List<Let> PrikazRezervisanihLetova(int korisnikId);
         Let RezervisiLet(int letId, int korisnikId);
         Let GetFlight(DateTime datum, string destinacija);
+        bool OcijeniLet(int letId, int ocjena);
     }
 }

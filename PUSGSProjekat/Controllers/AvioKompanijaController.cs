@@ -64,5 +64,13 @@ namespace PUSGSProjekat.Controllers
         {
             return _avioKompanijaService.GetAviokompanijeForCurrentUser(userId);
         }
+
+        [HttpPost("OcijeniAviokompaniju")]
+        public bool OcijeniAviokompaniju(int id, int ocjena)
+        {
+            var x = _avioKompanijaService.OcijeniAviokompaniju(id, ocjena);
+
+            return x;
+        }
     }
 }

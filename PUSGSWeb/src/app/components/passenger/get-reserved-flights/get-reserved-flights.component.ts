@@ -6,6 +6,7 @@ import { LetModel } from 'src/app/models/let.model';
 import { AuthenticatService } from 'src/app/services/authentication/authentication.service';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { CancelReservationComponent } from '../cancel-reservation/cancel-reservation.component';
+import { OcijeniLetComponent } from '../ocijeni-let/ocijeni-let.component';
 
 @Component({
   selector: 'app-get-reserved-flights',
@@ -49,6 +50,20 @@ export class GetReservedFlightsComponent implements OnInit {
     const modalDialog = this.matDialog.open(CancelReservationComponent, {
       width: '460px', 
       data: {letId: letId}
+    });
+  }
+
+  openOcjenaModal(voziloId){
+    const dialogConfig = new MatDialogConfig();
+    // The user can't close the dialog by clicking outside its body
+    dialogConfig.disableClose = true;
+    dialogConfig.id = "modal-component";
+    dialogConfig.height = "350px";
+    dialogConfig.width = "600px";
+    // https://material.angular.io/components/dialog/overview
+    const modalDialog = this.matDialog.open(OcijeniLetComponent, {
+      width: '460px', 
+      data: {voziloId: voziloId}
     });
   }
 

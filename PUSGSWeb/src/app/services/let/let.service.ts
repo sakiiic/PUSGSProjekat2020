@@ -56,4 +56,8 @@ export class LetService {
   getFlight(datumVrijemePolaska, destinacija){
     return this.http.get(this.apiURI + 'api/Let/GetFlight/');
   }
+
+  ocijeniLet(letId, ocjena){
+    return this.http.post(this.apiURI + 'api/Let/OcijeniLet?letId=' + letId + '&ocjena=' + ocjena, ocjena );
+  }
 }

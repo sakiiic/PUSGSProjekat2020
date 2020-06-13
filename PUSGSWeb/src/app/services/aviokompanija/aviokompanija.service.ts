@@ -35,4 +35,8 @@ export class AviokompanijaService {
   getAviocompanyForCurrentUser(id){
     return this.http.get(this.apiURI + 'api/AvioKompanija/GetAviokompanijeForCurrentUser/' + id);
   }
+
+  ocijeniAviokompaniju(id, ocjena){
+    return this.http.post(this.apiURI + 'api/AvioKompanija/OcijeniAviokompaniju?id=' + id + '&ocjena=' + ocjena, ocjena );
+  }
 }

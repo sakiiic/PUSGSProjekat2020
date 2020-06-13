@@ -201,5 +201,23 @@ namespace PUSGSProjekat.Services
                 return false;
             }
         }
+
+        public bool OcijeniAviokompaniju(int id, int ocjena)
+        {
+            try
+            {
+                var aviokompanija = _dbContext.Aviokompanije.Where(a => a.AviokompanijaId == id).FirstOrDefault();
+
+                aviokompanija.Ocjena = ocjena;
+
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
     }
 }

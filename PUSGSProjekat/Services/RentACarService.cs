@@ -211,9 +211,9 @@ namespace PUSGSProjekat.Services
         {
             try
             {
-                var vozilo = _dbContext.RentACar.Where(a => a.RentacarId == rentacarId).FirstOrDefault();
+                var servis = _dbContext.RentACar.Where(a => a.RentacarId == rentacarId).FirstOrDefault();
 
-                vozilo.Ocjena = ocjena;
+                servis.Ocjena = ocjena;
 
                 _dbContext.SaveChanges();
                 return true;

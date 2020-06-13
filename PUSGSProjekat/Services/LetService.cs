@@ -330,5 +330,23 @@ namespace PUSGSProjekat.Services
             _dbContext.SaveChanges();
             return true;
         }
+
+        public bool OcijeniLet(int letId, int ocjena)
+        {
+            try
+            {
+                var let = _dbContext.Letovi.Where(a => a.LetId == letId).FirstOrDefault();
+
+                let.Ocjena = ocjena;
+
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
     }
 }
