@@ -53,4 +53,7 @@ export class LetService {
     return this.http.get(this.apiURI + 'api/Let/OtkaziLet?letId=' + letId);
   }
 
+  getFlight(datumVrijemePolaska, destinacija){
+    return this.http.get(this.apiURI + 'api/Let/GetFlight/');
+  }
 }

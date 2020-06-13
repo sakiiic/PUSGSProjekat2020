@@ -140,6 +140,21 @@ namespace PUSGSProjekat.Services
             }
         }
 
+        public Let GetFlight(DateTime datum, string destinacija)
+        {
+            try
+            {
+                return _dbContext.Letovi.Where(a => a.DatumVrijemePolaska == datum &&
+                    a.Destinacija == destinacija).FirstOrDefault();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
         public List<Let> GetLetovi(int aviokompanijaId)
         {
             try
@@ -177,8 +192,11 @@ namespace PUSGSProjekat.Services
             {
                 var let = _dbContext.Letovi.Where(l => l.LetId == letId).FirstOrDefault();
 
-                let.KorisnikId = null;
+                int id = let.KorisnikId.GetValueOrDefault();
 
+                OtkaziRezervaciju(let.LetId, id);
+
+                let.KorisnikId = null;
 
                 _dbContext.SaveChanges();
                 return let;
@@ -213,6 +231,12 @@ namespace PUSGSProjekat.Services
                 var let = _dbContext.Letovi.Where(a => a.LetId == letId).FirstOrDefault();
 
                 let.KorisnikId = korisnikId;
+
+                Rezervacije rez = new Rezervacije();
+                rez.KorisnikId = korisnikId;
+                rez.LetId = letId;
+
+                Rezervisi(rez);
 
                 _dbContext.SaveChanges();
                 return let;
@@ -261,31 +285,50 @@ namespace PUSGSProjekat.Services
         //    }
         //}
 
-        //public bool RezervisiLet(Rezervacije r)
-        //{
-        //    var rezervacije = _dbContext.Rezervacije.Where(a => a.IdRezervacije == r.IdRezervacije).FirstOrDefault();
+        public bool OtkaziRezervaciju(int letId, int korisnikId)
+        {
+            try
+            {
+                var rez = _dbContext.Rezervacije.Where(r => r.LetId == letId && r.KorisnikId == korisnikId).FirstOrDefault();
+                if (rez != null)
+                {
+                    _dbContext.Rezervacije.Remove(rez);
+                    _dbContext.SaveChanges();
+                    return true;
+                }
 
-        //    if (rezervacije != null)
-        //        return false;
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
-        //    try
-        //    {
-        //        _dbContext.Rezervacije.Add(new Rezervacije
-        //        {
-        //            IdRezervacije = r.IdRezervacije,
-        //            LetId = r.LetId,
-        //            KorisnikId = r.KorisnikId,
-        //            //Let = r.Let
+        public bool Rezervisi(Rezervacije r)
+        {
+            var rezervacije = _dbContext.Rezervacije.Where(a => a.IdRezervacije == r.IdRezervacije).FirstOrDefault();
 
-        //        });
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine("Greska pri dodavanju rezervacije", e);
-        //    }
+            if (rezervacije != null)
+                return false;
 
-        //    _dbContext.SaveChanges();
-        //    return true;
-        //}
+            try
+            {
+                _dbContext.Rezervacije.Add(new Rezervacije
+                {
+                    IdRezervacije = r.IdRezervacije,
+                    LetId = r.LetId,
+                    KorisnikId = r.KorisnikId,
+
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Greska pri dodavanju rezervacije", e);
+            }
+
+            _dbContext.SaveChanges();
+            return true;
+        }
     }
 }

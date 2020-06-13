@@ -53,6 +53,14 @@ namespace PUSGSProjekat.Controllers
             return x;
         }
 
+        [HttpGet("GetFlight")]
+        public Let GetFlight(DateTime datum, string destinacija)
+        {
+            var x = _letService.GetFlight(datum, destinacija);
+
+            return x;
+        }
+
         [HttpGet("GetSviLetovi")]
         public List<Let> GetSviLetovi()
         {
