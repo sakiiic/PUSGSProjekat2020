@@ -50,6 +50,11 @@
                         required>
                 </mat-form-field>
 
+                <mat-radio-group aria-label="Izaberite opciju">
+                    <mat-radio-button name="jedan" value="1" [(ngModel)]="dataSource.slobodno">Slobodno</mat-radio-button>
+                    <mat-radio-button name="dva" value="2" [(ngModel)]="dataSource.slobodno">Rezervisano</mat-radio-button>
+                </mat-radio-group>
+
             </div>
 
             <div class="text-center mt-5">

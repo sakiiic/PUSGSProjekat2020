@@ -179,6 +179,24 @@ namespace PUSGSProjekat.Services
             }
         }
 
+        public bool OcijeniVozilo(int voziloId, int ocjena)
+        {
+            try
+            {
+                var vozilo = _dbContext.Vozila.Where(a => a.VoziloId == voziloId).FirstOrDefault();
+
+                vozilo.Ocjena = ocjena;
+
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
         public Vozilo OtkaziRezervaciju(int voziloId)
         {
             try

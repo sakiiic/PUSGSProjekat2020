@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using PUSGSProjekat.DTO;
+using PUSGSProjekat.Helper;
 
 namespace PUSGSProjekat.Controllers
 {
@@ -49,6 +50,7 @@ namespace PUSGSProjekat.Controllers
                 var result2 = await _userManager.AddToRoleAsync(userToCreate, "Passenger");
                 if (result2.Succeeded)
                 {
+                    EmailService.SendEmail("Uspjesno ste se registrovali", userForRegisterDto.Email);
                     return Ok(userToCreate);
                 }
                 else

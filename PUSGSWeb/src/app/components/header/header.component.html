@@ -145,6 +145,9 @@
                                     <button (click)="openModalRegister()"
                                         class="btn btn-default moiClassButton">Registration</button>
                                 </div>
+                                <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                                <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+                                <button *ngIf="!loggedIn()" class="btn btn-primary mt-2" (click)="logInWithFacebook('Facebook')"> Facebook Login </button>
                                 <div *ngIf="loggedIn()" class="">
                                     <button (click)="logout()"
                                         class="btn btn-default moiClassButton moiClassButtonLogout">Logout</button>
@@ -166,29 +169,6 @@
                             <p style="color: orange">Rent a car</p>
                         </div>
                     </div>
-                    <!-- <div class="row moiClassWhiteDiv m-0 justify-content-center"
-                            *ngIf="!isAdmin() && !isRentacarAdmin() && !isAviocompanyAdmin() && isPassenger()">
-                            <div [routerLink]="['/korisnik']" routerLinkActive="router-link-active"
-                                class="text-center moiClassIconMenu">
-                                <img class="moiClassButtonMenu" src="../../../assets/images/user.png" alt="TimeTable">
-                                <p style="color: orange">Profil korisnika</p>
-                            </div>
-                            <div [routerLink]="['/aviokompanija']" routerLinkActive="router-link-active"
-                                class="text-center moiClassIconMenu">
-                                <img class="moiClassButtonMenu" src="../../../assets/images/images.png" alt="TimeTable">
-                                <p style="color: orange">Letovi</p>
-                            </div>
-                            <div [routerLink]="['/rentacar']" routerLinkActive="router-link-active"
-                                class="text-center moiClassIconMenu">
-                                <img class="moiClassButtonMenu" src="../../../assets/images/download.png" alt="TimeTable">
-                                <p style="color: orange">Rent a car</p>
-                            </div>
-                            <div [routerLink]="['/rezervisiLet']" routerLinkActive="router-link-active"
-                                class="text-center moiClassIconMenu">
-                                <img class="moiClassButtonMenu" src="../../../assets/images/ticket.png" alt="TimeTable">
-                                <p style="color: orange">Rezrvisi let</p>
-                            </div>
-                        </div>-->
                 </div>
             </div>
 

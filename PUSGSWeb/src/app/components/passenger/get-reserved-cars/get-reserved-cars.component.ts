@@ -6,6 +6,7 @@ import { VoziloModel } from 'src/app/models/vozilo.model';
 import { AuthenticatService } from 'src/app/services/authentication/authentication.service';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { PotvrdiOtkazivanjeModalComponent } from '../potvrdi-otkazivanje-modal/potvrdi-otkazivanje-modal.component';
+import { DodajOcjenuVoziloComponent } from '../dodaj-ocjenu-vozilo/dodaj-ocjenu-vozilo.component';
 
 @Component({
   selector: 'app-get-reserved-cars',
@@ -47,6 +48,20 @@ export class GetReservedCarsComponent implements OnInit {
     dialogConfig.width = "600px";
     // https://material.angular.io/components/dialog/overview
     const modalDialog = this.matDialog.open(PotvrdiOtkazivanjeModalComponent, {
+      width: '460px', 
+      data: {voziloId: voziloId}
+    });
+  }
+
+  openOcjenaModal(voziloId){
+    const dialogConfig = new MatDialogConfig();
+    // The user can't close the dialog by clicking outside its body
+    dialogConfig.disableClose = true;
+    dialogConfig.id = "modal-component";
+    dialogConfig.height = "350px";
+    dialogConfig.width = "600px";
+    // https://material.angular.io/components/dialog/overview
+    const modalDialog = this.matDialog.open(DodajOcjenuVoziloComponent, {
       width: '460px', 
       data: {voziloId: voziloId}
     });

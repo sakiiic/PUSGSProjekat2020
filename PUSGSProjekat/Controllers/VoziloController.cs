@@ -102,5 +102,13 @@ namespace PUSGSProjekat.Controllers
 
             return x;
         }
+
+        [HttpPost("OcijeniVozilo")]
+        public bool OcijeniVozilo(int voziloId, int ocjena)
+        {
+            var x = _voziloService.OcijeniVozilo(voziloId, ocjena);
+
+            return x;
+        }
     }
 }

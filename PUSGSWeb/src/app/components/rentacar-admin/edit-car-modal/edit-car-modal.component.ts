@@ -22,6 +22,7 @@ export class EditCarModalComponent implements OnInit {
   tipGoriva: string;
   transmisija: string;
   rentacarId: number;
+  slobodno: boolean;
 
   public formModel: FormGroup;
   public rentaId: any;
@@ -43,6 +44,10 @@ export class EditCarModalComponent implements OnInit {
     })
   }
 
+  onItemChange(value){
+    console.log(" Value is : ", value );
+ }
+
   editService(form: NgForm) {
     this.marka = form.value.marka;
     this.model = form.value.model;
@@ -53,6 +58,8 @@ export class EditCarModalComponent implements OnInit {
     this.tipGoriva = form.value.tipGoriva;
     this.transmisija = form.value.transmisija;
     this.rentacarId = this.rentaId;
+    this.slobodno = form.controls['jedan'].value;
+    this.slobodno = form.controls['dva'].value;
 
     let model: any;
 

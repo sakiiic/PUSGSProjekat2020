@@ -81,4 +81,13 @@ export class RentACarService {
     console.log('servis')
     return this.http.post(this.apiURI + 'api/Vozilo/KorisnikVozilo', objekat);
   }
+
+  ocijeniVozilo(voziloId, ocjena){
+    console.log(ocjena, 'eee')
+    return this.http.post(this.apiURI + 'api/Vozilo/OcijeniVozilo?voziloId=' + voziloId + '&ocjena=' + ocjena, ocjena)
+  }
+
+  ocijeniServis(rentacarId, ocjena){
+    return this.http.post(this.apiURI + 'api/RentACar/OcijeniServis?rentacarId=' + rentacarId + '&ocjena=' + ocjena, ocjena)
+  }
 }

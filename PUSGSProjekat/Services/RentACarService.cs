@@ -151,6 +151,7 @@ namespace PUSGSProjekat.Services
                 rentACar.Naziv = rentACars.Naziv;
                 rentACar.Ocjena = rentACars.Ocjena;
                 rentACar.Opis = rentACars.Opis;
+                rentACar.Ocjena = rentACars.Ocjena;
                 rentACar.Vozila = car;
                 
                 return rentACar;
@@ -202,6 +203,24 @@ namespace PUSGSProjekat.Services
             }
             catch (Exception)
             {
+                return false;
+            }
+        }
+
+        public bool OcijeniServis(int rentacarId, int ocjena)
+        {
+            try
+            {
+                var vozilo = _dbContext.RentACar.Where(a => a.RentacarId == rentacarId).FirstOrDefault();
+
+                vozilo.Ocjena = ocjena;
+
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
                 return false;
             }
         }

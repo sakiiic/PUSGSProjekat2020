@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticatService } from 'src/app/services/authentication/authentication.service';
+import { AlertifyService } from 'src/app/services/alertify/alertify.service';
 
 @Component({
   selector: 'app-edit-admininfo',
@@ -18,7 +19,7 @@ export class EditAdmininfoComponent implements OnInit {
   street: string;
   dateOfBirth: Date;
 
-  constructor(private auth: AuthenticatService) { 
+  constructor(private auth: AuthenticatService, private alertify: AlertifyService) { 
     this.korisnikId = this.auth.currentUser.id;
     this.username = this.auth.currentUser.userName;
     this.email = this.auth.currentUser.email;
@@ -31,6 +32,11 @@ export class EditAdmininfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  spasi(){
+    window.history.back();
+    this.alertify.success("Uspjesno");
   }
 
 }

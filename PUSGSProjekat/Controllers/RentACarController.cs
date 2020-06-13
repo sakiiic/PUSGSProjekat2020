@@ -64,5 +64,13 @@ namespace PUSGSProjekat.Controllers
         {
             return _rentACarService.GetRentaCarsForCurrentUser(userId);
         }
+
+        [HttpPost("OcijeniServis")]
+        public bool OcijeniServis(int rentacarId, int ocjena)
+        {
+            var x = _rentACarService.OcijeniServis(rentacarId, ocjena);
+
+            return x;
+        }
     } 
 }

@@ -262,6 +262,8 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("Model");
 
+                    b.Property<int>("Ocjena");
+
                     b.Property<int>("RentACarId");
 
                     b.Property<bool>("Slobodno");
@@ -409,6 +411,26 @@ namespace PUSGSProjekat.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+                });
+
+            modelBuilder.Entity("PUSGSProjekat.Entities.UserData", b =>
+                {
+                    b.Property<string>("UserId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("EmailAddress");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("PictureUrl");
+
+                    b.Property<string>("Provider");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("UserData");
                 });
 
             modelBuilder.Entity("PUSGSProjekat.Entities.UserRole", b =>

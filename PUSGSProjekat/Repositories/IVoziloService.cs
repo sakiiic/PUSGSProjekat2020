@@ -19,5 +19,6 @@ namespace PUSGSProjekat.Repositories
         List<Vozilo> PrikazRezervisanihVozila(int korisnikId);
         Vozilo OtkaziRezervaciju(int voziloId);
         bool DodajVoziloKorisniku(KorisnikVozilo objekat);
+        bool OcijeniVozilo(int voziloId, int ocjena);
     }
 }

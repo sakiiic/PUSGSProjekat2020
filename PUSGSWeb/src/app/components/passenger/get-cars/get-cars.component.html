@@ -16,10 +16,12 @@
   </div>
 </form>
 
-<mat-form-field appearance="outline" class="margina">
-  <mat-label>Unesite model auta</mat-label>
-  <input matInput placeholder="Model">
-</mat-form-field>
+<div>
+  <mat-form-field appearance="outline" class="margina">
+    <mat-label>Unesite model auta</mat-label>
+    <input matInput placeholder="Model">
+  </mat-form-field> 
+</div>
 
 <div class="text-center styless">
   <button class="btn btn-primary" (click)="prikazi(dateForm)">Prikaži</button>
@@ -66,7 +68,8 @@
               <div class="col-md-2 col-sm-12">
                 <h3 class="d-flex justify-content-center text-green">${{item.cijena}}</h3>
 
-                <button *ngIf="item.slobodno" href="#" class="btn btn-success btn-block" (click)="openModal(item.voziloId)">
+                <button *ngIf="item.slobodno" href="#" class="btn btn-success btn-block"
+                  (click)="openModal(item.voziloId)">
                   <i class="fa fa-key"></i>
                   Rezerviši</button>
                 <button *ngIf="!item.slobodno" class="btn btn-danger btn-block"><i class="fa fa-times-circle"></i>

@@ -14,5 +14,6 @@ namespace PUSGSProjekat.Repositories
         bool IzmijeniRentacarServis(int id, RentACar rent);
         bool DodajRentacarServis(RentACar rent);
         List<RentACar> GetRentaCarsForCurrentUser(int userId);
+        bool OcijeniServis(int rentacarId, int ocjena);
     }
 }

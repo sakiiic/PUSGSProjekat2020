@@ -70,11 +70,29 @@ import { GetFlightsComponent } from './components/passenger/get-flights/get-flig
 import { ReserveFlightComponent } from './components/passenger/reserve-flight/reserve-flight.component';
 import { GetReservedFlightsComponent } from './components/passenger/get-reserved-flights/get-reserved-flights.component';
 import { CancelReservationComponent } from './components/passenger/cancel-reservation/cancel-reservation.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+import { DodajOcjenuVoziloComponent } from './components/passenger/dodaj-ocjenu-vozilo/dodaj-ocjenu-vozilo.component';
+import { DodajOcjenuServisComponent } from './components/passenger/dodaj-ocjenu-servis/dodaj-ocjenu-servis.component';
+import { OcijeniLetComponent } from './components/passenger/ocijeni-let/ocijeni-let.component';
+import { OcijeniAviokompanijuComponent } from './components/passenger/ocijeni-aviokompaniju/ocijeni-aviokompaniju.component';
 
 export function getToken() {
   return localStorage.getItem('token');
 }
 
+let config = new AuthServiceConfig([
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("269581827417150")
+ },
+]);
+
+export function provideConfig()
+ {
+    return config;
+ }
 
 @NgModule({
   declarations: [
@@ -103,7 +121,6 @@ export function getToken() {
     DeleteAviocompanyComponent,
     EditAviocompanyComponent,
     GetAviocompanyComponent,
-
     EditCarModalComponent,
     EditServiceModalComponent,
     FindCarModalComponent,
@@ -114,17 +131,19 @@ export function getToken() {
     PotvrdiOtkazivanjeModalComponent,
     KorisnikComponent,
     EditKorisnikComponent,
-
     GetAdmininfoComponent,
     EditAdmininfoComponent,
-    
     VozilaComponent,
     GetAviocompaniesComponent,
     GetFlightsComponent,
     ReserveFlightComponent,
     GetReservedFlightsComponent,
-    CancelReservationComponent
-  ],
+    CancelReservationComponent,
+    DodajOcjenuVoziloComponent,
+    DodajOcjenuServisComponent,
+    OcijeniLetComponent,
+    OcijeniAviokompanijuComponent,
+    ],
   imports: [ 
     MbscModule,  
     BrowserModule,
@@ -156,9 +175,15 @@ export function getToken() {
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule,
+    SocialLoginModule.initialize(config)
   ],
-  providers: [AuthenticatService, AlertifyService, BsModalRef, BsModalService ],
+  providers: [AuthenticatService, AlertifyService, BsModalRef, ,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
