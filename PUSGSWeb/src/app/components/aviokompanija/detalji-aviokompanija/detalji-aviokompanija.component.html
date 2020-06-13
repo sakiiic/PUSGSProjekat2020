@@ -16,23 +16,19 @@
     </mat-form-field>
 </form>
 -->
-<mat-form-field appearance="outline" class="margina">
-  <mat-label>Odaberite destinaciju</mat-label>
-  <input matInput placeholder="Destinacija">
-</mat-form-field>
 
-<div class="text-center styless">  
+<div class="text-center styless">
+  <mat-form-field appearance="outline" class="margina">
+    <mat-label>Odaberite destinaciju</mat-label>
+    <input matInput placeholder="Destinacija">
+  </mat-form-field>  
   <button class="btn btn-primary" (click)="prikazi(dateForm)">Prikaži</button>
 </div>
 
 
-<div class="ml-5 mb-5">
-  <div class="ml-5">
-    <div class="ml-5">
-      <div class="row ml-5 mb-5">
-      </div>
+<div class="ml-5 mb-5"> 
       <div class="row ml-5">
-        <div class="col-lg-10 offset-lg-1 col-md-12 card"
+        <div class="col-lg-10 offset-lg-1 col-md-12 card" style="margin-left: 200px;"
           *ngFor="let item of dataSource.letovi | paginate: { itemsPerPage: count, currentPage: p }"
           [class.bg-secondary]="item.selected">
           <div class="card-body">
@@ -82,7 +78,5 @@
         <div class="text-right">
           <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
-      </div>
-    </div>
+      </div>   
   </div>
-</div>
