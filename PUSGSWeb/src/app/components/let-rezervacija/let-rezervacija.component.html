@@ -1,3 +1,61 @@
+<form #filterForm="ngForm" (ngSubmit)="onApplyFilter()" style="margin-left: 280px;">
+  <h1 id="usersLabel">Flights</h1>
+  <div class=" form-row">
+    <div class="form-group col">
+      <input type="text" name="search" class="form-control" placeholder="Search by destination" [(ngModel)]="search">
+    </div>
+  </div>
+  <div class=" form-row">
+    <div class="form-group col">
+      <input type="number" name="price" class="form-control" placeholder="Search by price" [(ngModel)]="price">
+    </div>
+  </div>
+  <div class=" form-row">
+    <div class="form-group col">
+      <label>From</label>
+      <input type="datetime-local" name="from" class="form-control" [(ngModel)]="from">
+    </div>
+    <div class="form-group col">
+      <label>To</label>
+      <input type="datetime-local" name="to" class="form-control" [(ngModel)]="to">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <input type="submit" class="form-control btn btn-primary" value="Apply filter" />
+    </div>
+  </div>
+</form>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="displayedFlights" style="margin-left: 300px;width: 1000px;">
+  <thead>
+    <tr>
+      <th>To</th>
+      <th>Departure Time</th>
+      <th>Arrival Time</th>
+      <th>Ticket Price ($)</th>
+      <th>Travel time</th>
+      <th>Travel Length (km)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let flight of displayedFlights">
+      <td>{{flight.destinacija}}</td>
+      <td>{{flight.datumVrijemePolaska | date :'short'}}</td>
+      <td>{{flight.datumVrijemeDolaska | date :'short'}}</td>
+      <td>{{flight.cijenaKarte}}</td>
+      <td>{{flight.vrijemePutovanja}}</td>
+      <td>{{flight.duzinaPutovanja}}</td>
+      <td>
+        <button (click)="flightDetails(flight.letId)" class="btn btn-secondary">Reserve</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<!--
 <div>
   <br>
   <br>
@@ -81,7 +139,7 @@
 
   </div>
 </div>
-
+-->
 
 
 <!--
