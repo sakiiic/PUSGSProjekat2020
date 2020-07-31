@@ -22,8 +22,7 @@ export class LetRezervacijaComponent implements OnInit {
 
   constructor(public letService: LetService, private router: Router) { }
 
-  //ngOnInit(): void {}
-
+  
   ngOnInit(): void {
     this.letService.getLetovi().subscribe(items => {
       this.allFlights = items;
@@ -88,6 +87,10 @@ export class LetRezervacijaComponent implements OnInit {
       console.warn(ex);
     }
     return query;
+  }
+
+  flightDetails(flightId: number) {
+    this.router.navigateByUrl("flight/" + flightId);
   }
 
 }

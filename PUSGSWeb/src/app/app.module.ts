@@ -77,6 +77,7 @@ import { DodajOcjenuVoziloComponent } from './components/passenger/dodaj-ocjenu-
 import { DodajOcjenuServisComponent } from './components/passenger/dodaj-ocjenu-servis/dodaj-ocjenu-servis.component';
 import { OcijeniLetComponent } from './components/passenger/ocijeni-let/ocijeni-let.component';
 import { OcijeniAviokompanijuComponent } from './components/passenger/ocijeni-aviokompaniju/ocijeni-aviokompaniju.component';
+import { FlightDetailComponent } from './components/let-rezervacija/flight-detail/flight-detail.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -143,6 +144,7 @@ export function provideConfig()
     DodajOcjenuServisComponent,
     OcijeniLetComponent,
     OcijeniAviokompanijuComponent,
+    FlightDetailComponent,
     ],
   imports: [ 
     MbscModule,  

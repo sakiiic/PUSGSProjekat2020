@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+//import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { LetModel } from 'src/app/models/let.model';
+import { Injectable, Inject } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -59,5 +60,9 @@ export class LetService {
 
   ocijeniLet(letId, ocjena){
     return this.http.post(this.apiURI + 'api/Let/OcijeniLet?letId=' + letId + '&ocjena=' + ocjena, ocjena );
+  }
+
+  getLetic(id: number) {
+    return this.http.get(this.apiURI + 'api/Let/GetLetic/' + id);
   }
 }

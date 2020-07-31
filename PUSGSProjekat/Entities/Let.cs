@@ -25,5 +25,17 @@ namespace PUSGSProjekat.DTO
 
         [ForeignKey("Aviokompanija")]
         public int AviokompanijaId { get; set; }
+
+        public bool CancelReservation()
+        {
+            return DatumVrijemePolaska == null
+                || IsLessInHours(DateTime.Now, DatumVrijemePolaska, 3);
+        }
+
+        public static bool IsLessInHours(DateTime date, DateTime comparedTo, double minAllowedHourDiff = 3)
+        {
+            TimeSpan diff = comparedTo - date;
+            return diff.TotalHours > minAllowedHourDiff;
+        }
     }
 }

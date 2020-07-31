@@ -19,12 +19,13 @@ export class GetFlightsComponent implements OnInit {
   id: any;
   p: Number = 1;
   count: Number = 4;
-  startDate: string = '';
-  endDate: string = '';
+  from = '';
+  to = '';
+  search = "";
+  displayedFlights: LetModel[];
 
   // Original extracted data
   dataSource: any;
-  dataSource2: any;
 
   constructor(public service: LetService,
     private activatedRoute: ActivatedRoute,
@@ -35,31 +36,24 @@ export class GetFlightsComponent implements OnInit {
     if (this.activatedRoute.snapshot.params["id"])
       this.id = this.activatedRoute.snapshot.params["id"];
   }
-
+/*
   ngOnInit(): void {
     this.service.getFlights(this.id)
       .subscribe((res: LetModel[]) => {
-        console.log('aaaaaa', res)
         this.dataSource = res;
+        this.displayedFlights = this.dataSource;
         console.log(this.dataSource)
       })
-  }
+  }*/
 
-  prikazi(form: NgForm) {
-    let obj = {
-      start: form.value.start,
-      end: form.value.end
-    }
-    console.log(form.value.start)
-
-    var datePipe = new DatePipe('en-US');
-    this.startDate = datePipe.transform(obj.start, 'yyyy-MM-dd hh:mm:ss');
-    this.endDate = datePipe.transform(obj.end, 'yyyy-MM-dd hh:mm:ss');
-
-    this.service.getFlightDate(this.startDate, this.endDate, this.id).subscribe((ress: LetModel) => {
-      this.dataSource2 = ress;
+  ngOnInit(): void {
+    this.service.getLetovi().subscribe(items => {
+      this.dataSource = items;
+      this.displayedFlights = this.dataSource;
+      console.log("Loaded flights", this.dataSource);
     });
   }
+
 
   openModal(letId) {
     const dialogConfig = new MatDialogConfig();
@@ -73,6 +67,40 @@ export class GetFlightsComponent implements OnInit {
       width: '600px', 
       data: {letId: letId}
     });
+  }
+
+  private filterByFromDate(query: LetModel[], dateStr = ""): LetModel[] {
+    try {
+      const date = new Date(dateStr);
+      console.log("from", date);
+      return query.filter(flight => new Date(flight.datumVrijemePolaska).getTime() >= date.getTime());
+    } catch (ex) {
+      console.warn(ex);
+    }
+    return query;
+  }
+
+  private filterBySearchText(query: LetModel[], search = ""): LetModel[] {
+    return query.filter(flight => {
+      return flight.destinacija.toLowerCase().includes(search);
+    });
+  }
+
+  onApplyFilter() {
+    let query = this.dataSource;
+
+    this.search.split(',').forEach(str => {
+      const search = str.toLowerCase().trim();
+      if (search) {
+        query = this.filterBySearchText(query, search);
+      }
+    })
+
+    if (this.from) {
+      query = this.filterByFromDate(query, this.from);
+    }
+    
+    this.displayedFlights = query;
   }
 
 }

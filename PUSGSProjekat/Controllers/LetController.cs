@@ -53,6 +53,14 @@ namespace PUSGSProjekat.Controllers
             return x;
         }
 
+        [HttpGet("GetLetic/{letId}")]
+        public List<Let> GetLetic(int letId)
+        {
+            var x = _letService.GetLetic(letId);
+
+            return x;
+        }
+
         [HttpGet("GetFlight")]
         public Let GetFlight(DateTime datum, string destinacija)
         {

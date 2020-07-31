@@ -29,6 +29,7 @@ import { EditAdmininfoComponent } from './components/rentacar-admin/edit-adminin
 import { GetAviocompaniesComponent} from './components/passenger/get-aviocompanies/get-aviocompanies.component';
 import { GetFlightsComponent } from './components/passenger/get-flights/get-flights.component'; 
 import { GetReservedFlightsComponent } from './components/passenger/get-reserved-flights/get-reserved-flights.component';
+import { FlightDetailComponent } from './components/let-rezervacija/flight-detail/flight-detail.component'
 
 export const routes: Routes = [
   //children: [ { path: 'vozila', component: VozilaComponent } ] 
@@ -56,6 +57,8 @@ export const routes: Routes = [
   { path: 'getAviocompanies', component: GetAviocompaniesComponent },
   { path: 'getFlights/:id', component: GetFlightsComponent },
   { path: 'getReservedFlights', component: GetReservedFlightsComponent },
+  { path: "flight/:id", component: FlightDetailComponent },
+  { path: "getFlights", component: GetFlightsComponent }, 
 
   { path: 'izmijeniKorisnika', component: EditKorisnikComponent },
   { path: 'getAdminInfo', component: GetAdmininfoComponent },

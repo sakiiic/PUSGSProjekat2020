@@ -1,0 +1,60 @@
+<div *ngFor="let item of flight" style="margin-left: 300px;">
+    
+    <h1>Flight details</h1>
+    <section class="container profile-display">
+      
+      <div class="row">
+        <div class="col-md-6">
+          <label>To</label>
+        </div>
+        <div class="col-md-6">
+          <p>{{item.destinacija}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Departure Time</label>
+        </div>
+        <div class="col-md-6">
+          <p>{{item.datumVrijemePolaska | date :'full'}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Arrival Time</label>
+        </div>
+        <div class="col-md-6">
+          <p>{{item.datumVrijemeDolaska | date :'full'}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Travel length</label>
+        </div>
+        <div class="col-md-6">
+          <p>{{item.duzinaPutovanja}} (km)</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Ticket price</label>
+        </div>
+        <div class="col-md-6">
+          <p>{{item.cijenaKarte}} (e)</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>No. changeovers</label>
+        </div>
+        <div class="col-md-6">
+          <p>{{item.brojPresjedanja}}</p>
+        </div>
+      </div>
+    
+    </section>
+  </div>
+
+<hr />
+
+   

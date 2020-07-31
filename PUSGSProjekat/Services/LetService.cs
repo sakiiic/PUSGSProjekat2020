@@ -170,6 +170,22 @@ namespace PUSGSProjekat.Services
             }
         }
 
+
+        public List<Let> GetLetic(int id)
+        {
+            try
+            {
+                var letovi = _dbContext.Letovi.Where(l => l.LetId == id).ToList();
+
+                return letovi;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
         public List<Let> GetFlightDate(DateTime startDate, DateTime endDate, int aviokompanijaId)
         {
             try
@@ -189,17 +205,25 @@ namespace PUSGSProjekat.Services
         public Let OtkaziLet(int letId)
         {
             try
-            {
+            {         
                 var let = _dbContext.Letovi.Where(l => l.LetId == letId).FirstOrDefault();
 
-                int id = let.KorisnikId.GetValueOrDefault();
+                if (let.CancelReservation())
+                {
 
-                OtkaziRezervaciju(let.LetId, id);
+                    int id = let.KorisnikId.GetValueOrDefault();
 
-                let.KorisnikId = null;
+                    OtkaziRezervaciju(let.LetId, id);
 
-                _dbContext.SaveChanges();
+                    let.KorisnikId = null;
+
+                    _dbContext.SaveChanges();
+                }
+                else
+                    let = null;
+
                 return let;
+                
             }
             catch (Exception e)
             {
