@@ -1,42 +1,40 @@
 <form #filterForm="ngForm" (ngSubmit)="onApplyFilter()" class="styless">
-    <div class="text-center mt-5 mr-5">
-      <mat-form-field class="mr-5" appearence="outline">
-        <mat-label>Izaberite datum polaska</mat-label>
-        <input class="form-control" name="from" matInput [matDatepicker]="picker1" [(ngModel)]="from">
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #picker1></mat-datepicker>
-      </mat-form-field>
-  
-      <mat-form-field class="ml-5" appearence="outline">
-        <mat-label>Izaberite datum povratka</mat-label>
-        <input name="to" matInput [matDatepicker]="picker2" [(ngModel)]="to">
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #picker2></mat-datepicker>
-      </mat-form-field>
-    </div>
+  <div class="text-center mt-5 mr-5">
+    <mat-form-field class="mr-5" appearence="outline">
+      <mat-label>Izaberite datum polaska</mat-label>
+      <input class="form-control" name="from" matInput [matDatepicker]="picker1" [(ngModel)]="from">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker1></mat-datepicker>
+    </mat-form-field>
 
-    <div class=" form-row" style="margin-left: 430px; width: 200px;">
-      <div class="form-group col">
-        <input type="text" name="search" class="form-control" placeholder="Search by destination" [(ngModel)]="search">
-      </div>
-    </div>
+    <mat-form-field class="ml-5" appearence="outline">
+      <mat-label>Izaberite datum povratka</mat-label>
+      <input name="to" matInput [matDatepicker]="picker2" [(ngModel)]="to">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker2></mat-datepicker>
+    </mat-form-field>
+  </div>
 
-    <div class="form-row">
-      <div class="form-group">
-        <input style="margin-left: 430px;width: 150px;" type="submit" class="form-control btn btn-primary" value="Apply filter" />
-      </div>
+  <div class=" form-row" style="margin-left: 550px; width: 200px;">
+    <div class="form-group col">
+      <input type="text" name="search" class="form-control" placeholder="Search by destination" [(ngModel)]="search">
     </div>
-  </form>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <input style="margin-left: 590px;width: 130px;" type="submit" class="form-control btn btn-primary" value="Apply filter" />
+    </div>
+  </div>
+</form>
 
   <div class="ml-5 mb-5">
     <div class="ml-5">
       <div class="ml-5">
-        <div class="row ml-5 mb-5">
-        </div>
         <div class="row ml-5">
           <div class="col-lg-10 styless offset-lg-1 col-md-12 card"
-            *ngFor="let item of dataSource | paginate: { itemsPerPage: count, currentPage: p }"
-            [class.bg-secondary]="item.selected">
+          *ngFor="let flight of displayedFlights"
+            [class.bg-secondary]="flight.selected">
             <div class="card-body">
               <div class="row">
                 <div class="col-md-4 col-sm-12">
@@ -45,40 +43,40 @@
                 <div class="col-md-6 col-sm-12">
                     <h5 class="card-title">
                         <span>
-                            <mat-icon>place</mat-icon> {{item.destinacija}}
+                            <mat-icon>place</mat-icon> {{flight.destinacija}}
                         </span>
                         <span>
-                            <mat-icon>flight_takeoff</mat-icon> {{item.datumVrijemePolaska}}
+                            <mat-icon>flight_takeoff</mat-icon> {{flight.datumVrijemePolaska}}
                         </span>
                         <br>
                         <span>
-                            <mat-icon>flight_land</mat-icon> {{item.datumVrijemeDolaska}}
+                            <mat-icon>flight_land</mat-icon> {{flight.datumVrijemeDolaska}}
                         </span>
                     </h5>
                   <p class="card-text">
                     <span>
-                        <mat-icon>schedule</mat-icon> {{item.vrijemePutovanja}}
+                        <mat-icon>schedule</mat-icon> {{flight.vrijemePutovanja}}
                     </span>
                     <span>
-                        <mat-icon> straighten</mat-icon> {{item.duzinaPutovanja}}
+                        <mat-icon> straighten</mat-icon> {{flight.duzinaPutovanja}}
                     </span>
                     <span>
-                        <mat-icon> flight</mat-icon> {{item.brojPresjedanja}}
+                        <mat-icon> flight</mat-icon> {{flight.brojPresjedanja}}
                     </span>
                     <span>
-                        <mat-icon> place</mat-icon> {{item.lokacijePresjedanja}}
+                        <mat-icon> place</mat-icon> {{flight.lokacijePresjedanja}}
                     </span>
                     <span>
-                        <mat-icon>euro_symbol</mat-icon> {{item.cijenaKarte}}
+                        <mat-icon>euro_symbol</mat-icon> {{flight.cijenaKarte}}
                     </span>
                     <br>
                     <br>
                   </p>
                 </div>
                 <div class="col-md-2 col-sm-12">
-                  <h3 class="d-flex justify-content-center text-green">{{item.cijenaKarte}}<mat-icon>euro_symbol</mat-icon></h3>
+                  <h3 class="d-flex justify-content-center text-green">{{flight.cijenaKarte}}<mat-icon>euro_symbol</mat-icon></h3>
   
-                  <button href="#" class="btn btn-success btn-block" (click)="openModal(item.letId)">
+                  <button href="#" class="btn btn-success btn-block" (click)="openModal(flight.letId)">
                     <i class="fa fa-key"></i>
                     Rezerviši</button>  
                 </div>

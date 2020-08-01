@@ -80,6 +80,17 @@ export class GetFlightsComponent implements OnInit {
     return query;
   }
 
+  private filterByToDate(query: LetModel[], dateStr = ""): LetModel[] {
+    try {
+      const date = new Date(dateStr);
+      console.log("to", date);
+      return query.filter(flight => new Date(flight.datumVrijemePolaska).getTime() <= date.getTime());
+    } catch (ex) {
+      console.warn(ex);
+    }
+    return query;
+  }
+
   private filterBySearchText(query: LetModel[], search = ""): LetModel[] {
     return query.filter(flight => {
       return flight.destinacija.toLowerCase().includes(search);
@@ -98,6 +109,10 @@ export class GetFlightsComponent implements OnInit {
 
     if (this.from) {
       query = this.filterByFromDate(query, this.from);
+    }
+
+    if (this.to) {
+      query = this.filterByToDate(query, this.to);
     }
     
     this.displayedFlights = query;

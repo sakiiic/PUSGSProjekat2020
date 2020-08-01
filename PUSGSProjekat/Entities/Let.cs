@@ -28,14 +28,9 @@ namespace PUSGSProjekat.DTO
 
         public bool CancelReservation()
         {
+            TimeSpan diff = DatumVrijemePolaska - DateTime.Now; 
             return DatumVrijemePolaska == null
-                || IsLessInHours(DateTime.Now, DatumVrijemePolaska, 3);
-        }
-
-        public static bool IsLessInHours(DateTime date, DateTime comparedTo, double minAllowedHourDiff = 3)
-        {
-            TimeSpan diff = comparedTo - date;
-            return diff.TotalHours > minAllowedHourDiff;
+                || diff.TotalHours > 3;
         }
     }
 }
