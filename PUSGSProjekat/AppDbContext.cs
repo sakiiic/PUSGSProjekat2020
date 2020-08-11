@@ -37,6 +37,7 @@ namespace PUSGSProjekat
         public DbSet<CjenovnikVozilo> CjenovnikVozilo { get; set; }
         public DbSet<KorisnikVozilo> KorisnikVozilo { get; set; }
         public DbSet<Rezervacije> Rezervacije { get; set; }
+        public DbSet<FlightSeat> Seats { get; set; }
         public DbSet<UserData> UserData { get; set; }
         public IConfiguration Configuration { get; }
 

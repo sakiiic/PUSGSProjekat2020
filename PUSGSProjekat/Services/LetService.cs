@@ -37,6 +37,7 @@ namespace PUSGSProjekat.Services
                         LokacijePresjedanja = l.LokacijePresjedanja,
                         CijenaKarte = l.CijenaKarte,
                         AviokompanijaId = l.AviokompanijaId
+                  
                     }).ToList();
             }
             catch (Exception e)
@@ -47,10 +48,54 @@ namespace PUSGSProjekat.Services
             }
         }
 
+        public bool AddAllSeats(FlightSeat fs)
+        {
+            var seats = _dbContext.Seats.Where(s => s.SeatId == fs.SeatId).FirstOrDefault();
+
+            if (seats != null)
+                return false;
+
+            try
+            {
+                _dbContext.Seats.Add(new FlightSeat
+                {
+                    SeatId = fs.SeatId,
+                    LetId = fs.LetId,                  
+                    SeatNumber = fs.SeatNumber,
+                    ReservedById = fs.ReservedById
+
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Greska pri dodavanju leta", e);
+            }
+
+            _dbContext.SaveChanges();
+            return true;
+        }
+
+        public List<FlightSeat> AddSeats(int flightId, int numberOfSeats)
+        {
+            List<FlightSeat> seats = new List<FlightSeat>();
+
+            for (int i = 0; i < numberOfSeats; ++i)
+            {
+                seats.Add(new FlightSeat
+                {
+                    LetId = flightId,
+                    SeatNumber = i
+                });
+
+            }
+
+            return seats;
+        }
+
         public bool DodajLet(Let l)
         {
             var letovi = _dbContext.Letovi.Where(a => a.LetId == l.LetId).FirstOrDefault();
-
+            
             if (letovi != null)
                 return false;
 
@@ -68,13 +113,16 @@ namespace PUSGSProjekat.Services
                     LokacijePresjedanja = l.LokacijePresjedanja,
                     CijenaKarte = l.CijenaKarte,
                     AviokompanijaId = l.AviokompanijaId
-
+                    
                 });
+                
             }
             catch (Exception e)
             {
                 Console.WriteLine("Greska pri dodavanju leta", e);
             }
+
+            //AddSeats(l.LetId, 50);
 
             _dbContext.SaveChanges();
             return true;

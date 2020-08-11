@@ -188,6 +188,8 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<int>("BrojPresjedanja");
 
+                    b.Property<int>("BrojSjedistaURedu");
+
                     b.Property<float>("CijenaKarte");
 
                     b.Property<DateTime>("DatumVrijemeDolaska");
@@ -204,7 +206,11 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<string>("LokacijePresjedanja");
 
+                    b.Property<string>("NazivAviokompanije");
+
                     b.Property<int>("Ocjena");
+
+                    b.Property<string>("Polazak");
 
                     b.Property<string>("VrijemePutovanja");
 
@@ -338,6 +344,44 @@ namespace PUSGSProjekat.Migrations
                     b.HasIndex("VoziloId");
 
                     b.ToTable("CjenovnikVozilo");
+                });
+
+            modelBuilder.Entity("PUSGSProjekat.Entities.FlightSeat", b =>
+                {
+                    b.Property<int>("SeatId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("LetId");
+
+                    b.Property<int?>("ReservedById");
+
+                    b.Property<int>("SeatNumber");
+
+                    b.HasKey("SeatId");
+
+                    b.HasIndex("LetId");
+
+                    b.ToTable("FlightSeat");
+                });
+
+            modelBuilder.Entity("PUSGSProjekat.Entities.FlightTicket", b =>
+                {
+                    b.Property<int>("TicketId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email");
+
+                    b.Property<int>("LetId");
+
+                    b.Property<int?>("SeatId");
+
+                    b.HasKey("TicketId");
+
+                    b.HasIndex("LetId");
+
+                    b.ToTable("FlightTicket");
                 });
 
             modelBuilder.Entity("PUSGSProjekat.Entities.KorisnikVozilo", b =>
@@ -520,6 +564,22 @@ namespace PUSGSProjekat.Migrations
                     b.HasOne("PUSGSProjekat.DTO.Vozilo", "Vozilo")
                         .WithMany()
                         .HasForeignKey("VoziloId");
+                });
+
+            modelBuilder.Entity("PUSGSProjekat.Entities.FlightSeat", b =>
+                {
+                    b.HasOne("PUSGSProjekat.DTO.Let")
+                        .WithMany("Seats")
+                        .HasForeignKey("LetId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PUSGSProjekat.Entities.FlightTicket", b =>
+                {
+                    b.HasOne("PUSGSProjekat.DTO.Let")
+                        .WithMany("Tickets")
+                        .HasForeignKey("LetId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("PUSGSProjekat.Entities.Rezervacije", b =>

@@ -14,9 +14,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./flight-detail.component.scss']
 })
 export class FlightDetailComponent implements OnInit {
-
   flight: any;
   id: number;
+  seatsFirstRow = [];
+  seatSecondRow = [];
+  seatsNum: number;
 
   constructor(private service: LetService, private route: ActivatedRoute,
     private router: Router) {
@@ -26,8 +28,35 @@ export class FlightDetailComponent implements OnInit {
     this.route.params.subscribe(params => { this.id = params['id']; });
     this.service.getLetic(this.id).subscribe(result => {
       this.flight = result;
-      console.log("My flight", this.flight);
+      this.seatsNum = result[0].brojSjedistaURedu;
+     
+      console.log("My flight", this.flight, "broj sjedista", this.seatsNum);
+      
+      for (let i = 0; i < this.seatsNum/2; i++) {
+        if (i % 2 === 0) {//if(i === seat.seatNum){}
+          this.seatsFirstRow.push({ reserved: true });
+        } else {
+          this.seatsFirstRow.push({ reserved: false });
+        }
+      }
+
+      for(let i= this.seatsNum/2; i < this.seatsNum; i ++){
+        if (i % 2 === 0) {
+          this.seatSecondRow.push({ reserved: false });
+        } else {
+          this.seatSecondRow.push({ reserved: true });
+        }
+      }
     });
+  }
+
+  makeReservation(idx: number) {
+    alert( "CLICKED" + idx);
+  }
+
+  makeReservationSecond(idx: number) {
+    let index =  this.seatsFirstRow.length + idx;
+    alert( "CLICKED SECOND " + index);
   }
 
 }

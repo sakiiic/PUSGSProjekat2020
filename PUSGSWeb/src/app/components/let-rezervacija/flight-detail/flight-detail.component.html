@@ -1,60 +1,83 @@
 <div *ngFor="let item of flight" style="margin-left: 300px;">
-    
-    <h1>Flight details</h1>
-    <section class="container profile-display">
-      
-      <div class="row">
-        <div class="col-md-6">
-          <label>To</label>
-        </div>
-        <div class="col-md-6">
-          <p>{{item.destinacija}}</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <label>Departure Time</label>
-        </div>
-        <div class="col-md-6">
-          <p>{{item.datumVrijemePolaska | date :'full'}}</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <label>Arrival Time</label>
-        </div>
-        <div class="col-md-6">
-          <p>{{item.datumVrijemeDolaska | date :'full'}}</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <label>Travel length</label>
-        </div>
-        <div class="col-md-6">
-          <p>{{item.duzinaPutovanja}} (km)</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <label>Ticket price</label>
-        </div>
-        <div class="col-md-6">
-          <p>{{item.cijenaKarte}} (e)</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <label>No. changeovers</label>
-        </div>
-        <div class="col-md-6">
-          <p>{{item.brojPresjedanja}}</p>
-        </div>
-      </div>
-    
-    </section>
-  </div>
 
-<hr />
+  <h1>Flight details</h1>
+  <section class="container profile-display">
 
-   
+    <div class="row">
+      <div class="col-md-6">
+        <label>To</label>
+      </div>
+      <div class="col-md-6">
+        <p>{{item.destinacija}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label>Departure Time</label>
+      </div>
+      <div class="col-md-6">
+        <p>{{item.datumVrijemePolaska | date :'full'}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label>Arrival Time</label>
+      </div>
+      <div class="col-md-6">
+        <p>{{item.datumVrijemeDolaska | date :'full'}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label>Travel length</label>
+      </div>
+      <div class="col-md-6">
+        <p>{{item.duzinaPutovanja}} (km)</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label>Ticket price</label>
+      </div>
+      <div class="col-md-6">
+        <p>{{item.cijenaKarte}} (e)</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label>No. changeovers</label>
+      </div>
+      <div class="col-md-6">
+        <p>{{item.brojPresjedanja}}</p>
+      </div>
+    </div>
+
+  </section>
+
+
+  <hr />
+
+
+  <h3>Flight seats</h3>
+  <section class="container">
+    <!-- <app-flight-seats [flightSeats]="flight.seats"></app-flight-seats> -->
+    <div class="inner">
+      <div class="oneRow">
+        <div class="oneSeat" *ngFor="let seat of seatsFirstRow; let i=index;" >
+          <div class="seatFree" *ngIf="!seat.reserved" (click)="makeReservation(i)"></div>
+          <div class="seatReserved" *ngIf="seat.reserved"></div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="oneRow">
+        <div class="oneSeat" *ngFor="let seat of seatsFirstRow; let i=index;">
+          <div class="seatFree" *ngIf="!seat.reserved" (click)="makeReservationSecond( i)"></div>
+          <div class="seatReserved" *ngIf="seat.reserved"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <hr />
+  <button class="btn-reservation-sticky btn btn-success" (click)="openReservationForm()">Make reservation(s)</button>
+</div>

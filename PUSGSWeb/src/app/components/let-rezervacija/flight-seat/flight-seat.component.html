@@ -1,0 +1,4 @@
+<div class="flight-seat" *ngIf="flightSeat && flightSeat.seatNumber != null">
+    <button (click)="onSelect()" class="btn" [ngClass]="{'btn-info': !isReserved() && !selected, 'btn-success': !!selected, 'btn-danger': isReserved()}" [disabled]="isDisabled()">{{flightSeat.seatNumber}}</button>
+  </div>
+  
