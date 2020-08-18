@@ -38,6 +38,7 @@ export class AddNewFlightComponent implements OnInit {
     this.let = Object.assign({}, this.dodajLetForm.value);
     this.letService.postLet(this.let).subscribe(() => {
       console.log('Uspjesno dodat let');
+      //this.router.navigateByUrl(`/aviocompany/flightDetails/${this.let.letId}`);
       this.router.navigate(['/aviocompany/flightDetails/' + 5]);
     }, error => {
       console.log('Neuspjesno dodat let');

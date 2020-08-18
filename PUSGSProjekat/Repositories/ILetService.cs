@@ -22,5 +22,7 @@ namespace PUSGSProjekat.Repositories
         Let GetFlight(DateTime datum, string destinacija);
         bool OcijeniLet(int letId, int ocjena);
         List<Let> GetLetic(int id);
+        List<int> GetSeats(int letId);
+        bool AddSeat(FlightSeat fs);
     }
 }

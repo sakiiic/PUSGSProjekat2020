@@ -22,7 +22,7 @@ namespace PUSGSProjekat.DTO
         public DateTime DatumVrijemePovratka { get; set; }
         public int Ocjena { get; set; }
         public string NazivAviokompanije { get; set; }
-        public int BrojSjedistaURedu { get; set; } = 4;
+        public int BrojSjedistaURedu { get; set; } = 32;
 
         public ICollection<FlightSeat> Seats { get; set; }
         public ICollection<FlightTicket> Tickets { get; set; }

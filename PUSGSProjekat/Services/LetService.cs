@@ -48,7 +48,7 @@ namespace PUSGSProjekat.Services
             }
         }
 
-        public bool AddAllSeats(FlightSeat fs)
+        public bool AddSeat(FlightSeat fs)
         {
             var seats = _dbContext.Seats.Where(s => s.SeatId == fs.SeatId).FirstOrDefault();
 
@@ -68,28 +68,31 @@ namespace PUSGSProjekat.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine("Greska pri dodavanju leta", e);
+                Console.WriteLine("Greska pri dodavanju sjedista", e);
             }
 
             _dbContext.SaveChanges();
             return true;
         }
 
-        public List<FlightSeat> AddSeats(int flightId, int numberOfSeats)
+        public List<int> GetSeats(int letId)
         {
-            List<FlightSeat> seats = new List<FlightSeat>();
+            List<int> sn = new List<int>();
 
-            for (int i = 0; i < numberOfSeats; ++i)
+            try
             {
-                seats.Add(new FlightSeat
-                {
-                    LetId = flightId,
-                    SeatNumber = i
-                });
+                var seats = _dbContext.Seats.Where(s => s.LetId == letId).ToList();
 
+                foreach (var seat in seats)
+                    sn.Add(seat.SeatNumber);
+
+                return sn;
             }
-
-            return seats;
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
         }
 
         public bool DodajLet(Let l)

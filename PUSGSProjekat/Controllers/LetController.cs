@@ -53,6 +53,23 @@ namespace PUSGSProjekat.Controllers
             return x;
         }
 
+        [HttpGet("GetSeats/{letId}")]
+        public List<int> GetSeats(int letId)
+        {
+            var x = _letService.GetSeats(letId);
+
+            return x;
+        }
+
+        [HttpPost("AddSeat")]
+        public async Task<IActionResult> AddSeat([FromBody] FlightSeat seat)
+        {
+            var x = _letService.AddSeat(seat);
+
+            return Ok(x);
+        }
+
+
         [HttpGet("GetLetic/{letId}")]
         public List<Let> GetLetic(int letId)
         {

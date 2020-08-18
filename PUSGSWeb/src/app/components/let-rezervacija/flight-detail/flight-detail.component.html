@@ -70,8 +70,8 @@
       </div>
       <div class="spacer"></div>
       <div class="oneRow">
-        <div class="oneSeat" *ngFor="let seat of seatsFirstRow; let i=index;">
-          <div class="seatFree" *ngIf="!seat.reserved" (click)="makeReservationSecond( i)"></div>
+        <div class="oneSeat" *ngFor="let seat of seatSecondRow; let i=index;">
+          <div class="seatFree" *ngIf="!seat.reserved" (click)="makeReservationSecond(i)"></div>
           <div class="seatReserved" *ngIf="seat.reserved"></div>
         </div>
       </div>

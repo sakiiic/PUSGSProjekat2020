@@ -1,0 +1,23 @@
+<div class="text-center mb-5">
+    <h3>Zavrsite Vasu rezervaciju</h3>
+</div>
+<div>
+    <div class="div2 mb-5 form-group">
+
+        <form (ngSubmit)="dodaj()" [formGroup]="dodajRezForm">
+
+            <p class="ml-5 mt-5 mb-5 text-center">
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Broj pasosa: </mat-label>
+                    <input matInput placeholder="Broj pasosa" class="form-control" formControlName="reservedById">
+                </mat-form-field>    
+            </p>
+
+            <div class="text-center mt-5">
+                <button type="submit" class="btn btn-primary mr-5">Rezervisi</button>
+                <button type="button" class="btn btn-secondary" (click)="goBack()">Odustani</button>
+            </div>
+        </form>
+
+    </div>
+</div>

@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { LetModel } from 'src/app/models/let.model';
 import { Injectable, Inject } from '@angular/core';
+import { FlightSeatDTO } from 'src/app/models/flightSeatDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -64,5 +65,14 @@ export class LetService {
 
   getLetic(id: number) {
     return this.http.get(this.apiURI + 'api/Let/GetLetic/' + id);
+  }
+
+  getSeats(letId){
+    return this.http.get(this.apiURI + 'api/Let/GetSeats/' + letId)
+  }
+
+  addResevation(seat: FlightSeatDTO) {
+    console.log(this.apiURI + 'api/Let/AddSeat')
+    return this.http.post(this.apiURI + 'api/Let/AddSeat', seat);
   }
 }
