@@ -8,7 +8,6 @@ namespace PUSGSProjekat.Repositories
 {
     public interface IKorisnikService
     {
-        Korisnik GetKorisnik(int korisnikId);
-        bool IzmijeniKorisnika(int id, Korisnik k);
+        List<Korisnik> getAllUsers();
     }
 }

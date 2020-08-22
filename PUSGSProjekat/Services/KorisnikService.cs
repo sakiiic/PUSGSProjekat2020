@@ -16,42 +16,25 @@ namespace PUSGSProjekat.Services
             _dbContext = dbContext;
         }
 
-        public Korisnik GetKorisnik(int korisnikId)
+        public List<Korisnik> getAllUsers()
         {
             try
             {
-                return _dbContext.Korisnici.Where(k => k.Id == korisnikId).FirstOrDefault();
+                return _dbContext.Korisnici.Select(
+                    k => new Korisnik()
+                    {
+                        Name = k.Name,
+                        Surname = k.Surname,
+                        UserName = k.UserName,
+                        Email = k.Email
+
+                    }).ToList();
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                var message = e.Message;
+                Console.WriteLine(message);
                 return null;
-            }
-        }
-
-        public bool IzmijeniKorisnika(int id, Korisnik k)
-        {
-            try
-            {
-                var korisnici = _dbContext.Korisnici.FirstOrDefault(c => c.Id == id);
-                if (korisnici != null)
-                {
-                    korisnici.Name = k.Name;
-                    korisnici.Surname = k.Surname;
-                    korisnici.Password = k.Password;
-                    korisnici.DateOfBirth = k.DateOfBirth;
-                    korisnici.Address = k.Address;
-                    korisnici.UserName = k.UserName;
-                    korisnici.Email = k.Email;
-
-                    _dbContext.SaveChanges();
-                    return true;
-                }
-                return false;
-            }
-            catch (Exception)
-            {
-                return false;
             }
         }
     }

@@ -78,9 +78,8 @@ import { DodajOcjenuServisComponent } from './components/passenger/dodaj-ocjenu-
 import { OcijeniLetComponent } from './components/passenger/ocijeni-let/ocijeni-let.component';
 import { OcijeniAviokompanijuComponent } from './components/passenger/ocijeni-aviokompaniju/ocijeni-aviokompaniju.component';
 import { FlightDetailComponent } from './components/let-rezervacija/flight-detail/flight-detail.component';
-import { FlightSeatsComponent } from './components/let-rezervacija/flight-seats/flight-seats.component';
-import { FlightSeatComponent } from './components/let-rezervacija/flight-seat/flight-seat.component';
 import { ReservationComponent } from './components/let-rezervacija/reservation/reservation.component';
+import { UsersComponent } from './components/users/users.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -148,9 +147,8 @@ export function provideConfig()
     OcijeniLetComponent,
     OcijeniAviokompanijuComponent,
     FlightDetailComponent,
-    FlightSeatsComponent,
-    FlightSeatComponent,
     ReservationComponent,
+    UsersComponent,
     ],
   imports: [ 
     MbscModule,  

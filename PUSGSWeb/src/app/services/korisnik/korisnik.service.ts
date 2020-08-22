@@ -12,11 +12,8 @@ export class KorisnikService {
 
   constructor(private http: HttpClient) { }
 
-  getKorisnik(id){
-    return this.http.get(this.apiURI + 'api/Korisnik/GetKorisnik/' + id);
+  getAllUsers() {
+    return this.http.get(this.apiURI + 'api/Korisnik/GetAllUsers');
   }
 
-  editKorisnik(id, korisnik: KorisnikModel){
-    return this.http.patch(this.apiURI + 'api/Korisnik/GetKorisnik/' + id, korisnik);
-  }
 }

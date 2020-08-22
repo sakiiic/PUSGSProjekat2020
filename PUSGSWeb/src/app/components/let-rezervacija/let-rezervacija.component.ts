@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { LetService } from 'src/app/services/let/let.service';
 import { LetModel } from 'src/app/models/let.model';
 import { Router } from '@angular/router';
-import { msToTimeString } from 'src/app/util/time';
-
 
 @Component({
   selector: 'app-let-rezervacija',

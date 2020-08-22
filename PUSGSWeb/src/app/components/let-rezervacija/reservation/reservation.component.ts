@@ -33,23 +33,15 @@ export class ReservationComponent implements OnInit {
 
     console.log('Parametri', this.id, this.seatNumber);
   }
-  /*
-  dodajRezervaciju() {
-    this.dodajRezForm = this.fb.group({
-      reservedById: ['', Validators.required],
-      seatNumber : this.seatNumber,
-      letId: this.id
-    });
-  }*/
   
   dodaj() {
     this.seat = Object.assign({}, this.dodajRezForm.getRawValue());
     console.log('sjediste', this.seat);
     this.letService.addResevation(this.seat).subscribe(() => {
-      console.log('Uspjesno dodat let');
       this.router.navigateByUrl(`flight/${this.id}`);
+      console.log('Uspjesno dodata rezervacija');
     }, error => {
-      console.log('Neuspjesno dodat let');
+      console.log('Neuspjesno dodata rezervacija');
     });
   }
 

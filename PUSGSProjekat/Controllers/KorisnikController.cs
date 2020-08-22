@@ -20,20 +20,10 @@ namespace PUSGSProjekat.Controllers
             _korisnikService = korisnikService;
         }
 
-        [HttpGet("GetKorisnik/{id}")]
-        public Korisnik GetKorisnik(int id)
+        [HttpGet("GetAllUsers")]
+        public List<Korisnik> GetAllUsers()
         {
-            var x = _korisnikService.GetKorisnik(id);
-
-            return x;
-        }
-
-        [HttpPatch("IzmijeniKorisnika/{id}")]
-        public async Task<IActionResult> IzmijeniKorisnika(int id, [FromBody] Korisnik korisnik)
-        {
-            var x = _korisnikService.IzmijeniKorisnika(id, korisnik);
-
-            return Ok(x);
+            return _korisnikService.getAllUsers();
         }
     }
 }

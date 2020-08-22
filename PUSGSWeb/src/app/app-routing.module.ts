@@ -29,8 +29,9 @@ import { EditAdmininfoComponent } from './components/rentacar-admin/edit-adminin
 import { GetAviocompaniesComponent} from './components/passenger/get-aviocompanies/get-aviocompanies.component';
 import { GetFlightsComponent } from './components/passenger/get-flights/get-flights.component'; 
 import { GetReservedFlightsComponent } from './components/passenger/get-reserved-flights/get-reserved-flights.component';
-import { FlightDetailComponent } from './components/let-rezervacija/flight-detail/flight-detail.component'
-import { ReservationComponent } from './components/let-rezervacija/reservation/reservation.component'
+import { FlightDetailComponent } from './components/let-rezervacija/flight-detail/flight-detail.component';
+import { ReservationComponent } from './components/let-rezervacija/reservation/reservation.component';
+import { UsersComponent } from './components/users/users.component';
 
 export const routes: Routes = [
   //children: [ { path: 'vozila', component: VozilaComponent } ] 
@@ -60,7 +61,8 @@ export const routes: Routes = [
   { path: 'getReservedFlights', component: GetReservedFlightsComponent },
   { path: "flight/:id", component: FlightDetailComponent },
   { path: "getFlights", component: GetFlightsComponent }, 
-  { path: "flight/:id/reservation/:seatNumber", component: ReservationComponent }, 
+  { path: "flight/:id/reservation/:seatNumber", component: ReservationComponent },
+  { path: "users", component: UsersComponent },
 
   { path: 'izmijeniKorisnika', component: EditKorisnikComponent },
   { path: 'getAdminInfo', component: GetAdmininfoComponent },
