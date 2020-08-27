@@ -23,10 +23,29 @@ export class CancelReservationComponent implements OnInit {
   }
 
   otkaziRezervaciju(){
-    this.service.otkaziLet(this.id).subscribe();
-    this.alertify.success('Uspjesno otkazana rezervacija!');
-    this.dialogRef.close();
-    window.location.reload();
+    //this.service.otkaziLet(this.id).subscribe();
+    //this.alertify.success('Uspjesno otkazana rezervacija!');
+    //this.dialogRef.close();
+    //window.location.reload();
+    
+    this.service.otkaziLet(this.id).subscribe(res =>
+      {
+        if(res === null)
+        {
+          alert("Ne mozete otkazati let 4 sata prije polaska");
+        }
+        else
+        {
+          alert("Uspjesno ste otkazali rezervaciju");
+          this.dialogRef.close();
+          window.location.reload();
+        }
+      },
+      err => 
+      {
+        alert("Greska pri otkazivanju leta");
+      }
+    );
   }
 
   closeModal() {

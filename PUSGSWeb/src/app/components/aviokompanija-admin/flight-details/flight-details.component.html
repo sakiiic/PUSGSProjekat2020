@@ -1,6 +1,4 @@
-<div class="text-center mt-5">
-    <button class="btn btn-primary" [routerLink]="['/addNewFlight']">Dodaj let</button>
-</div>
+
 
 <div class="ml-5 mb-5">
     <div class="ml-5">
@@ -11,6 +9,9 @@
                 <div class="col-lg-10 offset-lg-1 col-md-12 card"
                     *ngFor="let item of dataSource.letovi | paginate: { itemsPerPage: count, currentPage: p }"
                     [class.bg-secondary]="item.selected">
+                    <div class="text-center mt-5">
+                        <button class="btn btn-primary" [routerLink]="['/addNewFlight/', item.aviokompanijaId]">Dodaj let</button>
+                    </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4 col-sm-12">

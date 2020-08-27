@@ -47,7 +47,7 @@ export const routes: Routes = [
   { path: 'rentacarServices', component: GetRentacarServiceComponent},
   { path: 'rentacarService/carDetails/:id', component: CarDetailsComponent},
   { path: 'addRentacarService', component: AddRentacarServiceComponent },
-  { path: 'addNewFlight', component: AddNewFlightComponent },
+  { path: 'addNewFlight/:aviokompanijaId', component: AddNewFlightComponent },
   { path: 'aviocompany', component: GetAviocompanyComponent},
   { path: 'aviocompany/flightDetails/:id', component: FlightDetailsComponent},
   { path: 'addAviocompany', component: AddAviocompanyComponent },

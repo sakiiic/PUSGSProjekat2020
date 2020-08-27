@@ -1,6 +1,8 @@
+import { RoleModel } from './role.model';
+
 export class KorisnikModel{
     id: number;
-    username: string;
+    userName: string;
     password: string;
     firstName: string;
     lastName: string;
@@ -9,4 +11,5 @@ export class KorisnikModel{
     number: string;
     street: string;
     dateOfBirth: Date;
+    userRoles:RoleModel[];
 }

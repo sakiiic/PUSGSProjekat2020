@@ -31,15 +31,35 @@
       <th></th>
     </tr>
   </thead>
-  <tbody>
-    <tr *ngFor="let user of displayedUsers" >
+  <tbody *ngFor="let user of displayedUsers">
+    <tr *ngIf="!isFriendToCurrentUser(user)">
       <td>{{user.name}}</td>
       <td>{{user.surname}}</td>
       <td>{{user.email}}</td>
       <td>{{user.userName}}</td>
       <td>
+      <div>
+        <button (click)="addFriend(user)" class="btn btn-secondary">Add Friend</button>
+      </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="friendRequests" style="margin-left: 400px;width: 550px;">
+  <thead>
+    <tr>
+      <th>Friend requests</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let friend of friendRequests">
+      <td>{{friend.korisnikName}}</td>
+      <td>
         <div>
-          <button (click)="addFriend(user)" class="btn btn-secondary">Add Friend</button>
+          <button (click)="acceptRequest(friend)" class="btn btn-secondary">Accept</button>
+          <button (click)="declineRequest(friend)" class="btn btn-secondary">Decline</button>
         </div>
       </td>
     </tr>

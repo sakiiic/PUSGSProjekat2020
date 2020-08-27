@@ -9,4 +9,5 @@ export class LetModel{
     brojPresjedanja: number;
     lokacijePresjedanja: Array<string>;
     cijenaKarte: number;
+    aviokompanijaId: number;
 }

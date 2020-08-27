@@ -354,6 +354,8 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<int>("LetId");
 
+                    b.Property<int?>("PassportNumber");
+
                     b.Property<int?>("ReservedById");
 
                     b.Property<int>("SeatNumber");
@@ -382,6 +384,27 @@ namespace PUSGSProjekat.Migrations
                     b.HasIndex("LetId");
 
                     b.ToTable("FlightTicket");
+                });
+
+            modelBuilder.Entity("PUSGSProjekat.Entities.Friend", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("FriendId");
+
+                    b.Property<string>("FriendName");
+
+                    b.Property<int>("KorisnikId");
+
+                    b.Property<string>("KorisnikName");
+
+                    b.Property<int?>("State");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Friend");
                 });
 
             modelBuilder.Entity("PUSGSProjekat.Entities.KorisnikVozilo", b =>

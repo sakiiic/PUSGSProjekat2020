@@ -10,10 +10,10 @@ namespace PUSGSProjekat.Entities
     {
         [Key]
         public int SeatId { get; set; }
-
         public int LetId { get; set; }
         public int SeatNumber { get; set; }
         public int? ReservedById { get; set; }
+        public int? PassportNumber { get; set; }
 
         public FlightSeat()
         {

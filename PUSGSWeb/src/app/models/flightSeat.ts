@@ -3,6 +3,6 @@ export class FlightSeat {
     letId: number;
     seatNumber: number;
     reservedById: number;
-  
+    passportNumber: number;
   }
   
