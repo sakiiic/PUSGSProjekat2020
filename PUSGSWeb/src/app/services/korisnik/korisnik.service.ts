@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { KorisnikModel } from 'src/app/models/korisnik.model';
 import { FriendDTO } from 'src/app/models/friendDTO';
+import { InvitationDTO } from 'src/app/models/invitationDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,13 @@ export class KorisnikService {
 
   getFriends(id){
     return this.http.get(this.apiURI + 'api/Korisnik/GetFriends/' + id)
+  }
+
+  addInvitation(invitation: InvitationDTO) {
+    return this.http.post(this.apiURI + 'api/Korisnik/AddInvitation', invitation);
+  }
+
+  getInvitations(id){
+    return this.http.get(this.apiURI + 'api/Korisnik/GetInvitations/' + id)
   }
 }

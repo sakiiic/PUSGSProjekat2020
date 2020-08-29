@@ -14,6 +14,8 @@ namespace PUSGSProjekat.Entities
         public int SeatNumber { get; set; }
         public int? ReservedById { get; set; }
         public int? PassportNumber { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
 
         public FlightSeat()
         {

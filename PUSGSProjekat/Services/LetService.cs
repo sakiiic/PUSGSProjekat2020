@@ -63,7 +63,9 @@ namespace PUSGSProjekat.Services
                     LetId = fs.LetId,                  
                     SeatNumber = fs.SeatNumber,
                     ReservedById = fs.ReservedById,
-                    PassportNumber = fs.PassportNumber
+                    PassportNumber = fs.PassportNumber,
+                    Name = fs.Name,
+                    Surname = fs.Surname
                 });
             }
             catch (Exception e)

@@ -4,5 +4,7 @@ export class FlightSeat {
     seatNumber: number;
     reservedById: number;
     passportNumber: number;
+    name: string;
+    surname: string;
   }
   

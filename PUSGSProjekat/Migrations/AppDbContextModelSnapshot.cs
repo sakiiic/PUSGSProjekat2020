@@ -354,11 +354,15 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<int>("LetId");
 
+                    b.Property<string>("Name");
+
                     b.Property<int?>("PassportNumber");
 
                     b.Property<int?>("ReservedById");
 
                     b.Property<int>("SeatNumber");
+
+                    b.Property<string>("Surname");
 
                     b.HasKey("SeatId");
 
@@ -405,6 +409,25 @@ namespace PUSGSProjekat.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Friend");
+                });
+
+            modelBuilder.Entity("PUSGSProjekat.Entities.Invitation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("FriendId");
+
+                    b.Property<int>("LetId");
+
+                    b.Property<int?>("ReservedById");
+
+                    b.Property<int>("SeatNumber");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Invitation");
                 });
 
             modelBuilder.Entity("PUSGSProjekat.Entities.KorisnikVozilo", b =>

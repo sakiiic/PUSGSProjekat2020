@@ -58,5 +58,21 @@ namespace PUSGSProjekat.Controllers
 
             return x;
         }
+
+        [HttpPost("AddInvitation")]
+        public async Task<IActionResult> AddInvitation([FromBody] Invitation invitation)
+        {
+            var x = _korisnikService.AddInvitation(invitation);
+
+            return Ok(x);
+        }
+
+        [HttpGet("GetInvitations/{id}")]
+        public List<Invitation> GetInvitations(int id)
+        {
+            var x = _korisnikService.GetInvitations(id);
+
+            return x;
+        }
     }
 }

@@ -39,6 +39,7 @@ namespace PUSGSProjekat
         public DbSet<Rezervacije> Rezervacije { get; set; }
         public DbSet<FlightSeat> Seats { get; set; }
         public DbSet<Friend> Friends { get; set; }
+        public DbSet<Invitation> Invitations { get; set; }
         public DbSet<UserData> UserData { get; set; }
         public IConfiguration Configuration { get; }
 

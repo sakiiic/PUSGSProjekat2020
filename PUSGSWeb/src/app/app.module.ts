@@ -80,6 +80,7 @@ import { OcijeniAviokompanijuComponent } from './components/passenger/ocijeni-av
 import { FlightDetailComponent } from './components/let-rezervacija/flight-detail/flight-detail.component';
 import { ReservationComponent } from './components/let-rezervacija/reservation/reservation.component';
 import { UsersComponent } from './components/users/users.component';
+import { InvitationsComponent } from './components/let-rezervacija/invitations/invitations.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -149,6 +150,7 @@ export function provideConfig()
     FlightDetailComponent,
     ReservationComponent,
     UsersComponent,
+    InvitationsComponent,
     ],
   imports: [ 
     MbscModule,  

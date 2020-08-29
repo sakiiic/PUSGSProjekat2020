@@ -172,5 +172,59 @@ namespace PUSGSProjekat.Services
             }
         }
 
+        public bool AddInvitation(Invitation i)
+        {
+            var invitations = _dbContext.Invitations.Where(s => s.Id == i.Id).FirstOrDefault();
+
+            if (invitations != null)
+                return false;
+
+            try
+            {
+                _dbContext.Invitations.Add(new Invitation
+                {
+                    Id = i.Id,
+                    LetId = i.LetId,
+                    SeatNumber = i.SeatNumber,
+                    ReservedById = i.ReservedById,
+                    FriendId = i.FriendId
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Greska pri dodavanju pozivnice", e);
+            }
+
+            _dbContext.SaveChanges();
+            return true;
+        }
+
+        public List<Invitation> GetInvitations(int id)
+        {
+            List<Invitation> inv = new List<Invitation>();
+
+            try
+            {
+                var invitations = _dbContext.Invitations.Where(f => f.FriendId == id).ToList();
+
+                foreach (var i in invitations)
+                {
+                    Invitation invitation = new Invitation();
+                    invitation.LetId = i.LetId;
+                    invitation.SeatNumber = i.SeatNumber;
+                    invitation.ReservedById = i.ReservedById;
+                    invitation.FriendId = i.FriendId;
+                    inv.Add(invitation);
+                }
+
+                return inv;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
     }
 }

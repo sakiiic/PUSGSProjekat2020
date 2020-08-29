@@ -8,9 +8,17 @@
 
             <p class="ml-5 mt-5 mb-5 text-center">
                 <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Ime: </mat-label>
+                    <input matInput placeholder="Ime" class="form-control" formControlName="name">
+                </mat-form-field>    
+                <mat-form-field appearance="outline" class="mr-5">
+                    <mat-label>Prezime: </mat-label>
+                    <input matInput placeholder="Prezime" class="form-control" formControlName="surname">
+                </mat-form-field> 
+                <mat-form-field appearance="outline" class="mr-5">
                     <mat-label>Broj pasosa: </mat-label>
                     <input matInput placeholder="Broj pasosa" class="form-control" formControlName="passportNumber">
-                </mat-form-field>    
+                </mat-form-field> 
             </p>
 
             <div class="text-center mt-5">
@@ -21,3 +29,22 @@
 
     </div>
 </div>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="friends" style="margin-left: 400px;width: 550px;">
+    <thead>
+      <tr>
+        <th>Friends</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let friend of friends">
+        <td>{{friend.korisnikName}}</td>
+        <td>
+          <div>
+            <button (click)="callFriend(friend)" class="btn btn-secondary">Pozovi prijatelja</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
