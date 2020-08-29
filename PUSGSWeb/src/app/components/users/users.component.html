@@ -1,51 +1,5 @@
 <h1 id="usersLabel" style="margin-left: 400px;">Users</h1>
 
-<form #filterForm="ngForm" (ngSubmit)="onSubmit()" style="margin-left: 400px;">
-  <div class=" form-row">
-    <div class="form-group col">
-      <input type="text" name="search" class="form-control" placeholder="Search..." [(ngModel)]="search">
-    </div>
-    <div class="form-group col">
-      <div class="form-check">
-        <input name="friendsOnly" class="form-check-input" type="checkbox" id="gridCheck" [(ngModel)]="friendsOnly">
-        <label class="form-check-label" for="gridCheck">
-          Friends only
-        </label>
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group">
-      <input type="submit" class="form-control btn btn-primary" value="Apply filter" />
-    </div>
-  </div>
-</form>
-
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="displayedUsers" style="margin-left: 400px;width: 550px;">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Surname</th>
-      <th>Email</th>
-      <th>Username</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody *ngFor="let user of displayedUsers">
-    <tr *ngIf="!isFriendToCurrentUser(user)">
-      <td>{{user.name}}</td>
-      <td>{{user.surname}}</td>
-      <td>{{user.email}}</td>
-      <td>{{user.userName}}</td>
-      <td>
-      <div>
-        <button (click)="addFriend(user)" class="btn btn-secondary">Add Friend</button>
-      </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="friendRequests" style="margin-left: 400px;width: 550px;">
   <thead>
     <tr>
@@ -65,3 +19,61 @@
     </tr>
   </tbody>
 </table>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="friends" style="margin-left: 400px;width: 550px;">
+  <thead>
+    <tr>
+      <th>Friends</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let friend of friends">
+      <td>{{friend.korisnikName}}</td>
+      <td>
+        <div>
+          <button (click)="unfriend(friend)" class="btn btn-secondary">Unfriend</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<form #filterForm="ngForm" (ngSubmit)="onSubmit()" style="margin-left: 400px;">
+  <div class=" form-row" style="width: 400px;">
+    <div class="form-group col">
+      <input type="text" name="search" class="form-control" placeholder="Search..." [(ngModel)]="search">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <input type="submit" class="form-control btn btn-primary" value="Apply filter" />
+      </div>
+    </div>
+  </div>
+</form>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="displayedUsers" style="margin-left: 400px;width: 550px;">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Email</th>
+      <th>Username</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let user of displayedUsers">
+    <tr>
+      <td>{{user.name}}</td>
+      <td>{{user.surname}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.userName}}</td>
+      <td>
+      <div>
+        <button *ngIf="checkState(user)" (click)="addFriend(user)" class="btn btn-secondary">Add Friend</button>
+      </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

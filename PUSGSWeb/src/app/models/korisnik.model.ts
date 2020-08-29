@@ -4,8 +4,8 @@ export class KorisnikModel{
     id: number;
     userName: string;
     password: string;
-    firstName: string;
-    lastName: string;
+    name: string;
+    surname: string;
     email: string;
     city: string;
     number: string;

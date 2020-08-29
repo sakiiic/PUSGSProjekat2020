@@ -17,8 +17,13 @@ export class UsersComponent implements OnInit {
   private currentUserName: any;
   private allUsers;
   private temp: any;
+  private tempArr: any;
   public displayedUsers: KorisnikModel[];
+  public filterUsers: KorisnikModel[];
   public friendRequests: FriendDTO[];
+  public friends: FriendDTO[];
+  public search = "";
+  addedFriends = [];
 
   constructor(private auth: AuthenticatService, private alertify: AlertifyService, public userService: KorisnikService) { }
 
@@ -30,32 +35,49 @@ export class UsersComponent implements OnInit {
   }
 
   refresh() {
-    this.userService.getFriendRequest(this.currentUserId).subscribe(friends => {
-      this.temp = friends;
-      this.friendRequests = this.temp;
-      let friendsList = [];
-      this.friendRequests.forEach(el => {
-        friendsList.push(el.korisnikName);
-      })
-      console.log('Prijatelji', this.friendRequests);
-      this.userService.getAllUsers().subscribe(users => {
-        this.allUsers = users;     
-        this.displayedUsers= this.allUsers;
-        this.displayedUsers = this.displayedUsers.filter((element, idx) => {
-        
-          const tmpArr =  element.userRoles.filter((el) => {
-            return el.roleId === 1;
-          });
+    this.userService.getFriendRequest(this.currentUserId).subscribe(requests => {
+      this.userService.getFriends(this.currentUserId).subscribe(myFriends => {
+
+        this.temp = requests;
+        this.friendRequests = this.temp;
+        let friendsList = [];
+        this.friendRequests.forEach(el => {
+          friendsList.push(el.korisnikName);
+        })
+        console.log('Zahtjevi', this.friendRequests);
+
+        this.tempArr = myFriends;
+        this.friends = this.tempArr;
+        let allFriends = [];
+        this.friends.forEach(el => {
+          allFriends.push(el.korisnikName);
+        })
+        console.log('Prijatelji', this.friends);
+
+        this.userService.getAllUsers().subscribe(users => {
+          this.allUsers = users;     
+          this.displayedUsers= this.allUsers;
+          this.displayedUsers = this.displayedUsers.filter((element, idx) => {
           
-          return tmpArr.length !== 0 && !friendsList.includes(element.userName) && element.userName !== this.currentUserName;
-       });     
-  
-        console.log('Korisnici', this.displayedUsers);
+            const tmpArr =  element.userRoles.filter((el) => {
+              return el.roleId === 1;
+            });
+            
+            return tmpArr.length !== 0 && !friendsList.includes(element.userName) 
+            && element.userName !== this.currentUserName && !allFriends.includes(element.userName);
+        });     
+          this.filterUsers = this.displayedUsers;
+          console.log('Korisnici', this.filterUsers);
+        });
       });
     });
+  }
 
-    
-
+  checkState(user: KorisnikModel){
+    if(this.addedFriends.includes(user.id))
+     return false;
+    else
+     return true;
   }
 
   addFriend(user) {
@@ -72,6 +94,8 @@ export class UsersComponent implements OnInit {
     
     this.userService.addFriend(friend).subscribe(() => {
       alert('Uspjesno ste poslali zahtjev za prijateljstvo korisniku ' + user.userName);
+      this.addedFriends.push(friend.friendId);
+      console.log("Dodat id", this.addedFriends);
       this.refresh();
     });
   }
@@ -92,14 +116,54 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  isFriendToCurrentUser(potentialFriend: KorisnikModel): boolean {
-    //for(let i = 0; i < 2; i++)
-    //{
-      //if(this.friendRequests[i].korisnikName === potentialFriend.username)
-      //{
-        //console.log('Ime0', this.friendRequests[i].korisnikName);
-        return false;
-      //}
-    //}
+  unfriend(friend: FriendDTO){
+    friend.state = 0;
+    this.userService.acceptRequest(this.currentUserId, friend).subscribe(() => {
+      console.log("Izbrisan ", friend);
+      this.refresh();
+    });
+  }
+
+  private _filterBySearchText(
+    usersToFilter: KorisnikModel[],
+    searchText: string
+  ): KorisnikModel[] {
+    return usersToFilter.filter((user) => {
+      
+      /*if(user.userName !== null){
+        if (user.userName.toLowerCase().includes(searchText)) {
+          return true;
+        }
+      } 
+      if(user.email !== null){
+        if (user.email.toLowerCase().includes(searchText)) {
+          return true;
+        }
+      }*/
+      if(user.name !== null){
+        if (user.name.toLowerCase().includes(searchText)) {
+          return true;
+        }
+      }
+      if(user.surname !== null){
+        if (user.surname.toLowerCase().includes(searchText)) {
+          return true;
+        }
+      }
+
+      return false;
+    });
+  }
+
+  onSubmit(): void {
+    const searchText = this.search.toLowerCase();
+    let filteredUsers = this._filterBySearchText(this.displayedUsers, searchText);
+
+    if(searchText === "")
+    {
+      this.refresh();
+    }
+    
+    this.displayedUsers = filteredUsers;
   }
 }

@@ -50,5 +50,13 @@ namespace PUSGSProjekat.Controllers
 
             return x;
         }
+
+        [HttpGet("GetFriends/{id}")]
+        public List<Friend> GetFriends(int id)
+        {
+            var x = _korisnikService.GetFriends(id);
+
+            return x;
+        }
     }
 }

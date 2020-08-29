@@ -28,4 +28,8 @@ export class KorisnikService {
   getFriendRequest(friendId){
     return this.http.get(this.apiURI + 'api/Korisnik/GetFriendRequest/' + friendId)
   }
+
+  getFriends(id){
+    return this.http.get(this.apiURI + 'api/Korisnik/GetFriends/' + id)
+  }
 }

@@ -135,5 +135,42 @@ namespace PUSGSProjekat.Services
                 return null;
             }
         }
+
+        public List<Friend> GetFriends(int id)
+        {
+            List<Friend> korisnici = new List<Friend>(); 
+
+            try
+            {
+                var friends = _dbContext.Friends.Where(f => f.FriendId == id || f.KorisnikId == id).ToList();
+
+                foreach (var friend in friends)
+                {
+                    if (friend.State == 1 && friend.FriendId == id)
+                    {
+                        Friend korisnik = new Friend();
+                        korisnik.KorisnikId = friend.KorisnikId;
+                        korisnik.KorisnikName = friend.KorisnikName;
+                        korisnici.Add(korisnik);
+                    }
+
+                    else if (friend.State == 1 && friend.KorisnikId == id)
+                    {
+                        Friend korisnik = new Friend();
+                        korisnik.KorisnikId = friend.FriendId;
+                        korisnik.KorisnikName = friend.FriendName;
+                        korisnici.Add(korisnik);
+                    }
+                }
+
+                return korisnici;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
     }
 }
