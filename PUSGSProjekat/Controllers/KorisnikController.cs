@@ -74,5 +74,21 @@ namespace PUSGSProjekat.Controllers
 
             return x;
         }
+
+        [HttpGet("GetInvitation/{id}")]
+        public List<Invitation> GetInvitation(int id)
+        {
+            var x = _korisnikService.GetInvitation(id);
+
+            return x;
+        }
+
+        [HttpDelete("DeleteInvitation/{id}")]
+        public async Task<IActionResult> DeleteInvitation(int id)
+        {
+            var x = _korisnikService.DeleteInvitation(id);
+
+            return Ok(x);
+        }
     }
 }

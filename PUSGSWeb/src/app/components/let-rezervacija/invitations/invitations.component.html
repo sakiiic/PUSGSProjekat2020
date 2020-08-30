@@ -14,8 +14,8 @@
         <td>{{invitation.reservedById}}</td>
         <td>
         <div>
-          <button (click)="accept(invitation)" class="btn btn-secondary">Prihvati</button>
-          <button (click)="decline(invitation)" class="btn btn-secondary">Odbij</button>
+          <button (click)="accept(invitation.id)" class="btn btn-secondary">Prihvati</button>
+          <button (click)="decline(invitation.id)" class="btn btn-secondary">Odbij</button>
         </div>
         </td>
       </tr>

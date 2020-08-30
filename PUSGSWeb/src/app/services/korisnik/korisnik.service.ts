@@ -41,4 +41,12 @@ export class KorisnikService {
   getInvitations(id){
     return this.http.get(this.apiURI + 'api/Korisnik/GetInvitations/' + id)
   }
+
+  getInvitation(id: number) {
+    return this.http.get(this.apiURI + 'api/Korisnik/GetInvitation/' + id);
+  }
+
+  deleteInvitation(id){
+    return this.http.delete(this.apiURI + 'api/Korisnik/DeleteInvitation/' + id);
+  }
 }

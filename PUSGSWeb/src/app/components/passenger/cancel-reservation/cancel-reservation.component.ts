@@ -23,10 +23,6 @@ export class CancelReservationComponent implements OnInit {
   }
 
   otkaziRezervaciju(){
-    //this.service.otkaziLet(this.id).subscribe();
-    //this.alertify.success('Uspjesno otkazana rezervacija!');
-    //this.dialogRef.close();
-    //window.location.reload();
     
     this.service.otkaziLet(this.id).subscribe(res =>
       {

@@ -210,6 +210,7 @@ namespace PUSGSProjekat.Services
                 foreach (var i in invitations)
                 {
                     Invitation invitation = new Invitation();
+                    invitation.Id = i.Id;
                     invitation.LetId = i.LetId;
                     invitation.SeatNumber = i.SeatNumber;
                     invitation.ReservedById = i.ReservedById;
@@ -226,5 +227,39 @@ namespace PUSGSProjekat.Services
             }
         }
 
+        public List<Invitation> GetInvitation(int id)
+        {
+            try
+            {
+                var inv = _dbContext.Invitations.Where(l => l.Id == id).ToList();
+
+                return inv;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public bool DeleteInvitation(int id)
+        {
+            try
+            {
+                var invitation = _dbContext.Invitations.Where(i => i.Id == id).FirstOrDefault();
+                if (invitation != null)
+                {
+                    _dbContext.Invitations.Remove(invitation);
+                    _dbContext.SaveChanges();
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

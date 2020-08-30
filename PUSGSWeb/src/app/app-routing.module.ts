@@ -33,6 +33,8 @@ import { FlightDetailComponent } from './components/let-rezervacija/flight-detai
 import { ReservationComponent } from './components/let-rezervacija/reservation/reservation.component';
 import { UsersComponent } from './components/users/users.component';
 import { InvitationsComponent } from './components/let-rezervacija/invitations/invitations.component';
+import { AcceptInvitationComponent } from './components/let-rezervacija/accept-invitation/accept-invitation.component';
+import { DeclineInvitationComponent } from './components/let-rezervacija/decline-invitation/decline-invitation.component';
 
 export const routes: Routes = [
   //children: [ { path: 'vozila', component: VozilaComponent } ] 
@@ -65,6 +67,8 @@ export const routes: Routes = [
   { path: "flight/:id/reservation/:seatNumber", component: ReservationComponent },
   { path: "users", component: UsersComponent },
   { path: "invitations", component: InvitationsComponent },
+  { path: "acceptInvitations/:id", component: AcceptInvitationComponent },
+  { path: "declineInvitations/:id", component: DeclineInvitationComponent },
 
   { path: 'izmijeniKorisnika', component: EditKorisnikComponent },
   { path: 'getAdminInfo', component: GetAdmininfoComponent },

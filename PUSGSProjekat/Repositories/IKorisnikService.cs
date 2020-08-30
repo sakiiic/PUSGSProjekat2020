@@ -16,5 +16,7 @@ namespace PUSGSProjekat.Repositories
         List<Friend> GetFriends(int id);
         bool AddInvitation(Invitation i);
         List<Invitation> GetInvitations(int id);
+        List<Invitation> GetInvitation(int id);
+        bool DeleteInvitation(int id);
     }
 }

@@ -4,6 +4,8 @@ import { KorisnikModel } from 'src/app/models/korisnik.model';
 import { KorisnikService } from 'src/app/services/korisnik/korisnik.service';
 import { AuthenticatService } from 'src/app/services/authentication/authentication.service';
 import { InvitationDTO } from 'src/app/models/invitationDTO';
+import { FlightSeatDTO } from 'src/app/models/flightSeatDTO';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-invitations',
@@ -11,11 +13,13 @@ import { InvitationDTO } from 'src/app/models/invitationDTO';
   styleUrls: ['./invitations.component.scss']
 })
 export class InvitationsComponent implements OnInit {
+  
   private temp: any;
   public invitations: InvitationDTO[];
 
 
-  constructor(private auth: AuthenticatService, private alertify: AlertifyService, public userService: KorisnikService) { }
+  constructor(private auth: AuthenticatService, private alertify: AlertifyService, 
+    public userService: KorisnikService, private router: Router) { }
 
   ngOnInit(): void {
     this.userService.getInvitations(this.auth.currentUser.id).subscribe(requests => {
@@ -26,4 +30,11 @@ export class InvitationsComponent implements OnInit {
     });
   }
 
+  decline(id: number){
+    this.router.navigateByUrl("declineInvitations/" + id);
+  }
+
+  accept(id: number) {
+    this.router.navigateByUrl("acceptInvitations/" + id);
+  }
 }
