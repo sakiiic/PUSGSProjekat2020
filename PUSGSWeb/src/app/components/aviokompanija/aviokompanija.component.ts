@@ -21,14 +21,17 @@ export class AviokompanijaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getAviokompanija()
-         .subscribe((res: AviokompanijaModel[]) => {
-            console.log(res)
-            this.dataSource = res;
-            console.log(this.dataSource)
-         })
+    this.fetchAvio();
   }
 
+  fetchAvio(){
+    this.service.getAviokompanija()
+    .subscribe((res: AviokompanijaModel[]) => {
+       console.log(res)
+       this.dataSource = res;
+       console.log(this.dataSource)
+    });
+  }
   private _filterBySearchText(
     usersToFilter: AviokompanijaModel[],
     searchText: string
@@ -55,6 +58,16 @@ export class AviokompanijaComponent implements OnInit {
     }
     
     this.dataSource = filteredList;
+  }
+
+  sortAvio(){
+    
+    this.service.getAviokompanija()
+    .subscribe((res: AviokompanijaModel[]) => {
+       const sorted = res.sort((a, b) => (a.naziv > b.naziv) ? 1 : -1)
+       this.dataSource = sorted;
+       console.log(this.dataSource)
+    });
   }
 
 }

@@ -75,6 +75,15 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  sortFriends(){  
+    this.userService.getFriends(this.currentUserId)
+    .subscribe((res: FriendDTO[]) => {
+       const sorted = res.sort((a, b) => (a.korisnikName > b.korisnikName) ? 1 : -1)
+       this.friends = sorted;
+       console.log(this.friends)
+    });
+  }
+
   checkState(user: KorisnikModel){
     if(this.addedFriends.includes(user.id))
      return false;

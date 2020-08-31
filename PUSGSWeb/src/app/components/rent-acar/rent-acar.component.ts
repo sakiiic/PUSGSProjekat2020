@@ -57,4 +57,14 @@ export class  RentACarComponent implements OnInit {
     
     this.dataSource = filteredList;
   }
+
+  sortRC(){  
+    this.service.getRentACar()
+    .subscribe((res: RentACarModel[]) => {
+       const sorted = res.sort((a, b) => (a.naziv > b.naziv) ? 1 : -1)
+       this.dataSource = sorted;
+       console.log(this.dataSource)
+    });
+  }
+
 }
