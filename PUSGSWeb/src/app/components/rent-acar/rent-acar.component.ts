@@ -13,6 +13,7 @@ export class  RentACarComponent implements OnInit {
 
   displayedColumns = ['naziv', 'adresa', 'opis', 'ocjena', 'lokacije', 'vozila'];
   dataSource: any;
+  public search = "";
 
   constructor(public service: RentACarService, private activatedRoute: ActivatedRoute) {
     this.dataSource = new MatTableDataSource<RentACarModel>();
@@ -29,4 +30,31 @@ export class  RentACarComponent implements OnInit {
          })
   }
 
+  private _filterBySearchText(
+    usersToFilter: RentACarModel[],
+    searchText: string
+  ): RentACarModel[] {
+    return usersToFilter.filter((element) => {  
+      
+      if(element.naziv !== null){
+        if (element.naziv.toLowerCase().includes(searchText)) {
+          return true;
+        }
+      }
+
+      return false;
+    });
+  }
+
+  onSubmit(): void {
+    const searchText = this.search.toLowerCase();
+    let filteredList = this._filterBySearchText(this.dataSource, searchText);
+
+    if(searchText === "")
+    {
+      this.ngOnInit();
+    }
+    
+    this.dataSource = filteredList;
+  }
 }

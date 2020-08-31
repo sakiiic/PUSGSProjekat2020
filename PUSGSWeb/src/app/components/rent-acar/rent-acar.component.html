@@ -1,3 +1,17 @@
+<br>
+<form #filterForm="ngForm" (ngSubmit)="onSubmit()" style="margin-left: 550px;">
+   <div class=" form-row" style="width: 400px;">
+     <div class="form-group col">
+       <input type="text" name="search" class="form-control" placeholder="Search..." [(ngModel)]="search">
+     </div>
+     <div class="form-row">
+       <div class="form-group">
+         <input type="submit" class="form-control btn btn-primary" value="Apply filter" />
+       </div>
+     </div>
+   </div>
+ </form>
+
 <div class="text-center mb-3">
     <div style="text-align:center">     
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

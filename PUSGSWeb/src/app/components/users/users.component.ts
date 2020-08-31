@@ -19,7 +19,6 @@ export class UsersComponent implements OnInit {
   private temp: any;
   private tempArr: any;
   public displayedUsers: KorisnikModel[];
-  public filterUsers: KorisnikModel[];
   public friendRequests: FriendDTO[];
   public friends: FriendDTO[];
   public search = "";
@@ -48,11 +47,16 @@ export class UsersComponent implements OnInit {
 
         this.tempArr = myFriends;
         this.friends = this.tempArr;
+
         let allFriends = [];
         this.friends.forEach(el => {
           allFriends.push(el.korisnikName);
         })
+
+        allFriends.sort();
+
         console.log('Prijatelji', this.friends);
+        console.log('Sort', allFriends.sort());
 
         this.userService.getAllUsers().subscribe(users => {
           this.allUsers = users;     
@@ -65,9 +69,7 @@ export class UsersComponent implements OnInit {
             
             return tmpArr.length !== 0 && !friendsList.includes(element.userName) 
             && element.userName !== this.currentUserName && !allFriends.includes(element.userName);
-        });     
-          this.filterUsers = this.displayedUsers;
-          console.log('Korisnici', this.filterUsers);
+          });     
         });
       });
     });

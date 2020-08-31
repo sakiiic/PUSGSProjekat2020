@@ -13,6 +13,7 @@ export class AviokompanijaComponent implements OnInit {
 
   displayedColumns = ['naziv', 'adresa', 'opis', 'ocjena', 'destinacije', 'letovi'];
   dataSource: any;
+  public search = "";
 
   constructor(public service: AviokompanijaService, private activatedRoute: ActivatedRoute) {
     this.dataSource = new MatTableDataSource<AviokompanijaModel>();
@@ -26,6 +27,34 @@ export class AviokompanijaComponent implements OnInit {
             this.dataSource = res;
             console.log(this.dataSource)
          })
+  }
+
+  private _filterBySearchText(
+    usersToFilter: AviokompanijaModel[],
+    searchText: string
+  ): AviokompanijaModel[] {
+    return usersToFilter.filter((element) => {  
+      
+      if(element.naziv !== null){
+        if (element.naziv.toLowerCase().includes(searchText)) {
+          return true;
+        }
+      }
+
+      return false;
+    });
+  }
+
+  onSubmit(): void {
+    const searchText = this.search.toLowerCase();
+    let filteredList = this._filterBySearchText(this.dataSource, searchText);
+
+    if(searchText === "")
+    {
+      this.ngOnInit();
+    }
+    
+    this.dataSource = filteredList;
   }
 
 }
