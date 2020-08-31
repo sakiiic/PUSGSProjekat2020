@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LetService } from 'src/app/services/let/let.service';
 import { LetModel } from 'src/app/models/let.model';
 import { Router } from '@angular/router';
+import { AuthenticatService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-let-rezervacija',
@@ -17,8 +18,9 @@ export class LetRezervacijaComponent implements OnInit {
   from = "";
   to = "";
   price: number;
+  role: any;
 
-  constructor(public letService: LetService, private router: Router) { }
+  constructor(public letService: LetService, private router: Router, private auth: AuthenticatService) { }
 
   
   ngOnInit(): void {
@@ -90,5 +92,4 @@ export class LetRezervacijaComponent implements OnInit {
   flightDetails(flightId: number) {
     this.router.navigateByUrl("flight/" + flightId);
   }
-
 }

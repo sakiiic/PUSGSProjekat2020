@@ -29,10 +29,10 @@ namespace PUSGSProjekat.Controllers
             return Ok(x);
         }
 
-        [HttpDelete("ObrisiLet/{letId}")]
-        public async Task<IActionResult> ObrisiLet(int letId)
+        [HttpDelete("DeleteLet/{id}")]
+        public async Task<IActionResult> DeleteLet(int id)
         {
-            var x = _letService.ObrisiLet(letId);
+            var x = _letService.DeleteLet(id);
 
             return Ok(x);
         }

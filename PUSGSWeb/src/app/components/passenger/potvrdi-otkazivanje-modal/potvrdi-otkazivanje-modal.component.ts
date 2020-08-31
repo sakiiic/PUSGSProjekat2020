@@ -23,10 +23,24 @@ export class PotvrdiOtkazivanjeModalComponent implements OnInit {
   }
 
   otkaziRezervaciju(){
-    this.service.otkaziRezervaciju(this.id).subscribe();
-    window.location.reload();
-    this.alertify.success('Uspjesno otkazana rezervacija!');
-    this.dialogRef.close();
+    this.service.otkaziRezervaciju(this.id).subscribe(res =>
+      {
+        if(res === null)
+        {
+          alert("Ne mozete otkazati rezervaciju 2 dana prije");
+        }
+        else
+        {
+          alert("Uspjesno ste otkazali rezervaciju");
+          this.dialogRef.close();
+          window.location.reload();
+        }
+      },
+      err => 
+      {
+        alert("Greska pri otkazivanju rezervacije");
+      }
+    );
   }
 
   closeModal() {

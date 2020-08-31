@@ -425,6 +425,8 @@ namespace PUSGSProjekat.Migrations
 
                     b.Property<int>("SeatNumber");
 
+                    b.Property<string>("UserName");
+
                     b.HasKey("Id");
 
                     b.ToTable("Invitation");

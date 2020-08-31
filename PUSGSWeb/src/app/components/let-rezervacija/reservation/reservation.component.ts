@@ -72,6 +72,7 @@ export class ReservationComponent implements OnInit {
   callFriend(friend){
     let invitation: InvitationDTO = {     
       reservedById: this.auth.currentUser.id,
+      userName: this.auth.currentUser.userName,
       seatNumber : this.seatNumber,
       letId: this.id,
       friendId: friend.korisnikId 

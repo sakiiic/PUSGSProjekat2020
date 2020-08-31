@@ -28,5 +28,12 @@ namespace PUSGSProjekat.DTO
 
         [ForeignKey("RentACar")]
         public int RentACarId { get; set; }
+
+        public bool CancelReservation()
+        {
+            TimeSpan diff = DatumOd - DateTime.Now;
+            return DatumOd == null
+                || diff.Days > 2;
+        }
     }
 }

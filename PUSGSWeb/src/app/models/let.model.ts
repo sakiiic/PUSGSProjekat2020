@@ -14,4 +14,5 @@ export class LetModel{
     cijenaKarte: number;
     aviokompanijaId: number;
     seats: FlightSeat[];
+    brojSjedistaURedu: number;
 }

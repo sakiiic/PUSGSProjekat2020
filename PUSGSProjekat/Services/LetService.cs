@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using PUSGSProjekat.DTO;
 using PUSGSProjekat.Entities;
 using PUSGSProjekat.Repositories;
+using System.Net.Mail;
+using System.Net;
 
 namespace PUSGSProjekat.Services
 {
@@ -48,6 +50,33 @@ namespace PUSGSProjekat.Services
             }
         }
 
+
+        private void sendMail(FlightSeat fs)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                mail.From = new MailAddress("nevermind43628@gmail.com");
+                mail.To.Add("nevermind43628@gmail.com");
+                mail.Subject = "Uspjesno ste rezervisali let!";
+                mail.Body = "Ime i prezime: " + fs.Name + " " + fs.Surname + "\n" +
+                    "Broj pasosa: " + fs.PassportNumber + "\n" +
+                    "Broj sjedista u avionu: " + fs.SeatNumber + "\n";
+
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("nevermind43628@gmail.com", "relaxman");
+                SmtpServer.EnableSsl = true;
+
+                SmtpServer.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
         public bool AddSeat(FlightSeat fs)
         {
             var seats = _dbContext.Seats.Where(s => s.SeatId == fs.SeatId).FirstOrDefault();
@@ -67,6 +96,8 @@ namespace PUSGSProjekat.Services
                     Name = fs.Name,
                     Surname = fs.Surname
                 });
+
+                sendMail(fs);
             }
             catch (Exception e)
             {
@@ -118,6 +149,7 @@ namespace PUSGSProjekat.Services
                     LokacijePresjedanja = l.LokacijePresjedanja,
                     CijenaKarte = l.CijenaKarte,
                     AviokompanijaId = l.AviokompanijaId,
+                    BrojSjedistaURedu = l.BrojSjedistaURedu,
                     Seats = l.Seats
                     
                 });
@@ -161,7 +193,7 @@ namespace PUSGSProjekat.Services
             }
         }
 
-        public bool ObrisiLet(int id)
+        public bool DeleteLet(int id)
         {
             try
             {
@@ -302,11 +334,38 @@ namespace PUSGSProjekat.Services
             }
         }
 
+        private void sMail(Korisnik k, Let l)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                mail.From = new MailAddress("nevermind43628@gmail.com");
+                mail.To.Add("nevermind43628@gmail.com");
+                mail.Subject = "Uspjesno ste rezervisali let!";
+                mail.Body = "Ime i prezime: " + k.Name + " " + k.Surname + "\n" +
+                    "Let za: " + l.Destinacija + "\n" +
+                    "Vrijeme polaska: " + l.DatumVrijemePolaska + "\n";
+
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("nevermind43628@gmail.com", "relaxman");
+                SmtpServer.EnableSsl = true;
+
+                SmtpServer.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
         public Let RezervisiLet(int letId, int korisnikId)
         {
             try
             {
                 var let = _dbContext.Letovi.Where(a => a.LetId == letId).FirstOrDefault();
+                var korisnik = _dbContext.Korisnici.Where(a => a.Id == korisnikId).FirstOrDefault();
 
                 let.KorisnikId = korisnikId;
 
@@ -317,6 +376,9 @@ namespace PUSGSProjekat.Services
                 Rezervisi(rez);
 
                 _dbContext.SaveChanges();
+
+                sMail(korisnik, let);
+
                 return let;
 
             }

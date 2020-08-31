@@ -175,6 +175,7 @@ namespace PUSGSProjekat.Services
         public bool AddInvitation(Invitation i)
         {
             var invitations = _dbContext.Invitations.Where(s => s.Id == i.Id).FirstOrDefault();
+            var name = _dbContext.Korisnici.Where(s => s.Id == i.ReservedById).FirstOrDefault();
 
             if (invitations != null)
                 return false;
@@ -187,7 +188,8 @@ namespace PUSGSProjekat.Services
                     LetId = i.LetId,
                     SeatNumber = i.SeatNumber,
                     ReservedById = i.ReservedById,
-                    FriendId = i.FriendId
+                    FriendId = i.FriendId,
+                    UserName = name.UserName
                 });
             }
             catch (Exception e)
@@ -215,6 +217,7 @@ namespace PUSGSProjekat.Services
                     invitation.SeatNumber = i.SeatNumber;
                     invitation.ReservedById = i.ReservedById;
                     invitation.FriendId = i.FriendId;
+                    invitation.UserName = i.UserName;
                     inv.Add(invitation);
                 }
 

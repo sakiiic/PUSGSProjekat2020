@@ -14,6 +14,7 @@ namespace PUSGSProjekat.Entities
         public int SeatNumber { get; set; }
         public int? ReservedById { get; set; }
         public int? FriendId { get; set; }
+        public string UserName { get; set; }
 
         public Invitation() { }
 

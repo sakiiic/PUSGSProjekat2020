@@ -1,19 +1,18 @@
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="invitations" style="margin-left: 400px;width: 550px;">
     <thead>
       <tr>
-        <th>Let</th>
-        <th>Broj sjedista</th>
         <th>Poziv od</th>
+        <th>Broj sjedista</th>
         <th></th>
       </tr>
     </thead>
     <tbody *ngFor="let invitation of invitations">
       <tr>
-        <td>{{invitation.letId}}</td>
+        <td>{{invitation.userName}}</td>
         <td>{{invitation.seatNumber}}</td>
-        <td>{{invitation.reservedById}}</td>
         <td>
         <div>
+          <button (click)="flightDetails(invitation.letId)" class="btn btn-secondary">Let</button>
           <button (click)="accept(invitation.id)" class="btn btn-secondary">Prihvati</button>
           <button (click)="decline(invitation.id)" class="btn btn-secondary">Odbij</button>
         </div>

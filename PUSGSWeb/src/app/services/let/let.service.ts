@@ -28,7 +28,7 @@ export class LetService {
   }
 
   deleteLet(id){
-    return this.http.delete(this.apiURI + 'api/Let/ObrisiLet/' + id);
+    return this.http.delete(this.apiURI + 'api/Let/DeleteLet/' + id);
   }
 
   getLet(aviokompanijaId, letId){

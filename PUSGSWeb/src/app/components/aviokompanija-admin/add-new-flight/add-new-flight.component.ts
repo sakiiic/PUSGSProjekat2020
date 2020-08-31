@@ -33,7 +33,8 @@ export class AddNewFlightComponent implements OnInit {
       brojPresjedanja: ['', Validators.required],
       lokacijePresjedanja: ['', Validators.required],
       cijenaKarte: ['', Validators.required],
-      aviokompanijaId: 1
+      brojSjedistaURedu: ['', Validators.required],
+      aviokompanijaId: this.aviokompanijaId
     });
   }
 

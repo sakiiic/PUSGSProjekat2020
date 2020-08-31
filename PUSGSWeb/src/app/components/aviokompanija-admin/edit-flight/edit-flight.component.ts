@@ -72,7 +72,7 @@ export class EditFlightComponent implements OnInit {
 
     this.service.editLet(this.dataSource.letId, model).subscribe();
     this.dialogRef.close();
-    
+    window.location.reload();
   }
 
   closeModal() {

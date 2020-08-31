@@ -203,9 +203,13 @@ namespace PUSGSProjekat.Services
             {
                 var vozilo = _dbContext.Vozila.Where(a => a.VoziloId == voziloId ).FirstOrDefault();
 
-                vozilo.Slobodno = true;
-                vozilo.KorisnikId = null;
-
+                if (vozilo.CancelReservation())
+                {
+                    vozilo.Slobodno = true;
+                    vozilo.KorisnikId = null;
+                }
+                else
+                    vozilo = null;
 
                 _dbContext.SaveChanges();
                 return vozilo;

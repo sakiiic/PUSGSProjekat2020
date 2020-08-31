@@ -1,0 +1,70 @@
+.profile-display label {
+    font-weight: bold;
+  }
+  
+  section {
+    margin-bottom: 2em;
+  }
+  
+  .btn-reservation-sticky {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+  }
+
+  .inner{
+    border:4px solid orange;
+    width: 80%;
+    height: auto;
+    // padding: 10px 0 10px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    // border-radius: 180px 180px 0 0;
+
+  }
+  .oneRow{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    flex-basis: 40%;
+    justify-content: space-around;
+  }
+
+  .oneSeat{
+    width: 50px;
+    height: 50px;
+    
+    margin: 5px 2px;
+    flex-basis: 20%;
+    
+  }
+ 
+  .seatFree{
+    width: 100%;
+    height: 100%;
+    background:rgb(15, 67, 179);
+    border-radius: 35px;
+  }
+
+  .seatClicked{
+    width: 100%;
+    height: 100%;
+    background: rgb(17, 235, 17);
+    border-radius: 35px;
+  }
+
+  .seatReserved{
+    width: 100%;
+    height: 100%;
+    background:rgb(179, 26, 15);
+    border-radius: 35px;
+  }
+
+  .spacer{
+    height: 100%;
+    flex-basis: 20%;
+  }
+
+  
+  

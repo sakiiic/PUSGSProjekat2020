@@ -37,4 +37,8 @@ export class InvitationsComponent implements OnInit {
   accept(id: number) {
     this.router.navigateByUrl("acceptInvitations/" + id);
   }
+
+  flightDetails(flightId: number) {
+    this.router.navigateByUrl("flight/" + flightId);
+  }
 }

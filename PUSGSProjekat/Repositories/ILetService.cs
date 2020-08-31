@@ -10,7 +10,7 @@ namespace PUSGSProjekat.Repositories
     public interface ILetService
     {
         List<Let> GetSviLetovi();
-        bool ObrisiLet(int id);
+        bool DeleteLet(int id);
         bool IzmijeniLet(int id, Let l);
         bool DodajLet(Let l);
         Let GetLet(int aviokompanijaId, int letId);

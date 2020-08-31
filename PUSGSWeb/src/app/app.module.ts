@@ -84,6 +84,7 @@ import { InvitationsComponent } from './components/let-rezervacija/invitations/i
 import { AcceptInvitationComponent } from './components/let-rezervacija/accept-invitation/accept-invitation.component';
 import { DeclineInvitationComponent } from './components/let-rezervacija/decline-invitation/decline-invitation.component';
 import { CancelFlightComponent } from './components/let-rezervacija/cancel-flight/cancel-flight.component';
+import { AirplaneSeatsComponent } from './components/aviokompanija-admin/airplane-seats/airplane-seats.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -157,6 +158,7 @@ export function provideConfig()
     AcceptInvitationComponent,
     DeclineInvitationComponent,
     CancelFlightComponent,
+    AirplaneSeatsComponent,
     ],
   imports: [ 
     MbscModule,  
