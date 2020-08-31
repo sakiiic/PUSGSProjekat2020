@@ -69,11 +69,27 @@ namespace PUSGSProjekat.Controllers
             return Ok(x);
         }
 
+        [HttpDelete("CancelReservation/{id}")]
+        public async Task<IActionResult> CancelReservation(int id)
+        {
+            var x = _letService.CancelReservation(id);
+
+            return Ok(x);
+        }
+
 
         [HttpGet("GetLetic/{letId}")]
         public List<Let> GetLetic(int letId)
         {
             var x = _letService.GetLetic(letId);
+
+            return x;
+        }
+
+        [HttpGet("GetReservedFlights/{id}")]
+        public List<Let> GetReservedFlights(int id)
+        {
+            var x = _letService.GetReservedFlights(id);
 
             return x;
         }

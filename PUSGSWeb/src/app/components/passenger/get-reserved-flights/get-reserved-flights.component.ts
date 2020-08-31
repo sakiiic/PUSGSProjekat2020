@@ -7,6 +7,7 @@ import { AuthenticatService } from 'src/app/services/authentication/authenticati
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { CancelReservationComponent } from '../cancel-reservation/cancel-reservation.component';
 import { OcijeniLetComponent } from '../ocijeni-let/ocijeni-let.component';
+import { CancelFlightComponent } from 'src/app/components/let-rezervacija/cancel-flight/cancel-flight.component';
 
 @Component({
   selector: 'app-get-reserved-flights',
@@ -23,6 +24,7 @@ export class GetReservedFlightsComponent implements OnInit {
 
   // Original extracted data
   dataSource: any;
+  flights: any;
 
   constructor(public service: LetService,
     private activatedRoute: ActivatedRoute,
@@ -37,6 +39,25 @@ export class GetReservedFlightsComponent implements OnInit {
       this.dataSource = res;
       this.letId = this.dataSource.letId;
     });
+
+    
+    this.service.getReservedFlights(this.korisnikId).subscribe((response: any) =>
+    {
+      
+
+      this.flights = response;
+
+      console.log("Flight", this.letId);
+
+      this.flights = this.flights.filter((element, idx) => {
+        
+        const tmpArr =  element.seats.filter((el) => {
+          return el.reservedById === this.auth.currentUser.id;
+        });
+        console.log("Seat", tmpArr[0]);
+        return tmpArr.length !== 0
+      });       
+    });
   }
 
   openOtkaziModal(letId){
@@ -50,6 +71,20 @@ export class GetReservedFlightsComponent implements OnInit {
     const modalDialog = this.matDialog.open(CancelReservationComponent, {
       width: '460px', 
       data: {letId: letId}
+    });
+  }
+
+  otkazi(seatId){
+    const dialogConfig = new MatDialogConfig();
+    // The user can't close the dialog by clicking outside its body
+    dialogConfig.disableClose = true;
+    dialogConfig.id = "modal-component";
+    dialogConfig.height = "350px";
+    dialogConfig.width = "600px";
+    // https://material.angular.io/components/dialog/overview
+    const modalDialog = this.matDialog.open(CancelFlightComponent, {
+      width: '460px', 
+      data: {seatId: seatId}
     });
   }
 

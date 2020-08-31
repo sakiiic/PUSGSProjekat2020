@@ -67,6 +67,10 @@ export class LetService {
     return this.http.get(this.apiURI + 'api/Let/GetLetic/' + id);
   }
 
+  getReservedFlights(id: number) {
+    return this.http.get(this.apiURI + 'api/Let/GetReservedFlights/' + id);
+  }
+
   getSeats(letId){
     return this.http.get(this.apiURI + 'api/Let/GetSeats/' + letId)
   }
@@ -74,5 +78,9 @@ export class LetService {
   addResevation(seat: FlightSeatDTO) {
     console.log(this.apiURI + 'api/Let/AddSeat')
     return this.http.post(this.apiURI + 'api/Let/AddSeat', seat);
+  }
+
+  cancelReservation(id){
+    return this.http.delete(this.apiURI + 'api/Let/CancelReservation/' + id);
   }
 }

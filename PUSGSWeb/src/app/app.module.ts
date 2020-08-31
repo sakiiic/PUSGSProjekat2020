@@ -83,6 +83,7 @@ import { UsersComponent } from './components/users/users.component';
 import { InvitationsComponent } from './components/let-rezervacija/invitations/invitations.component';
 import { AcceptInvitationComponent } from './components/let-rezervacija/accept-invitation/accept-invitation.component';
 import { DeclineInvitationComponent } from './components/let-rezervacija/decline-invitation/decline-invitation.component';
+import { CancelFlightComponent } from './components/let-rezervacija/cancel-flight/cancel-flight.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -155,6 +156,7 @@ export function provideConfig()
     InvitationsComponent,
     AcceptInvitationComponent,
     DeclineInvitationComponent,
+    CancelFlightComponent,
     ],
   imports: [ 
     MbscModule,  

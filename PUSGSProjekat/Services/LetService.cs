@@ -117,7 +117,8 @@ namespace PUSGSProjekat.Services
                     BrojPresjedanja = l.BrojPresjedanja,
                     LokacijePresjedanja = l.LokacijePresjedanja,
                     CijenaKarte = l.CijenaKarte,
-                    AviokompanijaId = l.AviokompanijaId
+                    AviokompanijaId = l.AviokompanijaId,
+                    Seats = l.Seats
                     
                 });
                 
@@ -164,7 +165,7 @@ namespace PUSGSProjekat.Services
         {
             try
             {
-                var let = _dbContext.Letovi.Where(bc => bc.LetId == id).FirstOrDefault();
+                var let = _dbContext.Letovi.Where(l => l.LetId == id).FirstOrDefault();
                 if (let != null)
                 {
                     _dbContext.Letovi.Remove(let);
@@ -323,6 +324,81 @@ namespace PUSGSProjekat.Services
             {
                 Console.WriteLine(e);
                 return null;
+            }
+        }
+
+        public Let FindFlight(int letId)
+        {
+            try
+            {
+                return _dbContext.Letovi.Where(a => a.LetId == letId).FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+
+        public List<Let> GetReservedFlights(int id)
+        {
+            List<Let> flights = new List<Let>();
+
+            try
+            {
+                var reservations = _dbContext.Seats.Where(s => s.ReservedById == id).ToList();
+
+                foreach (var r in reservations)
+                {
+                    Let l = new Let();
+                    l = FindFlight(r.LetId);
+                    flights.Add(l);
+                }
+
+                return flights;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public List<Let> GetReservations(int id)
+        {
+            try
+            {
+                var letovi = _dbContext.Letovi.Where(l => l.LetId == id).ToList();
+
+                return letovi;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public bool CancelReservation(int id)
+        {
+            try
+            {
+                var seat = _dbContext.Seats.Where(s => s.SeatId == id).FirstOrDefault();
+                var let = _dbContext.Letovi.Where(l => l.LetId == seat.LetId).FirstOrDefault();
+
+                if (let.CancelReservation())
+                {
+                    _dbContext.Seats.Remove(seat);
+                    _dbContext.SaveChanges();
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
 

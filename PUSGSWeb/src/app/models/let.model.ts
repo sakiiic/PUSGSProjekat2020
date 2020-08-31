@@ -1,3 +1,6 @@
+import { FlightSeat } from './flightSeat';
+import { FlightSeatDTO } from './flightSeatDTO';
+
 export class LetModel{
     letId: number;
     destinacija: string;
@@ -10,4 +13,5 @@ export class LetModel{
     lokacijePresjedanja: Array<string>;
     cijenaKarte: number;
     aviokompanijaId: number;
+    seats: FlightSeat[];
 }

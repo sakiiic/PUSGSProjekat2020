@@ -24,5 +24,7 @@ namespace PUSGSProjekat.Repositories
         List<Let> GetLetic(int id);
         List<int> GetSeats(int letId);
         bool AddSeat(FlightSeat fs);
+        List<Let> GetReservedFlights(int id);
+        bool CancelReservation(int id);
     }
 }
